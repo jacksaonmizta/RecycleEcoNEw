@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System;
 using Xamarin.Forms;
 using RecycleEco.Model;
+
 namespace RecycleEco.Utilities
 {
     class RecyclerAuth
@@ -28,9 +29,9 @@ namespace RecycleEco.Utilities
                         EcoLevel = item.Object.EcoLevel
                     }).ToList();
             }
-            catch(Exception a)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDA1", a.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDA1", ex.Message, "OK");
                 return null;
             }
         }
