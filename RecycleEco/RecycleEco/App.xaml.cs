@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using RecycleEco.Views;
 
 namespace RecycleEco
 {
@@ -10,7 +11,7 @@ namespace RecycleEco
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainStartView());
         }
 
         protected override void OnStart()
