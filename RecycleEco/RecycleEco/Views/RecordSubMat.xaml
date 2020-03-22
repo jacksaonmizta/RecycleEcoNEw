@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:RecycleEco.ViewModel"
+             x:Class="RecycleEco.Views.RecordSubMat">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:SubmissionVM x:Key="SVM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="20"
+                     BackgroundColor="LightGreen"
+                     Padding="10"
+                     BindingContext="{StaticResource Key=SVM}">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.25*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.25*"/>
+
+                </Grid.ColumnDefinitions>
+                
+            <!--Head title-->
+                <Label Grid.ColumnSpan="2"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="30"
+                       Text="Material Submission"
+                       TextColor="Black"
+                       FontAttributes="Bold"/>
+                <!--To insert submission ID-->
+                <Label Grid.Row="1"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Text="Submission ID:"
+                       FontSize="20"
+                       TextColor="Black"/>
+
+                <Entry Grid.Row="1"
+                       Grid.Column="1"
+                       Placeholder="Enter ID"
+                       FontSize="20"
+                       TextColor="Blue"
+                       Text="{Binding SubmissionID, Mode=TwoWay}"/>
+
+                <!--To insert weight-->
+                <Label Grid.Row="2"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Text="Weight:"
+                       FontSize="20"
+                       TextColor="Black"/>
+
+                <Entry Grid.Row="2"
+                       Grid.Column="1"
+                       Placeholder="Enter Weight"
+                       FontSize="20"
+                       TextColor="Blue"
+                       Text="{Binding Weight, Mode=TwoWay}"
+                       IsPassword="True"/>
+
+                <!--To insert date-->
+                <Label Grid.Row="3"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Text="Date:"
+                       FontSize="20"
+                       TextColor="Black"/>
+
+                <Entry Grid.Row="3"
+                       Grid.Column="1"
+                       Placeholder="dd/mm/yyyy"
+                       FontSize="20"
+                       TextColor="Blue"
+                       Text="{Binding Date, Mode=TwoWay}"/>
+
+
+                <!-- record button-->
+                <Button Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                        Margin="30,0"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Create Account"
+                        FontSize="20"
+                        TextColor="White"
+                        BackgroundColor="ForestGreen"
+                        Command="{Binding submitCreated}"
+                        CommandParameter="{Binding createSubmit}"/>
+
+                <Label Grid.Row="8"
+                       Grid.ColumnSpan="2"
+                       Margin="30,0"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       Text="{Binding RecordSubmitStatus}"
+                       FontSize="15"
+                       TextColor="Red"/>
+
+            </Grid>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
