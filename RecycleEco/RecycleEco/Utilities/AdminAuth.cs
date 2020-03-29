@@ -18,37 +18,35 @@ namespace RecycleEco.Utilities
             try
             {
                 return (await Firebase
-                    .Child("Admin")
+                    .Child("Admins")
                     .OnceAsync<User>()).Select(item => new User
                     {
                         Username = item.Object.Username,
                         Password = item.Object.Password
                     }).ToList();
             }
-            catch (Exception a)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception ADA1", a.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception ADA1", ex.Message, "OK");
                 return null;
             }
         }
-
         public static async Task<User> GetAdmin(User user)
         {
             try
             {
-                var AllAdmin = await GetAllAdmins();
-                if (AllAdmin !=null)
+                var allAdmins = await GetAllAdmins();
+                if (allAdmins != null)
                 {
-                    return AllAdmin.Where(a => a.Username == user.Username).FirstOrDefault();
+                    return allAdmins.Where(a => a.Username == user.Username).FirstOrDefault();
                 }
                 return null;
             }
-            catch(Exception a)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception ADA2", a.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception ADA2", ex.Message, "OK");
                 return null;
             }
         }
-
     }
 }

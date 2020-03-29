@@ -5,11 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.LoginPageView">
-    
+             x:Class="RecycleEco.Views.AddNewMaterialPage">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:LoginVM x:Key="LVM"/>
+            <local:MaterialVM x:Key="MVM"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -17,7 +16,7 @@
         <StackLayout Margin="20"
                      BackgroundColor="Wheat"
                      Padding="10"
-                     BindingContext="{StaticResource Key=LVM}">
+                     BindingContext="{StaticResource Key=MVM}">
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -39,80 +38,64 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontSize="30"
-                       Text="Login"
+                       Text="Add Material"
                        TextColor="Black"/>
 
                 <Label Grid.Row="1"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        Grid.Column="0"
-                       Text="Username:"
+                       Text="Material Name:"
                        FontSize="20"
                        TextColor="Black"/>
 
                 <Entry Grid.Row="1"
-                       Grid.Column="1"
-                       Placeholder="Enter Username"
+                       Grid.Column="1"                      
                        FontSize="20"
                        TextColor="Blue"
-                       Text="{Binding Username, Mode=TwoWay}"/>
+                       Text="{Binding MaterialName, Mode=OneWayToSource}"/>
 
                 <Label Grid.Row="2"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        Grid.Column="0"
-                       Text="Password:"
+                       Text="Description :"
                        FontSize="20"
                        TextColor="Black"/>
 
-                <Entry Grid.Row="2"
-                       Grid.Column="1"
-                       Placeholder="Enter Password"
+                <Editor Grid.Row="2"
+                       Grid.Column="1"                       
                        FontSize="20"
                        TextColor="Blue"
-                       Text="{Binding Password}"
-                       IsPassword="{Binding ShowPassword}"/>
+                       Text="{Binding Description, Mode=OneWayToSource}"/>
 
-                <StackLayout
-                    Orientation="Horizontal"
-                    Grid.Row="3"
-                    Grid.Column="1">
-                    <CheckBox IsChecked="{Binding ShowPassword, Mode=OneWayToSource}"
-                              VerticalOptions="Center"/>
-                    <Label
-                        Text="show password"
-                        FontSize="15"
-                        VerticalOptions="Center"/>
-                </StackLayout>
-
-                <Button Grid.Row="5"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Text="Sign Up"
-                        FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Goldenrod"
-                        Command="{Binding OpenSignUpView}"/>
-
-                <Button Grid.Row="5"
-                        Grid.Column="1"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Text="Login"
-                        FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Goldenrod"
-                        Command="{Binding SignIn}"
-                        CommandParameter="{Binding CanSign}"/>
-
-                <Label Grid.Row="6"
-                       Grid.ColumnSpan="2"
-                       Margin="30,0"
+                <Label Grid.Row="3"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
-                       Text="{Binding LoginStatus}"
-                       FontSize="15"
-                       TextColor="Red"/>
+                       Grid.Column="0"
+                       Text="Points per KG:"
+                       FontSize="20"
+                       TextColor="Black"/>
+
+                <Entry Grid.Row="3"
+                       Grid.Column="1"                      
+                       FontSize="20"
+                       TextColor="Blue"
+                       Keyboard="Numeric"
+                       Text="{Binding PointsPerKg, Mode=OneWayToSource}"/>
+
+
+                <Button Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Add"
+                        FontSize="20"
+                        TextColor="PowderBlue"
+                        BackgroundColor="Goldenrod"
+                        Command="{Binding UploadMaterial}"
+                        CommandParameter="{Binding CanAdd}"/>
+
             </Grid>
         </StackLayout>
     </ContentPage.Content>

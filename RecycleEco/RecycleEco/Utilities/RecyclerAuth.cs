@@ -14,7 +14,7 @@ namespace RecycleEco.Utilities
     class RecyclerAuth
     {
         static readonly FirebaseClient Firebase = new FirebaseClient("https://ecorecycle-65d2d.firebaseio.com/");
-        public static async Task<List<Recycler>> GetAllRecycler()
+        public static async Task<List<Recycler>> GetAllRecyclers()
         {
             try
             {
@@ -35,78 +35,69 @@ namespace RecycleEco.Utilities
                 return null;
             }
         }
-
         public static async Task<Recycler> GetRecycler(User user)
         {
-
             try
             {
-                var allCollectors = await GetAllRecycler();
-                if (allCollectors != null)
+                var allRecyclers = await GetAllRecyclers();
+                if (allRecyclers != null)
                 {
-                    return allCollectors.Where(a => a.Username == user.Username).FirstOrDefault();
+                    return allRecyclers.Where(a => a.Username == user.Username).FirstOrDefault();
                 }
                 return null;
             }
-            catch (Exception a)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDA2", a.Message, "Ok");
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDA2", ex.Message, "OK");
                 return null;
             }
         }
-
         public static async Task AddRecycler(Recycler recycler)
         {
             try
             {
                 if (recycler != null)
                 {
-                    await Firebase.Child("Users/Recyclers").PatchAsync(recycler);
+                    await Firebase.Child("Users/Recyclers").PostAsync(recycler);
                 }
             }
-            catch (Exception a)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDA3", a.Message, "Ok");
-
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDA3", ex.Message, "OK");
             }
         }
-
         public static async Task UpdateRecycler(Recycler recycler)
         {
             try
             {
                 if (recycler != null)
                 {
-                    var toUpdateCollector = (await Firebase.Child("Users/Recyclers")
-                        .OnceAsync<Collector>()).Where(a => a.Object.Username == recycler.Username).FirstOrDefault();
-                    await Firebase.Child("Users/Recyclers").Child(toUpdateCollector.Key).PutAsync(recycler);
+                    var toUpdateRecycler = (await Firebase.Child("Users/Recyclers")
+                        .OnceAsync<Recycler>()).Where(a => a.Object.Username == recycler.Username).FirstOrDefault();
+                    await Firebase.Child("Users/Recyclers").Child(toUpdateRecycler.Key).PutAsync(recycler);
                 }
             }
-            catch (Exception a)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDF4", a.Message, "Ok");
-
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDA4", ex.Message, "OK");
             }
         }
-
-        public static async Task<Recycler> GetRecyclerbyUsername(string username)
+        public static async Task<Recycler> GetRecyclerByUsername(string username)
         {
             try
             {
-                var allRecycler = await GetAllRecycler();
-                if (allRecycler != null)
+                var allRecyclers = await GetAllRecyclers();
+                if (allRecyclers != null)
                 {
-                    return allRecycler.Where(a => a.Username == username).FirstOrDefault();
+                    return allRecyclers.Where(a => a.Username == username).FirstOrDefault();
                 }
                 return null;
             }
-            catch (Exception a)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA6", a.Message, "Ok");
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDA5", ex.Message, "OK");
                 return null;
-
             }
         }
-
     }
 }

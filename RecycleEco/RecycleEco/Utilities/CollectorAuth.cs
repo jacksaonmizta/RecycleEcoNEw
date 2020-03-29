@@ -15,7 +15,7 @@ namespace RecycleEco.Utilities
     {
         static readonly FirebaseClient Firebase = new FirebaseClient("https://ecorecycle-65d2d.firebaseio.com/");
 
-        public static async Task<List<Collector>> GetAllCollector()
+        public static async Task<List<Collector>> GetAllCollectors()
         {
             try
             {
@@ -31,109 +31,100 @@ namespace RecycleEco.Utilities
                         MaterialCollection = item.Object.MaterialCollection
                     }).ToList();
             }
-            catch (Exception a)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA1", a.Message, "ok");
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA1", ex.Message, "OK");
                 return null;
             }
         }
-
-        public static async Task<Collector> GetCollector (User user)
+        public static async Task<Collector> GetCollector(User user)
         {
-
             try
             {
-                var allCollectors = await GetAllCollector();
-                if (allCollectors !=null)
+                var allCollectors = await GetAllCollectors();
+                if (allCollectors != null)
                 {
                     return allCollectors.Where(a => a.Username == user.Username).FirstOrDefault();
                 }
                 return null;
             }
-            catch(Exception a)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA2", a.Message, "Ok");
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA2", ex.Message, "OK");
                 return null;
             }
         }
 
-        public static async Task<ObservableCollection<Collector>> GetCollecterByUsername(List<string> collectors)
+        public static async Task<ObservableCollection<Collector>> GetCollectorsByUsername(List<string> collectors)
         {
             try
             {
-                var allCollectors = await GetAllCollector();
-                ObservableCollection<Collector> colletorList = new ObservableCollection<Collector>();
-                if(allCollectors !=null)
+                var allCollectors = await GetAllCollectors();
+                ObservableCollection<Collector> collectorList = new ObservableCollection<Collector>();
+                if (allCollectors != null)
                 {
+
                     foreach (Collector collector in allCollectors)
                     {
                         if (collectors.Contains(collector.Username))
-                            colletorList.Add(collector);
+                            collectorList.Add(collector);
                     }
-                    return colletorList;
+                    return collectorList;
                 }
                 return null;
             }
-            catch (Exception a)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA3", a.Message, "Ok");
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA3", ex.Message, "OK");
                 return null;
             }
         }
-
         public static async Task AddCollector(Collector collector)
         {
             try
             {
-                if(collector != null)
+                if (collector != null)
                 {
-                    await Firebase.Child("Users/Collectors").PatchAsync(collector);
+                    await Firebase.Child("Users/Collectors").PostAsync(collector);
                 }
             }
-            catch (Exception a)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA4", a.Message, "Ok");
-                
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA4", ex.Message, "OK");
             }
         }
-
-        public static async Task UpdateCollector (Collector collector)
+        public static async Task UpdateCollector(Collector collector)
         {
             try
             {
-                if(collector !=null)
+                if (collector != null)
                 {
                     var toUpdateCollector = (await Firebase.Child("Users/Collectors")
                         .OnceAsync<Collector>()).Where(a => a.Object.Username == collector.Username).FirstOrDefault();
                     await Firebase.Child("Users/Collectors").Child(toUpdateCollector.Key).PutAsync(collector);
                 }
             }
-            catch (Exception a)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA5", a.Message, "Ok");
-
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA5", ex.Message, "OK");
             }
         }
-
-        public static async Task<Collector> GetCollectorbyUsername(string username)
+        public static async Task<Collector> GetCollectorByUsername(string username)
         {
             try
             {
-                var allCollectors = await GetAllCollector();
-                if (allCollectors !=null)
+                var allCollectors = await GetAllCollectors();
+                if (allCollectors != null)
                 {
                     return allCollectors.Where(a => a.Username == username).FirstOrDefault();
                 }
                 return null;
             }
-            catch (Exception a)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA6", a.Message, "Ok");
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA6", ex.Message, "OK");
                 return null;
-
             }
         }
-
-            }
-        }
-   
+    }
+}

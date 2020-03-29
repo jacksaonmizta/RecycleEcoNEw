@@ -137,6 +137,7 @@ namespace RecycleEco.ViewModel
                 Collector = new Collector();
             }
             SignUp = new Command(SignUpExecute, CanSignUpM);
+            
             SignOut = new Command(SignOutExecute);
         }
 
@@ -183,13 +184,6 @@ namespace RecycleEco.ViewModel
             return CanSignUp;
         }
         
-
-        private bool CanUpdateM(object arg)
-        {
-            return CanUpdate;
-        }
-
-      
         private void SignOutExecute(object obj)
         {
             Application.Current.Properties["loggedIn"] = 0;
@@ -202,6 +196,6 @@ namespace RecycleEco.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
     }
 }
+

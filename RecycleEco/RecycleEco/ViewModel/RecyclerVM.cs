@@ -175,8 +175,7 @@ namespace RecycleEco.ViewModel
             return CanSignUp;
         }
 
-       
-       
+        
         private void SignOutExecute(object obj)
         {
             Application.Current.Properties["loggedIn"] = 0;
@@ -189,6 +188,5 @@ namespace RecycleEco.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
     }
 }

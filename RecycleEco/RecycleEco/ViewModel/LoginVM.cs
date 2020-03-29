@@ -120,12 +120,12 @@ namespace RecycleEco.ViewModel
                 else if (UserType == UserTypeVM.RecyclerUserType)
                 {
                     a = await RecyclerAuth.GetRecycler(User);
-                    view = new Views.RecyclerUserSignUpView();
+                    view = new Views.RecyclerMainPage();
                 }
                 else
                 {
                     a = await CollectorAuth.GetCollector(User);
-                    view = new Views.CollectorUserSignUpView();
+                    view = new Views.CollectorMainPage();
                 }
                 if (a != null)
                 {
@@ -181,3 +181,5 @@ namespace RecycleEco.ViewModel
         }
     }
 }
+
+
