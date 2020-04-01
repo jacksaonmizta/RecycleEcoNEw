@@ -16,7 +16,8 @@
     <ContentPage.Content>
         <StackLayout Margin="20"
                      BackgroundColor="Wheat"
-                     Padding="10">
+                     Padding="10"
+                     BindingContext="{StaticResource Key=SVM}">
 
             <Grid>
                 <Grid.RowDefinitions>
