@@ -24,19 +24,19 @@ namespace RecycleEco.ViewModel
         private void UserAsCollectorExecute(object obj)
         {
             LoginVM.UserType = CollectorUserType;
-            Application.Current.MainPage.Navigation.PushAsync(new Views.LoginPageView());
+            Application.Current.MainPage.Navigation.PushAsync(new Views.LoginPage());
         }
 
         private void UserAsRecyclerExecute(object obj)
         {
             LoginVM.UserType = RecyclerUserType;
-            Application.Current.MainPage.Navigation.PushAsync(new Views.LoginPageView());
+            Application.Current.MainPage.Navigation.PushAsync(new Views.LoginPage());
         }
 
         private void UserAsAdminExecute(object obj)
         {
             LoginVM.UserType = AdminUserType;
-            Application.Current.MainPage.Navigation.PushAsync(new Views.LoginPageView());
+            Application.Current.MainPage.Navigation.PushAsync(new Views.LoginPage());
         }
     }
 }
