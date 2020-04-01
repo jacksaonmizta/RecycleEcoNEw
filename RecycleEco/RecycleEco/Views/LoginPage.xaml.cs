@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace RecycleEco.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPageView : ContentPage
+    public partial class LoginPage : ContentPage
     {
-        public LoginPageView()
+        public LoginPage()
         {
             InitializeComponent();
         }
