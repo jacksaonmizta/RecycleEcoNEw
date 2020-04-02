@@ -112,13 +112,13 @@ namespace RecycleEco.ViewModel
             {
                 User a = new User();
                 ContentPage view = new ContentPage();
-                if (UserType == UserTypeVM.AdminUserType)
+                if (UserType == UserTypeVM.AdminUT)
                 {
                     a = await AdminAuth.GetAdmin(User);
                     view = new Views.AdminMainPage();
 
                 }
-                else if (UserType == UserTypeVM.RecyclerUserType)
+                else if (UserType == UserTypeVM.RecyclerUT)
                 {
                     a = await RecyclerAuth.GetRecycler(User);
                     view = new Views.RecyclerMainPage();
@@ -169,7 +169,7 @@ namespace RecycleEco.ViewModel
         {
             Username = string.Empty;
             Password = string.Empty;
-            if (UserType == UserTypeVM.RecyclerUserType)
+            if (UserType == UserTypeVM.RecyclerUT)
             {
                 Application.Current.MainPage.Navigation.PushAsync(
                 new Views.RecyclerUserSignUpView());
