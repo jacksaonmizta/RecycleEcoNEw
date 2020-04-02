@@ -50,7 +50,7 @@
                         FontSize="20"
                         TextColor="PowderBlue"
                         BackgroundColor="Green"
-                        Command="{Binding UserAsRecycler}"/>
+                        Command="{Binding UserRecycler}"/>
 
                 <Button Grid.Row="3"
                         Grid.ColumnSpan="2"
@@ -61,7 +61,7 @@
                         FontSize="20"
                         TextColor="PowderBlue"
                         BackgroundColor="Firebrick"
-                        Command="{Binding UserAsCollector}"/>
+                        Command="{Binding UserCollector}"/>
 
 
                 <Button Grid.Row="5"
@@ -73,7 +73,7 @@
                         FontSize="20"
                         TextColor="PowderBlue"
                         BackgroundColor="Chocolate" 
-                        Command="{Binding UserAsAdmin}"/>
+                        Command="{Binding UserAdmin}"/>
 
 
 
