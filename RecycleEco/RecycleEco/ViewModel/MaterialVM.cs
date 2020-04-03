@@ -7,9 +7,10 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+
 namespace RecycleEco.ViewModel
 {
-    class MaterialVM
+    class MaterialVM : INotifyPropertyChanged
     {
         public static Material Material { get; set; }
 
@@ -89,6 +90,7 @@ namespace RecycleEco.ViewModel
         private async void UploadMaterialExecute(object obj)
         {
             Material.MaterialID = Guid.NewGuid().ToString();
+            Material.CollectorList = new List<string>();
             await MaterialAuth.AddMaterial(Material);
             await Application.Current.MainPage.Navigation.PopAsync();
         }

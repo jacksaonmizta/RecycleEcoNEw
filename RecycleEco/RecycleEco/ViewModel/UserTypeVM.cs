@@ -8,35 +8,35 @@ namespace RecycleEco.ViewModel
 {
     class UserTypeVM
     {
-        public const string CollectorUserType = "Collector";
-        public const string RecyclerUserType = "Recycler";
-        public const string AdminUserType = "Admin";
-        public ICommand UserAsAdmin { get; set; }
-        public ICommand UserAsRecycler { get; set; }
-        public ICommand UserAsCollector { get; set; }
+        public const string CollectorUT = "Collector";
+        public const string RecyclerUT = "Recycler";
+        public const string AdminUT = "Admin";
+        public ICommand UserAdmin { get; set; }
+        public ICommand UserRecycler { get; set; }
+        public ICommand UserCollector { get; set; }
         public UserTypeVM()
         {
-            UserAsAdmin = new Command(UserAsAdminExecute);
-            UserAsRecycler = new Command(UserAsRecyclerExecute);
-            UserAsCollector = new Command(UserAsCollectorExecute);
+            UserAdmin = new Command(UserAsAdminExecute);
+            UserRecycler = new Command(UserAsRecyclerExecute);
+            UserCollector = new Command(UserAsCollectorExecute);
         }
 
         private void UserAsCollectorExecute(object obj)
         {
-            LoginVM.UserType = CollectorUserType;
+            LoginVM.UserType = CollectorUT;
             Application.Current.MainPage.Navigation.PushAsync(new Views.LoginPage());
         }
 
         private void UserAsRecyclerExecute(object obj)
         {
-            LoginVM.UserType = RecyclerUserType;
+            LoginVM.UserType = RecyclerUT;
             Application.Current.MainPage.Navigation.PushAsync(new Views.LoginPage());
         }
 
         private void UserAsAdminExecute(object obj)
         {
-            LoginVM.UserType = AdminUserType;
-            Application.Current.MainPage.Navigation.PushAsync(new Views.LoginPage());
+            LoginVM.UserType = AdminUT;
+            Application.Current.MainPage.Navigation.PushAsync(new Views.AdminLoginPage());
         }
     }
 }

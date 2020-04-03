@@ -22,7 +22,7 @@
         <StackLayout Margin="20"
                      BackgroundColor="Wheat"
                      Padding="10"
-                     BindingContext="{StaticResource Key=MVM}">
+                     BindingContext="{StaticResource Key=MNVM}">
 
             <Grid>
                 <Grid.RowDefinitions>
