@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+
 namespace RecycleEco.ViewModel
 {
     class ManageMaterialVM : INotifyPropertyChanged

@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
              x:Class="RecycleEco.Views.MaterialListPage">
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:ManageMaterialVM x:Key="MMVM" />
