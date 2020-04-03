@@ -9,7 +9,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 namespace RecycleEco.ViewModel
 {
-    class MaterialVM
+    class MaterialVM : INotifyPropertyChanged
     {
         public static Material Material { get; set; }
 
