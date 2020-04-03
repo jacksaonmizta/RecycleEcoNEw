@@ -111,7 +111,7 @@
                        Placeholder="Address"
                        FontSize="20"
                        TextColor="Blue"
-                       Text="{Binding FullName, Mode=TwoWay}"/>
+                       Text="{Binding Address, Mode=TwoWay}"/>
 
                 <Button Grid.Row="7"
                         Grid.ColumnSpan="2"

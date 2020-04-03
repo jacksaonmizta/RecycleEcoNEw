@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace RecycleEco.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RecyclerViewSubPage : ContentPage
+    public partial class RecyclerViewSubmissions : ContentPage
     {
-        public RecyclerViewSubPage()
+        public RecyclerViewSubmissions()
         {
             InitializeComponent();
         }

@@ -144,14 +144,14 @@ namespace RecycleEco.ViewModel
             SignUp = new Command(SignUpExecute, CanSignUpM);
             SignOut = new Command(SignOutExecute);
             //jun's
-            OpenRecyclerMainMenu = new Command(RecyclerMain, CanSignUpM);
+            OpenMaterialSubmissionView = new Command(RecyclerSubmission);
         }
 
         //jun's
-        private void RecyclerMain(object obj)
+        private void RecyclerSubmission(object obj)
         {
             Application.Current.MainPage.Navigation.PushAsync(
-                new Views.RecyclerMainPage());
+                new Views.RecyclerUserSignUpView());
         }
         //
 

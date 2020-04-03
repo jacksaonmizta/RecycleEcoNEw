@@ -47,7 +47,6 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontSize="30"
-                       Text="{Binding Username}"
                        TextColor="Black"/>
 
                 <Button Grid.Row="1"
@@ -58,9 +57,7 @@
                         Text="Profile"
                         FontSize="20"
                         TextColor="PowderBlue"
-                        BackgroundColor="Green"
-                        Command="{Binding OpenRecyclerMainMenu}"
-                        CommandParameter="{Binding CanSignUp}"/>
+                        BackgroundColor="Green"/>
 
                 <Button Grid.Row="3"
                         Grid.ColumnSpan="2"
@@ -71,8 +68,9 @@
                         FontSize="20"
                         TextColor="PowderBlue"
                         BackgroundColor="Firebrick"
-                        Command="{Binding OpenRecycleMaterialView}"/>
-                
+                        Command="{Binding OpenMaterialSubmissionView}"
+                       />
+
                 <Button Grid.Row="5"
                         Grid.ColumnSpan="2"
                         Margin="30,0"
@@ -81,8 +79,7 @@
                         Text="Make Appointment"
                         FontSize="20"
                         TextColor="PowderBlue"
-                        BackgroundColor="Chocolate" 
-                        Command="{Binding OpenRecycleMaterialView}"/>
+                        BackgroundColor="Chocolate"/>
                 
                 <Button Grid.Row="7"
                         Grid.ColumnSpan="2"
@@ -92,8 +89,7 @@
                         Text="Logout"
                         FontSize="20"
                         TextColor="PowderBlue"
-                        BackgroundColor="Navy" 
-                        Clicked="Logout"/>
+                        BackgroundColor="Navy"/>
 
             </Grid>
         </StackLayout>
