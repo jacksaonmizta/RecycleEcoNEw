@@ -25,7 +25,7 @@ namespace RecycleEco.Utilities
                         Username = item.Object.Username,
                         Password = item.Object.Password,
                         FullName = item.Object.FullName,
-                        Points = item.Object.Points,
+                        TotalPoints = item.Object.TotalPoints,
                         EcoLevel = item.Object.EcoLevel
                     }).ToList();
             }

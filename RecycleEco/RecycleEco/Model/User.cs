@@ -12,6 +12,6 @@ namespace RecycleEco.Model
 
         public string FullName { get; set; }
 
-        public int Points { get; set; }
+        public int TotalPoints { get; set; }
     }
 }

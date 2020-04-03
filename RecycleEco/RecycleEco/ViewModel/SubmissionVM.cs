@@ -72,7 +72,7 @@ namespace RecycleEco.ViewModel
             get { return Submit.SubmissionID; }
             set
             {
-                Submit.SubmissionID = value;
+                Submit.Date = value;
                 CreateSubmit = CheckFields();
                 OnPropertyChanged();
             }
@@ -82,7 +82,7 @@ namespace RecycleEco.ViewModel
             get { return Submit.Points; }
             set
             {
-                Submit.Date = value;
+                Submit.Points = value;
                 CreateSubmit = CheckFields();
                 OnPropertyChanged();
             }

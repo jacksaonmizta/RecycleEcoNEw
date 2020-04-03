@@ -6,10 +6,11 @@ namespace RecycleEco.Model
 {
     class Submission
     {
-        public string SubmissionID { get; internal set; }
-        public string Weight { get; internal set; }
-        public string Date { get; internal set; }
-        public int Points { get; internal set; }
-        public string Status { get; internal set; }
+        public string SubmissionID { get; set; }
+        public string Weight { get; set; }
+        public string Date { get; set; }
+        public string Status { get; set; }
+        public int Points { get; set; }
+        public List<string> RecyclerList { get; set; }
     }
 }
