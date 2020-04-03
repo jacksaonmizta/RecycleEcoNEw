@@ -60,7 +60,6 @@ namespace RecycleEco.ViewModel
             }
         }
         private string confirmPassword;
-
         public string ConfirmPassword
         {
             get { return confirmPassword; }
@@ -83,6 +82,7 @@ namespace RecycleEco.ViewModel
                 OnPropertyChanged();
             }
         }
+
         public string Password
         {
             get { return Recycler.Password; }
@@ -94,12 +94,25 @@ namespace RecycleEco.ViewModel
                 OnPropertyChanged();
             }
         }
+
         public string FullName
         {
             get { return Recycler.FullName; }
             set
             {
                 Recycler.FullName = value;
+                CanUpdate = CheckFields();
+                CanSignUp = CanUpdate && !string.IsNullOrWhiteSpace(ConfirmPassword);
+                OnPropertyChanged();
+            }
+        }
+
+        public string Address
+        {
+            get { return Recycler.Address; }
+            set
+            {
+                Recycler.Address = value;
                 CanUpdate = CheckFields();
                 CanSignUp = CanUpdate && !string.IsNullOrWhiteSpace(ConfirmPassword);
                 OnPropertyChanged();
@@ -117,9 +130,11 @@ namespace RecycleEco.ViewModel
         public ICommand SignUp { get; set; }
         public ICommand OpenUpdateRecyclerView { get; set; }
         public ICommand UpdateRecycler { get; set; }
+        public ICommand OpenRecyclerMainMenu { get; set; } //jun's
         public ICommand OpenRecycleMaterialView { get; set; }
         public ICommand OpenMaterialSubmissionView { get; set; }
         public ICommand SignOut { get; set; }
+
         public RecyclerVM()
         {
             if (Recycler == default(Recycler))
@@ -128,7 +143,17 @@ namespace RecycleEco.ViewModel
             }
             SignUp = new Command(SignUpExecute, CanSignUpM);
             SignOut = new Command(SignOutExecute);
+            //jun's
+            OpenRecyclerMainMenu = new Command(RecyclerMain, CanSignUpM);
         }
+
+        //jun's
+        private void RecyclerMain(object obj)
+        {
+            Application.Current.MainPage.Navigation.PushAsync(
+                new Views.RecyclerMainPage());
+        }
+        //
 
         private async void SignUpExecute(object obj)
         {
@@ -154,11 +179,9 @@ namespace RecycleEco.ViewModel
             }
             else
             {
-                SignUpStatus = "Confirmation password is not matched with your password";
+                SignUpStatus = "Confirmation password does not matched with your password";
             }
-        }
-
-       
+        } 
 
         private bool CheckPassword()
         {
@@ -188,5 +211,6 @@ namespace RecycleEco.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
     }
 }

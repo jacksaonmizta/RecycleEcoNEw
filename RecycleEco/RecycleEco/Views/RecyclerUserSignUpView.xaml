@@ -7,7 +7,6 @@
              mc:Ignorable="d"
              x:Class="RecycleEco.Views.RecyclerUserSignUpView">
 
-    
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:RecyclerVM x:Key="RVM"/>
@@ -19,7 +18,6 @@
                      BackgroundColor="Wheat"
                      Padding="10"
                      BindingContext="{StaticResource Key=RVM}">
-
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.25*"/>
@@ -37,7 +35,6 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.25*"/>
                     <ColumnDefinition Width="0.25*"/>
-
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.ColumnSpan="2"
@@ -101,7 +98,20 @@
                        TextColor="Blue"
                        Text="{Binding FullName, Mode=TwoWay}"/>
 
+                <Label Grid.Row="5"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Text="Address:"
+                       FontSize="20"
+                       TextColor="Black"/>
 
+                <Entry Grid.Row="5"
+                       Grid.Column="1"
+                       Placeholder="Address"
+                       FontSize="20"
+                       TextColor="Blue"
+                       Text="{Binding FullName, Mode=TwoWay}"/>
 
                 <Button Grid.Row="7"
                         Grid.ColumnSpan="2"
@@ -123,7 +133,6 @@
                        Text="{Binding SignUpStatus}"
                        FontSize="15"
                        TextColor="Red"/>
-
             </Grid>
         </StackLayout>
     </ContentPage.Content>
