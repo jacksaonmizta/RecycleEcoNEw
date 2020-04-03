@@ -107,18 +107,6 @@ namespace RecycleEco.ViewModel
             }
         }
 
-        public string Address
-        {
-            get { return Recycler.Address; }
-            set
-            {
-                Recycler.Address = value;
-                CanUpdate = CheckFields();
-                CanSignUp = CanUpdate && !string.IsNullOrWhiteSpace(ConfirmPassword);
-                OnPropertyChanged();
-            }
-        }
-
         private bool CheckFields()
         {
             bool result = !string.IsNullOrWhiteSpace(Recycler.Username) &&

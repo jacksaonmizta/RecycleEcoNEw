@@ -98,21 +98,6 @@
                        TextColor="Blue"
                        Text="{Binding FullName, Mode=TwoWay}"/>
 
-                <Label Grid.Row="5"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Center"
-                       Grid.Column="0"
-                       Text="Address:"
-                       FontSize="20"
-                       TextColor="Black"/>
-
-                <Entry Grid.Row="5"
-                       Grid.Column="1"
-                       Placeholder="Address"
-                       FontSize="20"
-                       TextColor="Blue"
-                       Text="{Binding Address, Mode=TwoWay}"/>
-
                 <Button Grid.Row="7"
                         Grid.ColumnSpan="2"
                         Margin="30,0"

@@ -9,5 +9,7 @@ namespace RecycleEco.Model
         public string SubmissionID { get; internal set; }
         public string Weight { get; internal set; }
         public string Date { get; internal set; }
+        public int Points { get; internal set; }
+        public string Status { get; internal set; }
     }
 }

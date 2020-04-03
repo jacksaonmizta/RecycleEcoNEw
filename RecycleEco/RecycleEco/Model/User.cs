@@ -12,8 +12,6 @@ namespace RecycleEco.Model
 
         public string FullName { get; set; }
 
-        public string Address { get; set; }
-
         public int Points { get; set; }
     }
 }

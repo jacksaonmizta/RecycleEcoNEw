@@ -77,7 +77,16 @@ namespace RecycleEco.ViewModel
                 OnPropertyChanged();
             }
         }
-
+        public int Points
+        {
+            get { return Submit.Points; }
+            set
+            {
+                Submit.Date = value;
+                CreateSubmit = CheckFields();
+                OnPropertyChanged();
+            }
+        }
 
         // Interfaces///////////////////////////////////////////////////////////////////////////////
         public ICommand submitCreated { get; set; }

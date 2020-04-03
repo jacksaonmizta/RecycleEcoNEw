@@ -4,12 +4,52 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:RecycleEco.ViewModel"
              x:Class="RecycleEco.Views.RecyclerViewSubmissions">
+
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal"
+                         Margin="20">
+                <Label Text="ID"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="20"
+                       TextColor="Black"/>
+                <Label Text="Material Name"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="20"
+                       TextColor="Black"/>
+                <Label Text="Points"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="20"
+                       TextColor="Black"/>
+                <Label Text="Status"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="20"
+                       TextColor="Black"/>
+            </StackLayout>
+            <ListView x:Name="bookListView" 
+                      ItemsSource="{Binding BooksList}"
+                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="10">
+                                <Label Text="{Binding Title}"
+                                       FontSize="20"
+                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Start"                                       
+                                       Margin="0, 0, 20, 0"/>
+
+                                <Label Text="{Binding Author}"
+                                       FontSize="20"
+                                       HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
