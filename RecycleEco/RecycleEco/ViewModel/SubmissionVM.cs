@@ -12,8 +12,52 @@ namespace RecycleEco.ViewModel
 {
     class SubmissionVM : INotifyPropertyChanged
     {
-        //create Collector object
+        //create Submission object
         public static Submission Submit{ get; set; }
+
+        //getter and setter
+        public string Weight 
+        {
+            get
+            {
+              return Submit.Weight  ;
+            }
+            set
+            {
+              Submit.Weight=value;
+               OnPropertyChanged();
+            }
+
+        }
+
+        public int Points
+        {
+            get
+            {
+                return Submit.Points;
+            }
+            set
+            {
+                Submit.Points = value;
+                OnPropertyChanged();
+            }
+
+        }
+
+        public string ActualDate
+        {
+            get
+            {
+                return Submit.SubmittedDate;
+            }
+            set
+            {
+                String myDate = DateTime.Now.ToString();
+                Submit.SubmittedDate = myDate;
+                OnPropertyChanged();
+            }
+
+        }
 
         //check if record was succesffuly create 
         private bool createSubmit;
@@ -46,47 +90,7 @@ namespace RecycleEco.ViewModel
         }
 
         //variables//////////////////////////////////////////////////////////////////////////////
-        public string SubmissionID
-        {
-            get { return Submit.SubmissionID; }
-            set
-            {
-                Submit.SubmissionID = value;
-                CreateSubmit = CheckFields(); 
-                OnPropertyChanged();
-            }
-        }
-        public string Weight
-        {
-            get { return Submit.Weight; }
-            set
-            {
-                Submit.Weight = value;
-                CreateSubmit = CheckFields();
-                OnPropertyChanged();
-            }
-        }
-
-        public string Date
-        {
-            get { return Submit.SubmissionID; }
-            set
-            {
-                Submit.Date = value;
-                CreateSubmit = CheckFields();
-                OnPropertyChanged();
-            }
-        }
-        public int Points
-        {
-            get { return Submit.Points; }
-            set
-            {
-                Submit.Points = value;
-                CreateSubmit = CheckFields();
-                OnPropertyChanged();
-            }
-        }
+       
 
         // Interfaces///////////////////////////////////////////////////////////////////////////////
         public ICommand submitCreated { get; set; }
