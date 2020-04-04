@@ -133,13 +133,23 @@ namespace RecycleEco.ViewModel
 
         public ICommand AddSubmission { get; set; }
         public ICommand ViewSubmissionDetail { get; set; }
+        public ICommand AddComman { get; private set; }
 
         public SubmissionVM()
         {
             AddSubmission = new Command(AddNewSubmissionExecute);
             ViewSubmissionDetail = new Command(ViewSubmissionExecute);
             SubmissionsList = new ObservableCollection<Submission>();
+            Submit = new Submission();
+            Submit.Username = App.Username;
+            AddComman = new Command(AddNewSubmission);
             GetAllSubmissions();
+        }
+
+        private async void AddNewSubmission()
+        {
+            await SubmissionAuth.AddSubmissions(Submit);
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
 
         private async void AddNewSubmissionExecute(object obj)
