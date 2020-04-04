@@ -13,9 +13,7 @@ namespace RecycleEco.ViewModel
 {
     class SubmissionVM : INotifyPropertyChanged
     {
-
         private object selectedItem;
-
         public object SelectedItem
         {
             get
@@ -34,57 +32,13 @@ namespace RecycleEco.ViewModel
                 OnPropertyChanged();
             }
         }
-        //create Collector object
-        public static Submission Submit{ get; set; }
-        public static Material Material { get; set; }
 
-        public ObservableCollection<Submission> SubmissionsList { get; set; }
-        //check if record was succesffuly create
-        private bool createSubmit;
-        public bool CreateSubmit
-        {
-            get
-            {
-              return Submit.Weight  ;
-            }
-            set
-            {
-              Submit.Weight=value;
-               OnPropertyChanged();
-            }
+        public static Submission Submit { get; set; } //jun's
+        public static Material Material { get; set; } //jun's
+         
+        public ObservableCollection<Submission> SubmissionsList { get; set; } //jun's
 
-        }
-
-        public int Points
-        {
-            get
-            {
-                return Submit.Points;
-            }
-            set
-            {
-                Submit.Points = value;
-                OnPropertyChanged();
-            }
-
-        }
-
-        public string ActualDate
-        {
-            get
-            {
-                return Submit.SubmittedDate;
-            }
-            set
-            {
-                String myDate = DateTime.Now.ToString();
-                Submit.SubmittedDate = myDate;
-                OnPropertyChanged();
-            }
-
-        }
-
-        //check if record was succesffuly create
+        //check if record was succesffuly created
         private bool createSubmit;
         public bool CreateSubmit
         {
@@ -99,7 +53,7 @@ namespace RecycleEco.ViewModel
             }
         }
 
-         // check if record was successfully submitted
+        // check if record was successfully submitted
         private string recordSubmitStatus;
         public string RecordSubmitStatus
         {
@@ -109,24 +63,53 @@ namespace RecycleEco.ViewModel
             }
             set
             {
-<<<<<<< HEAD
                 recordSubmitStatus = value;
-=======
-                Submit.Points = value;
->>>>>>> 1ff0068172d439d8dc79a5d4451a0410637c7693
                 OnPropertyChanged();
             }
         }
 
-<<<<<<< HEAD
-        //variables//////////////////////////////////////////////////////////////////////////////
+// ------- Variables ----------------------------------------------------------------------------------------
+        public string SubmissionID
+        {
+            get { return Submit.SubmissionID; }
+            set
+            {
+                Submit.SubmissionID = value;
+                CreateSubmit = CheckFields();
+                OnPropertyChanged();
+            }
+        }
+        public string Weight
+        {
+            get { return Submit.Weight; }
+            set
+            {
+                Submit.Weight = value;
+                CreateSubmit = CheckFields();
+                OnPropertyChanged();
+            }
+        }
 
+        public string Date
+        {
+            get { return Submit.SubmissionID; }
+            set
+            {
+                Submit.Date = value;
+                CreateSubmit = CheckFields();
+                OnPropertyChanged();
+            }
+        }
+        public int Points
+        {
+            get { return Submit.Points; }
+            set
+            {
+                Submit.Points = value;
+                OnPropertyChanged();
+            }
+        }
 
-        // Interfaces///////////////////////////////////////////////////////////////////////////////
-        public ICommand submitCreated { get; set; }
-
-        // Important methods////////////////////////////////////////////////////////////////////////
-=======
         public string Status
         {
             get { return Submit.Status; }
@@ -137,56 +120,56 @@ namespace RecycleEco.ViewModel
                 OnPropertyChanged();
             }
         }
->>>>>>> 1ff0068172d439d8dc79a5d4451a0410637c7693
+// ------- End of Variables ----------------------------------------------------------------------------------------
 
         private bool CheckFields()
         {
-            bool result = !string.IsNullOrWhiteSpace(Submit.SubmissionID)&&
+            bool result = !string.IsNullOrWhiteSpace(Submit.SubmissionID) &&
                           !string.IsNullOrWhiteSpace(Submit.Weight) &&
-                          !string.IsNullOrWhiteSpace(Submit.Date)&&
+                          !string.IsNullOrWhiteSpace(Submit.Date) &&
                           !string.IsNullOrWhiteSpace(Submit.Status);
             return result;
         }
 
-        public ICommand AddSubmission { get; set; }
-        public ICommand ViewSubmissionDetail { get; set; }
-        public ICommand AddComman { get; private set; }
+        public ICommand AddSubmission { get; set; } //jun's
+        public ICommand ViewSubmissionDetail { get; set; } //jun's
+        public ICommand AddComman { get; private set; } //jun's
 
         public SubmissionVM()
         {
-            AddSubmission = new Command(AddNewSubmissionExecute);
-            ViewSubmissionDetail = new Command(ViewSubmissionExecute);
-            SubmissionsList = new ObservableCollection<Submission>();
-            Submit = new Submission();
-            Submit.Username = App.Username;
-            AddComman = new Command(AddNewSubmission);
+            Submit.Username = App.Username; //logged in user's submissions //jun's
+            AddSubmission = new Command(AddNewSubmissionExecute); //go to submission page //jun's
+            ViewSubmissionDetail = new Command(ViewSubmissionExecute); //display the submissions //jun's
+            SubmissionsList = new ObservableCollection<Submission>(); //jun's
+            Submit = new Submission(); //jun's
+            AddComman = new Command(AddNewSubmission); //add a submission //jun's
             GetAllSubmissions();
         }
 
-        private async void AddNewSubmission()
+        private async void AddNewSubmission() //jun's
         {
             await SubmissionAuth.AddSubmissions(Submit);
             await Application.Current.MainPage.Navigation.PopAsync();
         }
 
-        private async void AddNewSubmissionExecute(object obj)
+        private async void AddNewSubmissionExecute(object obj) //jun's
         {
             await Application.Current.MainPage.Navigation.PushAsync(new Views.RecyclerAddSumbission());
         }
 
-        private async void ViewSubmissionExecute(object obj)
+        private async void ViewSubmissionExecute(object obj) //jun's
         {
             Submit = (Submission)obj;
             await Application.Current.MainPage.Navigation.PushAsync(
                 new Views.RecyclerViewSubmissions());
         }
 
-        private async void GetAllSubmissions()
+        private async void GetAllSubmissions() //jun's
         {
             SubmissionsList = await SubmissionAuth.GetAllSubmissions();
         }
 
-        private void OnPropertyChanged()
+        private void OnPropertyChanged() 
         {
             throw new NotImplementedException();
         }
