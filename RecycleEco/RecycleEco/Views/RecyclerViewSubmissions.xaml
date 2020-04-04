@@ -13,18 +13,23 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Add"
                      Order="Primary"
                      Priority="0"
                      Command="{Binding AddSubmission}"/>
-    </ContentPage.ToolbarItems>
-
+    </ContentPage.ToolbarItems>-->
 
     <ContentPage.Content>
         <StackLayout Margin="20"
                     BackgroundColor="Wheat"
                     Padding="10">
+            <Label Grid.ColumnSpan="2"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="30"
+                       Text="Submissions"
+                       TextColor="Black"/>
             <StackLayout Orientation="Horizontal">
                 <Label Text="ID"
                        HorizontalOptions="CenterAndExpand"

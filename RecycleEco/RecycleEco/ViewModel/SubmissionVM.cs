@@ -137,19 +137,10 @@ namespace RecycleEco.ViewModel
 
         public SubmissionVM()
         {
-            Submit.Username = App.Username; //logged in user's submissions //jun's
             AddSubmission = new Command(AddNewSubmissionExecute); //go to submission page //jun's
             ViewSubmissionDetail = new Command(ViewSubmissionExecute); //display the submissions //jun's
             SubmissionsList = new ObservableCollection<Submission>(); //jun's
-            Submit = new Submission(); //jun's
-            AddComman = new Command(AddNewSubmission); //add a submission //jun's
             GetAllSubmissions();
-        }
-
-        private async void AddNewSubmission() //jun's
-        {
-            await SubmissionAuth.AddSubmissions(Submit);
-            await Application.Current.MainPage.Navigation.PopAsync();
         }
 
         private async void AddNewSubmissionExecute(object obj) //jun's

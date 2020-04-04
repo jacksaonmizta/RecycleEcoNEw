@@ -118,9 +118,15 @@ namespace RecycleEco.ViewModel
         public ICommand SignUp { get; set; }
         public ICommand OpenUpdateRecyclerView { get; set; }
         public ICommand UpdateRecycler { get; set; }
+
         public ICommand OpenRecyclerMainMenu { get; set; } //jun's
-        public ICommand OpenRecycleMaterialView { get; set; }
-        public ICommand OpenMaterialSubmissionView { get; set; }
+
+        public ICommand OpenRecyclerProfilePage { get; set; } //view recycler profile page
+        public ICommand OpenRecyclerEditProfilePage { get; set; } //edit recycler's profile page
+
+        public ICommand OpenMaterialSubmissionView { get; set; } //view recycler's submission page
+        public ICommand OpenMakeSubmissionView { get; set; } //make submission form page
+
         public ICommand SignOut { get; set; }
 
         public RecyclerVM()
@@ -131,10 +137,31 @@ namespace RecycleEco.ViewModel
             }
             SignUp = new Command(SignUpExecute, CanSignUpM);
             SignOut = new Command(SignOutExecute);
-            OpenMaterialSubmissionView = new Command(RecyclerSubmission);
+            OpenMaterialSubmissionView = new Command(RecyclerSubmission);  //View All Submissions
+            OpenRecyclerProfilePage = new Command(RecyclerProfilePage); //Recycler profile page
+            OpenMakeSubmissionView = new Command(RecyclerSubmissionForm); //Add Submission
+            OpenRecyclerEditProfilePage = new Command(RecyclerEditProfile); //edit profile
         }
 
-        private void RecyclerSubmission(object obj)
+        private void RecyclerEditProfile(object obj) //Edit Recycler profile page
+        {
+            //Application.Current.MainPage.Navigation.PushAsync(
+            //    new Views
+        }
+
+        private void RecyclerSubmissionForm(object obj) //Add Submission
+        {
+            Application.Current.MainPage.Navigation.PushAsync(
+                new Views.RecyclerAddSumbission());
+        }
+
+        private void RecyclerProfilePage(object obj) //Recycler profile page
+        {
+            Application.Current.MainPage.Navigation.PushAsync(
+                new Views.RecyclerProfilePage());
+        }
+
+        private void RecyclerSubmission(object obj) //View All Submissions
         {
             Application.Current.MainPage.Navigation.PushAsync(
                 new Views.RecyclerViewSubmissions());
@@ -177,13 +204,11 @@ namespace RecycleEco.ViewModel
             return false;
         }
 
-
         private bool CanSignUpM(object arg)
         {
             return CanSignUp;
         }
-
-        
+       
         private void SignOutExecute(object obj)
         {
             Application.Current.Properties["loggedIn"] = 0;
