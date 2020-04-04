@@ -149,7 +149,7 @@ namespace RecycleEco.ViewModel
                 Collector collector = await CollectorAuth.GetCollector(Collector);
                 if (collector == null)
                 {
-                    Collector.Points = 0;
+                    Collector.TotalPoints = 0;
                     await CollectorAuth.AddCollector(Collector);
                     Username = string.Empty;
                     Password = string.Empty;

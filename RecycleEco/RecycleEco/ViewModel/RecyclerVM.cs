@@ -131,17 +131,14 @@ namespace RecycleEco.ViewModel
             }
             SignUp = new Command(SignUpExecute, CanSignUpM);
             SignOut = new Command(SignOutExecute);
-            //jun's
             OpenMaterialSubmissionView = new Command(RecyclerSubmission);
         }
 
-        //jun's
         private void RecyclerSubmission(object obj)
         {
             Application.Current.MainPage.Navigation.PushAsync(
-                new Views.RecyclerUserSignUpView());
+                new Views.RecyclerViewSubmissions());
         }
-        //
 
         private async void SignUpExecute(object obj)
         {
@@ -152,7 +149,7 @@ namespace RecycleEco.ViewModel
                 if (recycler == null)
                 {
                     Recycler.EcoLevel = EcoLevelOne;
-                    Recycler.Points = 0;
+                    Recycler.TotalPoints = 0;
                     await RecyclerAuth.AddRecycler(Recycler);
                     Username = string.Empty;
                     Password = string.Empty;
