@@ -90,9 +90,9 @@ namespace RecycleEco.ViewModel
             }
         }
 
-        public string Date
+        public DatePicker Date
         {
-            get { return Submit.SubmissionID; }
+            get { return Submit.Date; }
             set
             {
                 Submit.Date = value;
@@ -126,7 +126,6 @@ namespace RecycleEco.ViewModel
         {
             bool result = !string.IsNullOrWhiteSpace(Submit.SubmissionID) &&
                           !string.IsNullOrWhiteSpace(Submit.Weight) &&
-                          !string.IsNullOrWhiteSpace(Submit.Date) &&
                           !string.IsNullOrWhiteSpace(Submit.Status);
             return result;
         }

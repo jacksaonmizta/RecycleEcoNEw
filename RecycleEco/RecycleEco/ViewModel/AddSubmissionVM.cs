@@ -32,9 +32,9 @@ namespace RecycleEco.ViewModel
             }
         }
 
-        public string Date
+        public DatePicker Date
         {
-            get { return Submit.SubmissionID; }
+            get { return Submit.Date; }
             set
             {
                 Submit.Date = value;

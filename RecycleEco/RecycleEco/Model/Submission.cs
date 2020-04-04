@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace RecycleEco.Model
 {
@@ -8,7 +9,7 @@ namespace RecycleEco.Model
     {
         public string SubmissionID { get; set; }
         public string Weight { get; set; }
-        public string Date { get; set; }
+        public DatePicker Date { get; set; }
 
         public string SubmittedDate { get; set; }
 
