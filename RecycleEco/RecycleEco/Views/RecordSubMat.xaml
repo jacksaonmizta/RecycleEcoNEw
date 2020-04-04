@@ -81,6 +81,21 @@
                        IsPassword="True"/>
 
                 <!--To insert date-->
+                <DatePicker x:Name="MainDatePicker"
+                    Grid.Row="7"
+                    MinimumDate="01/01/2018"
+                    MaximumDate="12/31/2020"
+                    DateSelected="MainDatePicker_DateSelected"/>
+                
+                <Label Grid.Row="7"
+                       Grid.Column="1"
+                    x:Name="MainLabel"
+                       FontSize="20"
+                       TextColor="BlanchedAlmond"
+                       >
+                    
+                </Label>
+                
                 <Label Grid.Row="3"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"

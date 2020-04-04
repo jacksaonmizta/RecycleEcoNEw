@@ -39,7 +39,52 @@ namespace RecycleEco.ViewModel
         public static Material Material { get; set; }
 
         public ObservableCollection<Submission> SubmissionsList { get; set; }
-        //check if record was succesffuly create 
+        //check if record was succesffuly create
+        private bool createSubmit;
+        public bool CreateSubmit
+        {
+            get
+            {
+              return Submit.Weight  ;
+            }
+            set
+            {
+              Submit.Weight=value;
+               OnPropertyChanged();
+            }
+
+        }
+
+        public int Points
+        {
+            get
+            {
+                return Submit.Points;
+            }
+            set
+            {
+                Submit.Points = value;
+                OnPropertyChanged();
+            }
+
+        }
+
+        public string ActualDate
+        {
+            get
+            {
+                return Submit.SubmittedDate;
+            }
+            set
+            {
+                String myDate = DateTime.Now.ToString();
+                Submit.SubmittedDate = myDate;
+                OnPropertyChanged();
+            }
+
+        }
+
+        //check if record was succesffuly create
         private bool createSubmit;
         public bool CreateSubmit
         {
@@ -64,53 +109,24 @@ namespace RecycleEco.ViewModel
             }
             set
             {
+<<<<<<< HEAD
                 recordSubmitStatus = value;
-                OnPropertyChanged();
-            }
-        }
-
-        //variables//////////////////////////////////////////////////////////////////////////////
-        public string SubmissionID
-        {
-            get { return Submit.SubmissionID; }
-            set
-            {
-                Submit.SubmissionID = value;
-                CreateSubmit = CheckFields(); 
-                OnPropertyChanged();
-            }
-        }
-        public string Weight
-        {
-            get { return Submit.Weight; }
-            set
-            {
-                Submit.Weight = value;
-                CreateSubmit = CheckFields();
-                OnPropertyChanged();
-            }
-        }
-
-        public string Date
-        {
-            get { return Submit.SubmissionID; }
-            set
-            {
-                Submit.Date = value;
-                CreateSubmit = CheckFields();
-                OnPropertyChanged();
-            }
-        }
-        public int Points
-        {
-            get { return Submit.Points; }
-            set
-            {
+=======
                 Submit.Points = value;
+>>>>>>> 1ff0068172d439d8dc79a5d4451a0410637c7693
                 OnPropertyChanged();
             }
         }
 
+<<<<<<< HEAD
+        //variables//////////////////////////////////////////////////////////////////////////////
+
+
+        // Interfaces///////////////////////////////////////////////////////////////////////////////
+        public ICommand submitCreated { get; set; }
+
+        // Important methods////////////////////////////////////////////////////////////////////////
+=======
         public string Status
         {
             get { return Submit.Status; }
@@ -121,6 +137,7 @@ namespace RecycleEco.ViewModel
                 OnPropertyChanged();
             }
         }
+>>>>>>> 1ff0068172d439d8dc79a5d4451a0410637c7693
 
         private bool CheckFields()
         {
