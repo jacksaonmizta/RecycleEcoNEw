@@ -11,6 +11,7 @@ namespace RecycleEco.Model
         public string Date { get; set; }
         public string Status { get; set; }
         public int Points { get; set; }
+        public string Username { get; set; }
         public List<string> RecyclerList { get; set; }
     }
 }

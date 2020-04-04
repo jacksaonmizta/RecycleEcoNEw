@@ -24,16 +24,20 @@ namespace RecycleEco.Utilities
                    .OnceAsync<Submission>()).Select(item => new Submission
                    {
                        SubmissionID = item.Object.SubmissionID,
-                        Weight = item.Object.Weight,
-                        Date = item.Object.Date,
-                        Status = item.Object.Status,
-                        Points = item.Object.Points,
-                        RecyclerList = item.Object.RecyclerList
-                    }).ToList();
+                       Weight = item.Object.Weight,
+                       Date = item.Object.Date,
+                       Status = item.Object.Status,
+                       Points = item.Object.Points,
+                       Username = item.Object.Username,
+                       RecyclerList = item.Object.RecyclerList
+                   }).ToList();
                 ObservableCollection<Submission> materialsList = new ObservableCollection<Submission>();
                 foreach (Submission submission in submissions)
                 {
-                    materialsList.Add(submission);
+                    if (submission.Username == App.Username)
+                    {
+                        materialsList.Add(submission);
+                    }
                 }
                 return materialsList;
             }

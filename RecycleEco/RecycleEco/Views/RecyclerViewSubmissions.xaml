@@ -7,44 +7,70 @@
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
              x:Class="RecycleEco.Views.RecyclerViewSubmissions">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:SubmissionVM x:Key="SVM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add"
+                     Order="Primary"
+                     Priority="0"
+                     Command="{Binding AddSubmission}"/>
+    </ContentPage.ToolbarItems>
+
+
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Orientation="Horizontal"
-                         Margin="20">
+        <StackLayout Margin="20"
+                    BackgroundColor="Wheat"
+                    Padding="10">
+            <StackLayout Orientation="Horizontal">
                 <Label Text="ID"
                        HorizontalOptions="CenterAndExpand"
-                       FontSize="20"
+                       FontSize="15"
                        TextColor="Black"/>
                 <Label Text="Material Name"
                        HorizontalOptions="CenterAndExpand"
-                       FontSize="20"
+                       FontSize="15"
                        TextColor="Black"/>
                 <Label Text="Points"
                        HorizontalOptions="CenterAndExpand"
-                       FontSize="20"
+                       FontSize="15"
                        TextColor="Black"/>
                 <Label Text="Status"
                        HorizontalOptions="CenterAndExpand"
-                       FontSize="20"
+                       FontSize="15"
                        TextColor="Black"/>
             </StackLayout>
-            <ListView x:Name="bookListView" 
-                      ItemsSource="{Binding BooksList}"
+            <ListView x:Name="submissionListView" 
+                      ItemsSource="{Binding SubmissionsList}"
                       SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal"
                                          Margin="10">
-                                <Label Text="{Binding Title}"
+                                <Label Text="{Binding SubmissionID}"
                                        FontSize="20"
                                        HorizontalOptions="CenterAndExpand"
-                                       HorizontalTextAlignment="Start"                                       
-                                       Margin="0, 0, 20, 0"/>
+                                       HorizontalTextAlignment="Start"/>
 
-                                <Label Text="{Binding Author}"
+                                <Label Text="{Binding MaterialName}"
                                        FontSize="20"
-                                       HorizontalOptions="CenterAndExpand"/>
+                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Start"/>
+                                
+                                <Label Text="{Binding Point}"
+                                       FontSize="20"
+                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Start"/>
+                                
+                                <Label Text="{Binding Status}"
+                                       FontSize="20"
+                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Start"/>
+                                
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
