@@ -40,8 +40,8 @@ namespace RecycleEco.ViewModel
 
         public ObservableCollection<Submission> SubmissionsList { get; set; }
         //check if record was succesffuly create
-       
-        public string Weight
+        private bool createSubmit;
+        public bool CreateSubmit
         {
             get
             {
@@ -85,19 +85,59 @@ namespace RecycleEco.ViewModel
         }
 
         //check if record was succesffuly create
-       
+        private bool createSubmit;
+        public bool CreateSubmit
+        {
+            get
+            {
+                return createSubmit;
+            }
+            set
+            {
+                createSubmit = value;
+                OnPropertyChanged();
+            }
+        }
 
-        
+         // check if record was successfully submitted
+        private string recordSubmitStatus;
+        public string RecordSubmitStatus
+        {
+            get
+            {
+                return recordSubmitStatus;
+            }
+            set
+            {
+<<<<<<< HEAD
+                recordSubmitStatus = value;
+=======
+                Submit.Points = value;
+>>>>>>> 1ff0068172d439d8dc79a5d4451a0410637c7693
+                OnPropertyChanged();
+            }
+        }
 
-
+<<<<<<< HEAD
+        //variables//////////////////////////////////////////////////////////////////////////////
 
 
         // Interfaces///////////////////////////////////////////////////////////////////////////////
         public ICommand submitCreated { get; set; }
 
         // Important methods////////////////////////////////////////////////////////////////////////
-
-     
+=======
+        public string Status
+        {
+            get { return Submit.Status; }
+            set
+            {
+                Submit.Status = value;
+                CreateSubmit = CheckFields();
+                OnPropertyChanged();
+            }
+        }
+>>>>>>> 1ff0068172d439d8dc79a5d4451a0410637c7693
 
         private bool CheckFields()
         {
