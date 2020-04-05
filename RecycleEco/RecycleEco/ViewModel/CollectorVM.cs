@@ -130,6 +130,11 @@ namespace RecycleEco.ViewModel
         public ICommand OpenSubmissionView { get; set; }
         public ICommand OpenMaterialSubmissionView { get; set; }
         public ICommand SignOut { get; set; }
+
+        public ICommand OpenRecordSubmissionView { get; set; }
+
+        public ICommand OpenCollectorProfileView { get; set; }
+
         public CollectorVM()
         {
             if (Collector == default(Collector))
@@ -139,7 +144,29 @@ namespace RecycleEco.ViewModel
             SignUp = new Command(SignUpExecute, CanSignUpM);
             
             SignOut = new Command(SignOutExecute);
+
+            //to open Collector profile page
+            OpenCollectorProfileView = new Command(OpenCollectorProfileExecute);
+
+            //to connect to page where submission can be editted
+            OpenRecordSubmissionView = new Command(OpenRecordMaterialsExecute);
+
+            
         }
+
+        //collector profile
+        private void OpenCollectorProfileExecute(object obj)
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new Views.CollectorProfilePage());
+        }
+
+        //record submission page
+        private void OpenRecordMaterialsExecute(object obj)
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new Views.RecordSubMat());
+        }
+
+       
 
         private async void SignUpExecute(object obj)
         {
@@ -196,6 +223,11 @@ namespace RecycleEco.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+
+        //-----Profile
+       
+
     }
 }
 

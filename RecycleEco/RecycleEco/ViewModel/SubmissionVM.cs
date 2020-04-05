@@ -39,16 +39,16 @@ namespace RecycleEco.ViewModel
         public ObservableCollection<Submission> SubmissionsList { get; set; } //jun's
 
         //check if record was succesffuly created
-        private bool createSubmit;
-        public bool CreateSubmit
+        private bool updateSubmit;
+        public bool UpdateSubmit
         {
             get
             {
-                return createSubmit;
+                return updateSubmit;
             }
             set
             {
-                createSubmit = value;
+                updateSubmit = value;
                 OnPropertyChanged();
             }
         }
@@ -75,7 +75,7 @@ namespace RecycleEco.ViewModel
             set
             {
                 Submit.SubmissionID = value;
-                CreateSubmit = CheckFields();
+                //CreateSubmit = CheckFields();
                 OnPropertyChanged();
             }
         }
@@ -85,7 +85,7 @@ namespace RecycleEco.ViewModel
             set
             {
                 Submit.Weight = value;
-                CreateSubmit = CheckFields();
+               // CreateSubmit = CheckFields();
                 OnPropertyChanged();
             }
         }
@@ -96,7 +96,7 @@ namespace RecycleEco.ViewModel
             set
             {
                 Submit.Date = value;
-                CreateSubmit = CheckFields();
+               // CreateSubmit = CheckFields();
                 OnPropertyChanged();
             }
         }
@@ -116,11 +116,13 @@ namespace RecycleEco.ViewModel
             set
             {
                 Submit.Status = value;
-                CreateSubmit = CheckFields();
+              //  CreateSubmit = CheckFields();
                 OnPropertyChanged();
             }
         }
 // ------- End of Variables ----------------------------------------------------------------------------------------
+
+
 
         private bool CheckFields()
         {

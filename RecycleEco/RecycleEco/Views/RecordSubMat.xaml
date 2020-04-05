@@ -18,6 +18,7 @@
                      BackgroundColor="LightGreen"
                      Padding="10"
                      BindingContext="{StaticResource Key=SVM}">
+            <!--Ok-->
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -38,17 +39,19 @@
                     <ColumnDefinition Width="0.25*"/>
 
                 </Grid.ColumnDefinitions>
-                
+            </Grid>
+            <!--ok-->
+            
             <!--Head title-->
-                <Label Grid.ColumnSpan="2"
+            <Label Grid.ColumnSpan="2"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontSize="30"
                        Text="Material Submission"
                        TextColor="Black"
                        FontAttributes="Bold"/>
-                <!--To insert submission ID-->
-                <Label Grid.Row="1"
+            <!--To insert submission ID-->
+            <Label Grid.Row="1"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        Grid.Column="0"
@@ -56,15 +59,15 @@
                        FontSize="20"
                        TextColor="Black"/>
 
-                <Entry Grid.Row="1"
+            <Entry Grid.Row="1"
                        Grid.Column="1"
                        Placeholder="Enter ID"
                        FontSize="20"
                        TextColor="Blue"
                        Text="{Binding SubmissionID, Mode=TwoWay}"/>
 
-                <!--To insert weight-->
-                <Label Grid.Row="2"
+            <!--To insert weight-->
+            <Label Grid.Row="2"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        Grid.Column="0"
@@ -72,7 +75,7 @@
                        FontSize="20"
                        TextColor="Black"/>
 
-                <Entry Grid.Row="2"
+            <Entry Grid.Row="2"
                        Grid.Column="1"
                        Placeholder="Enter Weight"
                        FontSize="20"
@@ -80,40 +83,43 @@
                        Text="{Binding Weight, Mode=TwoWay}"
                        IsPassword="True"/>
 
-                <!--To insert date-->
-                <DatePicker x:Name="MainDatePicker"
+            <!--To insert date-->
+            <DatePicker x:Name="MainDatePicker"
                     Grid.Row="7"
                     MinimumDate="01/01/2018"
                     MaximumDate="12/31/2020"
                     DateSelected="MainDatePicker_DateSelected"/>
-                
-                <Label Grid.Row="7"
+
+            <Label Grid.Row="7"
                        Grid.Column="1"
                     x:Name="MainLabel"
                        FontSize="20"
-                       TextColor="BlanchedAlmond"
-                       >
-                    
-                </Label>
-                
-                <Label Grid.Row="3"
+                       TextColor="BlanchedAlmond">
+
+            </Label>
+
+            <!--To insert points-->
+            <Label Grid.Row="2"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        Grid.Column="0"
-                       Text="Date:"
+                       Text="Points:"
                        FontSize="20"
                        TextColor="Black"/>
 
-                <Entry Grid.Row="3"
+            <Entry Grid.Row="2"
                        Grid.Column="1"
-                       Placeholder="dd/mm/yyyy"
+                       Placeholder="Enter Weight"
                        FontSize="20"
                        TextColor="Blue"
-                       Text="{Binding Date, Mode=TwoWay}"/>
+                       Text="{Binding Points, Mode=TwoWay}"
+                       />
 
 
-                <!-- record button-->
-                <Button Grid.Row="5"
+
+
+            <!-- record button-->
+            <Button Grid.Row="5"
                         Grid.ColumnSpan="2"
                         Margin="30,0"
                         VerticalOptions="FillAndExpand"
@@ -121,20 +127,19 @@
                         Text="Create Account"
                         FontSize="20"
                         TextColor="White"
-                        BackgroundColor="ForestGreen"
-                        Command="{Binding submitCreated}"
-                        CommandParameter="{Binding createSubmit}"/>
+                        BackgroundColor="ForestGreen" 
+                        Command="{Binding ToUpdateSubmit}"
+                        CommandParameter="{Binding updateSubmit}"/>
 
-                <Label Grid.Row="8"
+            <Label Grid.Row="8"
                        Grid.ColumnSpan="2"
                        Margin="30,0"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
-                       Text="{Binding RecordSubmitStatus}"
+                       Text="test"
                        FontSize="15"
                        TextColor="Red"/>
 
-            </Grid>
-            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

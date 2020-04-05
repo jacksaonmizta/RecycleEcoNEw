@@ -14,6 +14,9 @@ namespace RecycleEco.ViewModel
         public ICommand OpenManageMaterialView { get; set; }
         public ICommand OpenMaterialSubmissionView { get; set; }
         public ICommand SignOut { get; set; }
+
+        
+       
         public MainNavVM()
         {
             OpenManageMaterialView = new Command(OpenManageMaterialExecute);
