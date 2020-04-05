@@ -131,9 +131,17 @@ namespace RecycleEco.ViewModel
         public ICommand OpenMaterialSubmissionView { get; set; }
         public ICommand SignOut { get; set; }
 
+       
+
         public ICommand OpenRecordSubmissionView { get; set; }
 
         public ICommand OpenCollectorProfileView { get; set; }
+
+        public ICommand OpenCollectorEditView { get; set; }
+
+        public ICommand UpdateProfile { get; set; }
+
+        public ICommand OpenSubmissionListView{ get; set; }
 
         public CollectorVM()
         {
@@ -148,9 +156,19 @@ namespace RecycleEco.ViewModel
             //to open Collector profile page
             OpenCollectorProfileView = new Command(OpenCollectorProfileExecute);
 
+            //to open Collector edit profile page
+            OpenCollectorEditView = new Command(OpenCollectorEditExecute);
+
             //to connect to page where submission can be editted
             OpenRecordSubmissionView = new Command(OpenRecordMaterialsExecute);
 
+            //to update collector profile
+            UpdateProfile = new Command(UpdateCollectorExecute);
+
+            //to view submission list
+            OpenSubmissionListView = new Command(OpenSubmissionListExecute);
+
+            
             
         }
 
@@ -160,13 +178,36 @@ namespace RecycleEco.ViewModel
             Application.Current.MainPage.Navigation.PushAsync(new Views.CollectorProfilePage());
         }
 
-        //record submission page
+        //edit collector profile
+        private void OpenCollectorEditExecute(object obj)
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new Views.CollectorEditProfilePage());
+        }
+
+        //open record submission page
         private void OpenRecordMaterialsExecute(object obj)
         {
             Application.Current.MainPage.Navigation.PushAsync(new Views.RecordSubMat());
         }
 
-       
+        //to update collector profile
+
+        private async void UpdateCollectorExecute()
+        {
+            await CollectorAuth.UpdateCollector(Collector);
+            await Application.Current.MainPage.Navigation.PopAsync();
+        }
+
+        //to view submission list
+        private void OpenSubmissionListExecute()
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new Views.RecyclerViewSubmissions());
+        }
+
+        
+
+
+
 
         private async void SignUpExecute(object obj)
         {

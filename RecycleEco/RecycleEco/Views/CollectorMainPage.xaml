@@ -46,8 +46,8 @@
                 <Label Grid.ColumnSpan="2"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
-                       FontSize="30"
-                       Text="Admin MainPage"
+                       FontSize="40"
+                       Text="Collector Menu"
                        TextColor="Black"/>
 
                 <Button Grid.Row="2"
@@ -55,7 +55,7 @@
                         Margin="30,0"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
-                        Text="View Submission History"
+                        Text="Profile"
                         FontSize="20"
                         TextColor="black"
                         BackgroundColor="orange" 
@@ -72,8 +72,19 @@
                         BackgroundColor="orange"
                         Command="{Binding OpenRecordSubmissionView}"/>
 
+                <Button Grid.Row="4"
+                        Grid.ColumnSpan="2"
+                        Margin="30,0"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Text="View Submissions"
+                        FontSize="20"
+                        TextColor="Black"
+                        BackgroundColor="orange"
+                        Command="{Binding OpenSubmissionListView}"/>
 
-          
+
+
 
             </Grid>
         </StackLayout>

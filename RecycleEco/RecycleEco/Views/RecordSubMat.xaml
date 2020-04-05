@@ -128,8 +128,8 @@
                         FontSize="20"
                         TextColor="White"
                         BackgroundColor="ForestGreen" 
-                        Command="{Binding ToUpdateSubmit}"
-                        CommandParameter="{Binding updateSubmit}"/>
+                        Command="{Binding ToUpdateSubmission}"
+                        CommandParameter="{Binding updateSubmission}"/>
 
             <Label Grid.Row="8"
                        Grid.ColumnSpan="2"

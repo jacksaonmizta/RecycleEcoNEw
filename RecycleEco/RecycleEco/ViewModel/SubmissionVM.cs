@@ -136,12 +136,22 @@ namespace RecycleEco.ViewModel
         public ICommand ViewSubmissionDetail { get; set; } //jun's
         public ICommand AddComman { get; private set; } //jun's
 
+        public ICommand ToUpdateSubmission { get; set; }
+
+
+
         public SubmissionVM()
         {
             AddSubmission = new Command(AddNewSubmissionExecute); //go to submission page //jun's
             ViewSubmissionDetail = new Command(ViewSubmissionExecute); //display the submissions //jun's
             SubmissionsList = new ObservableCollection<Submission>(); //jun's
             GetAllSubmissions();
+
+            //serena
+            // to update submission and edit it with weight
+            ToUpdateSubmission = new Command(UpdateSubmissionExecute);
+
+
         }
 
         private async void AddNewSubmissionExecute(object obj) //jun's
@@ -173,5 +183,22 @@ namespace RecycleEco.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+
+
+        // Serena
+
+        //to execute update submissions
+        private async void UpdateSubmissionExecute()
+        {
+            await SubmissionAuth.UpdateSubmission(Submit);
+        }
+
+
+
     }
+
+
+
+
 }

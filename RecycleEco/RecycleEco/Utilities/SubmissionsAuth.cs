@@ -105,5 +105,22 @@ namespace RecycleEco.Utilities
                 return null;
             }
         }
+
+        public static async Task UpdateSubmission(Submission submission)
+        {
+            try
+            {
+                if (submission != null)
+                {
+                    var toUpdateSubmission = (await Firebase.Child("Submissions")
+                        .OnceAsync<Collector>()).Where(a => a.Object.Username == submission.SubmissionID).FirstOrDefault();
+                    await Firebase.Child("Submissions").Child(toUpdateSubmission.Key).PutAsync(submission);
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA5", ex.Message, "OK");
+            }
+        }
     }
 }

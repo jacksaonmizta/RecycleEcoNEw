@@ -16,7 +16,7 @@
 
         <ContentPage.Content>
             <StackLayout Margin="20"
-                    BackgroundColor="ForestGreen"
+                    BackgroundColor="LightGreen"
                     Padding="10"
                     BindingContext="{StaticResource Key=CVM}">
 
@@ -101,7 +101,7 @@
                         FontSize="20"
                         TextColor="PowderBlue"
                         BackgroundColor="Goldenrod"
-                        Command="{Binding OpenRecyclerEditProfilePage}"/>
+                        Command="{Binding OpenCollectorEditView}"/>
                 </Grid>
             </StackLayout>
        
