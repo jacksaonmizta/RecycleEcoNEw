@@ -5,14 +5,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.RecyclerProfilePage">
-
+             x:Class="RecycleEco.Views.RecyclerEditProfilePage">
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:RecyclerVM x:Key="RVM"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-
+    
     <ContentPage.Content>
         <StackLayout Margin="20"
                     BackgroundColor="Wheat"
@@ -23,7 +23,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontSize="30"
-                       Text="Profile Page"
+                       Text="Edit Profile"
                        TextColor="Black"/>
             <Grid>
                 <Grid.RowDefinitions>
@@ -43,64 +43,38 @@
                     <ColumnDefinition Width="0.25*"/>
                 </Grid.ColumnDefinitions>
 
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       Text="Fullname:"
+                       FontSize="20"
+                       TextColor="Black" 
+                       HorizontalOptions="Start"/>
+
                 <Label Grid.Row="2"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="Center"
                        Grid.Column="0"
-                       Text="Fullname: "
+                       Text="Password:"
                        FontSize="20"
-                       TextColor="Black"/>
+                       TextColor="Black" 
+                       HorizontalOptions="Start"/>
 
-                <Label Grid.Row="2"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="Center"
+                <Entry Grid.Row="1"
                        Grid.Column="1"
-                       Text="{Binding FullName, Mode=TwoWay}"
-                       FontSize="20"
-                       TextColor="Black"/>
+                       Text="{Binding FullName, Mode=TwoWay}"/>
 
-                <Label Grid.Row="3"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="Center"
-                       Grid.Column="0"
-                       Text="Points: "
-                       FontSize="20"
-                       TextColor="Black"/>
-
-                <Label Grid.Row="3"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="Center"
+                <Entry Grid.Row="2"
                        Grid.Column="1"
-                       Text="{Binding TotalPoints, Mode=TwoWay}"
-                       FontSize="20"
-                       TextColor="Black"/>
-
-                <Label Grid.Row="4"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="Center"
-                       Grid.Column="0"
-                       Text="Level: "
-                       FontSize="20"
-                       TextColor="Black"/>
-
-                <Label Grid.Row="4"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="Center"
-                       Grid.Column="1"
-                       Text="{Binding EcoLevel, Mode=TwoWay}"
-                       FontSize="20"
-                       TextColor="Black"/>
+                       Text="{Binding Password, Mode=TwoWay}" />
 
                 <Button Grid.Row="8"
                         Grid.ColumnSpan="2"
                         Margin="30,0"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
-                        Text="Edit Profile"
+                        Text="Update"
                         FontSize="20"
-                        TextColor="PowderBlue"
+                        TextColor="White"
                         BackgroundColor="Goldenrod"
-                        Command="{Binding OpenRecyclerEditProfilePage}"/>
+                        Command="{Binding Update}"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

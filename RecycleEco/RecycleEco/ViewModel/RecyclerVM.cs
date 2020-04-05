@@ -2,6 +2,7 @@
 using RecycleEco.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -107,6 +108,30 @@ namespace RecycleEco.ViewModel
             }
         }
 
+        public int TotalPoints
+        {
+            get { return Recycler.TotalPoints; }
+            set
+            {
+                Recycler.TotalPoints = value;
+                CanUpdate = CheckFields();
+                CanSignUp = CanUpdate && !string.IsNullOrWhiteSpace(ConfirmPassword);
+                OnPropertyChanged();
+            }
+        }
+
+        public string EcoLevel
+        {
+            get { return Recycler.EcoLevel; }
+            set
+            {
+                Recycler.EcoLevel = value;
+                CanUpdate = CheckFields();
+                CanSignUp = CanUpdate && !string.IsNullOrWhiteSpace(ConfirmPassword);
+                OnPropertyChanged();
+            }
+        }
+
         private bool CheckFields()
         {
             bool result = !string.IsNullOrWhiteSpace(Recycler.Username) &&
@@ -117,7 +142,7 @@ namespace RecycleEco.ViewModel
 
         public ICommand SignUp { get; set; }
         public ICommand OpenUpdateRecyclerView { get; set; }
-        public ICommand UpdateRecycler { get; set; }
+        public ICommand Update { get; set; }
 
         public ICommand OpenRecyclerMainMenu { get; set; } //jun's
 
@@ -141,12 +166,19 @@ namespace RecycleEco.ViewModel
             OpenRecyclerProfilePage = new Command(RecyclerProfilePage); //Recycler profile page
             OpenMakeSubmissionView = new Command(RecyclerSubmissionForm); //Add Submission
             OpenRecyclerEditProfilePage = new Command(RecyclerEditProfile); //edit profile
+            Update = new Command(UpdateExecute); //update recycler info
+        }
+
+        private async void UpdateExecute()
+        {
+            await RecyclerAuth.UpdateRecycler(Recycler);
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
 
         private void RecyclerEditProfile(object obj) //Edit Recycler profile page
         {
-            //Application.Current.MainPage.Navigation.PushAsync(
-            //    new Views
+            Application.Current.MainPage.Navigation.PushAsync(
+                new Views.RecyclerEditProfilePage());
         }
 
         private void RecyclerSubmissionForm(object obj) //Add Submission
