@@ -142,6 +142,7 @@ namespace RecycleEco.ViewModel
 
         public SubmissionVM()
         {
+            Submit = new Submission();
             AddSubmission = new Command(AddNewSubmissionExecute); //go to submission page //jun's
             ViewSubmissionDetail = new Command(ViewSubmissionExecute); //display the submissions //jun's
             SubmissionsList = new ObservableCollection<Submission>(); //jun's
@@ -171,10 +172,7 @@ namespace RecycleEco.ViewModel
             SubmissionsList = await SubmissionAuth.GetAllSubmissions();
         }
 
-        private void OnPropertyChanged() 
-        {
-            throw new NotImplementedException();
-        }
+       
 
         //this method is important to save data and later can be used to update if necessary
         public event PropertyChangedEventHandler PropertyChanged;
@@ -189,9 +187,9 @@ namespace RecycleEco.ViewModel
         // Serena
 
         //to execute update submissions
-        private async void UpdateSubmissionExecute()
+        private async void UpdateSubmissionExecute()  
         {
-            await SubmissionAuth.UpdateSubmission(Submit);
+           // await SubmissionAuth.UpdateSubmission(Submit); 
         }
 
 

@@ -94,7 +94,8 @@
                        Grid.Column="1"
                     x:Name="MainLabel"
                        FontSize="20"
-                       TextColor="BlanchedAlmond">
+                       TextColor="BlanchedAlmond"
+                   Text="test">
 
             </Label>
 
@@ -129,7 +130,8 @@
                         TextColor="White"
                         BackgroundColor="ForestGreen" 
                         Command="{Binding ToUpdateSubmission}"
-                        CommandParameter="{Binding updateSubmission}"/>
+                        CommandParameter="{Binding updateSubmission}"
+                    />
 
             <Label Grid.Row="8"
                        Grid.ColumnSpan="2"
