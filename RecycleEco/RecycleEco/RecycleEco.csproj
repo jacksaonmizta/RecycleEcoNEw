@@ -17,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\RecyclerChooseMaterial.xaml.cs">
+      <DependentUpon>RecyclerChooseMaterial.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\RecyclerViewSubPage.xaml.cs">
       <DependentUpon>RecyclerViewSubPage.xaml</DependentUpon>
     </Compile>
@@ -59,7 +62,10 @@
     <EmbeddedResource Update="Views\RecordSubMat.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\RecyclerAddSumbission.xaml">
+    <EmbeddedResource Update="Views\RecyclerChooseCollector.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RecyclerChooseMaterial.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\RecyclerEditProfilePage.xaml">

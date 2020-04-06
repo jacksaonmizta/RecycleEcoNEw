@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecycleEco.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace RecycleEco.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RecyclerAddSumbission : ContentPage
+    public partial class RecyclerChooseMaterial : ContentPage
     {
-        public RecyclerAddSumbission()
+        public RecyclerChooseMaterial()
         {
             InitializeComponent();
         }

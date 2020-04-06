@@ -184,7 +184,7 @@ namespace RecycleEco.ViewModel
         private void RecyclerSubmissionForm(object obj) //Add Submission
         {
             Application.Current.MainPage.Navigation.PushAsync(
-                new Views.RecyclerAddSumbission());
+                new Views.RecyclerChooseMaterial());
         }
 
         private void RecyclerProfilePage(object obj) //Recycler profile page
