@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecycleEco.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,12 @@ namespace RecycleEco.Views
         {
             InitializeComponent();
         }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            materialListView.ItemsSource = await MaterialAuth.GetAllMaterials();
+        }
+
     }
+
 }

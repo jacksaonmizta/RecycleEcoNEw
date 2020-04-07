@@ -44,6 +44,9 @@ namespace RecycleEco.ViewModel
 			GetAllMaterials();
 		}
 
+
+
+
 		private async void ViewMaterialDetailExecute(object obj)
 		{
 			await Application.Current.MainPage.Navigation.PushAsync(
