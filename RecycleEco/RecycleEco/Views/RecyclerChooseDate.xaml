@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:RecycleEco.ViewModel"
+             x:Class="RecycleEco.Views.RecyclerChooseDate">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:SubmissionVM x:Key="SVM" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Margin="20"
+                     Padding="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.2*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.85*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="30"
+                   Text="Select Date"
+                   TextColor="Black"
+                   Grid.ColumnSpan="3"/>
+
+                <DatePicker Grid.Row="4"
+                            Grid.ColumnSpan="1"
+                            Grid.Column="1"
+                            MinimumDate="01/01/2020"
+                            MaximumDate="12/31/2100"
+                            Date="06/21/2018" 
+                            VerticalOptions="Center"
+                            BackgroundColor="Wheat"
+                            FontSize="20"/>
+                
+                <Button Grid.Row="8"
+                        Grid.ColumnSpan="3"
+                        Text="Submit"
+                        BackgroundColor="Wheat"
+                        FontSize="20"
+                        CornerRadius="20"
+                        Margin="0, 0"
+                        Command="{Binding AddComman}"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

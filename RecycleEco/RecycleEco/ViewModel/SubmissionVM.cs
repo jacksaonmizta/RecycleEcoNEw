@@ -181,8 +181,6 @@ namespace RecycleEco.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-
-
         // Serena
 
         //to execute update submissions

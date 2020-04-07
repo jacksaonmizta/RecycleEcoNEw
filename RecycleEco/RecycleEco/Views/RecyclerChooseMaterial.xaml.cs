@@ -17,5 +17,11 @@ namespace RecycleEco.Views
         {
             InitializeComponent();
         }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            materialListView.ItemsSource = await MaterialAuth.GetAllMaterials();
+        }
     }
 }

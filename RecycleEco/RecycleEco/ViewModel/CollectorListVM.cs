@@ -2,7 +2,6 @@
 using RecycleEco.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -11,7 +10,7 @@ using Xamarin.Forms;
 
 namespace RecycleEco.ViewModel
 {
-    class MaterialListVM : INotifyPropertyChanged
+    class CollectorListVM : INotifyPropertyChanged
 	{
 		private object selectedItem;
 
@@ -28,31 +27,32 @@ namespace RecycleEco.ViewModel
 				{
 					OnPropertyChanged();
 				}
-				ViewMaterialDetail.Execute(selectedItem);
+				ViewCollectorDetail.Execute(selectedItem);
 				selectedItem = null;
 				OnPropertyChanged();
 			}
 		}
 
-		public List<Material> MaterialList { get; set; }
-		public ICommand ViewMaterialDetail { get; set; }
+		public List<Collector> CollectorList { get; set; }
+		public ICommand ViewCollectorDetail { get; set; }
 
-		public MaterialListVM()
+		public CollectorListVM()
 		{
-			ViewMaterialDetail = new Command(ViewMaterialDetailExecute);
-			MaterialList = new List<Material>();
-			GetAllMaterials();
+			ViewCollectorDetail = new Command(ViewCollectorDetailExecute);
+			CollectorList = new List<Collector>();
+			GetAllCollectors();
 		}
 
-		private async void ViewMaterialDetailExecute(object obj)
+		private async void ViewCollectorDetailExecute(object obj)
 		{
+			//BookDetailViewModel.Book = (Book)obj;
 			await Application.Current.MainPage.Navigation.PushAsync(
-				new Views.RecyclerChooseCollector());
+				new Views.RecyclerChooseDate());
 		}
 
-		private async void GetAllMaterials()
+		private async void GetAllCollectors()
 		{
-			MaterialList = await MaterialAuth.GetMaterials();
+			CollectorList = await CollectorAuth.GetCollectors();
 		}
 
 		private void OnPropertyChanged([CallerMemberName] string propertyName = "")

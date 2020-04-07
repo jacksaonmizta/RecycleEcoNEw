@@ -13,13 +13,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add"
-                     Order="Primary"
-                     Priority="0"
-                     Command="{Binding AddSubmission}"/>
-    </ContentPage.ToolbarItems>-->
-
     <ContentPage.Content>
         <StackLayout Margin="20"
                     BackgroundColor="Wheat"
