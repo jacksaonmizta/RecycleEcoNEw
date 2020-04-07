@@ -21,7 +21,7 @@ namespace RecycleEco.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            collectorListView.ItemsSource = await CollectorAuth.GetAllCollectors();
+            //collectorListView.ItemsSource = await CollectorAuth.GetAllCollectors();
         }
     }
 }

@@ -15,26 +15,6 @@ namespace RecycleEco.Utilities
     {
         static readonly FirebaseClient Firebase = new FirebaseClient("https://ecorecycle-65d2d.firebaseio.com/");
 
-        public static async Task<List<Collector>> GetCollectors()
-        {
-            try
-            {
-                return (await Firebase
-                    .Child("Users/Collectors")
-                    .OrderByKey()
-                    .OnceAsync<Collector>()).Select(item => new Collector
-                    {
-                        Username = item.Object.Username,
-                        Address = item.Object.Address,
-                    }).ToList();
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA1", ex.Message, "OK");
-                return null;
-            }
-        }
-
         public static async Task<List<Collector>> GetAllCollectors()
         {
             try
