@@ -82,6 +82,17 @@
                         TextColor="Black"
                         BackgroundColor="orange"
                         Command="{Binding OpenSubmissionListView}"/>
+                
+                <Button Grid.Row="5"
+                        Grid.ColumnSpan="2"
+                        Margin="30,0"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Select material"
+                        FontSize="20"
+                        TextColor="Black"
+                        BackgroundColor="orange"
+                        Command="{Binding OpenMaterialSelectView}"/>
 
 
 
