@@ -12,6 +12,7 @@ namespace RecycleEco.ViewModel
 {
     class AddSubmissionVM : INotifyPropertyChanged
     {
+
         public static Submission Submit { get; set; }
         public string SubmissionID
         {

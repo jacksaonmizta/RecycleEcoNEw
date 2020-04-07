@@ -74,9 +74,6 @@
                         TextColor="PowderBlue"
                         BackgroundColor="Chocolate" 
                         Command="{Binding UserAdmin}"/>
-
-
-
             </Grid>
         </StackLayout>
     </ContentPage.Content>

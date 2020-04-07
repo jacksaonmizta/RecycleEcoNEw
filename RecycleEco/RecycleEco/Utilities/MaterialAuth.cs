@@ -15,6 +15,29 @@ namespace RecycleEco.Utilities
     {
         static readonly FirebaseClient Firebase = new FirebaseClient("https://ecorecycle-65d2d.firebaseio.com/");
 
+        public static async Task<List<Material>> GetMaterials()
+        {
+            try
+            {
+                List<Material> materials = (await Firebase
+                    .Child("Materials")
+                    .OnceAsync<Material>()).Select(item => new Material
+                    {
+                        MaterialID = item.Object.MaterialID,
+                        MaterialName = item.Object.MaterialName,
+                        Description = item.Object.Description,
+                        PointsPK = item.Object.PointsPK,
+                        CollectorList = item.Object.CollectorList
+                    }).ToList();
+                return materials;
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception MDA1", ex.Message, "OK");
+                return null;
+            }
+        }
+
         public static async Task<ObservableCollection<Material>> GetAllMaterials()
         {
             try
@@ -67,6 +90,7 @@ namespace RecycleEco.Utilities
                 return null;
             }
         }
+
         public static async Task AddMaterial(Material material)
         {
             try
@@ -81,6 +105,7 @@ namespace RecycleEco.Utilities
                 await Application.Current.MainPage.DisplayAlert("Firebase Exception MDA3", ex.Message, "OK");
             }
         }
+
         public static async Task UpdateMaterial(Material material)
         {
             try

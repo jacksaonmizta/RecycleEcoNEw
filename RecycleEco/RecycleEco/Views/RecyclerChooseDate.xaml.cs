@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace RecycleEco.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RecyclerAddSumbission : ContentPage
+    public partial class RecyclerChooseDate : ContentPage
     {
-        public RecyclerAddSumbission()
+        public RecyclerChooseDate()
         {
             InitializeComponent();
         }

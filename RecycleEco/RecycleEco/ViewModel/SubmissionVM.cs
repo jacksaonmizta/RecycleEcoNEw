@@ -151,13 +151,12 @@ namespace RecycleEco.ViewModel
             //serena
             // to update submission and edit it with weight
             ToUpdateSubmission = new Command(UpdateSubmissionExecute);
-
-
         }
 
         private async void AddNewSubmissionExecute(object obj) //jun's
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new Views.RecyclerAddSumbission());
+            await Application.Current.MainPage.Navigation.PushAsync(
+                new Views.RecyclerChooseMaterial());
         }
 
         private async void ViewSubmissionExecute(object obj) //jun's
@@ -181,8 +180,6 @@ namespace RecycleEco.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-
 
         // Serena
 

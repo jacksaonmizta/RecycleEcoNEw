@@ -5,70 +5,65 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.RecyclerViewSubmissions">
+             x:Class="RecycleEco.Views.RecyclerChooseMaterial">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:SubmissionVM x:Key="SVM"/>
+            <local:MaterialListVM x:Key="MLVM" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                    BackgroundColor="Wheat"
-                    Padding="10">
-            <Label Grid.ColumnSpan="2"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       FontSize="30"
-                       Text="Submissions"
-                       TextColor="Black"/>
+                     Padding="10"
+                     BindingContext="{StaticResource Key=MLVM}">
+            <Label HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="30"
+                   Text="Select Material"
+                   TextColor="Black"/>
             <StackLayout Orientation="Horizontal">
-                <Label Text="ID"
+                
+                <Label Text="Material Type"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="15"
                        TextColor="Black"/>
-                <Label Text="Material Name"
+                
+                <Label Text="Description"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="15"
                        TextColor="Black"/>
-                <Label Text="Points"
+                
+                <Label Text="Points/kg"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="15"
                        TextColor="Black"/>
-                <Label Text="Status"
-                       HorizontalOptions="CenterAndExpand"
-                       FontSize="15"
-                       TextColor="Black"/>
+
             </StackLayout>
-            <ListView x:Name="submissionListView" 
-                      ItemsSource="{Binding SubmissionsList}"
+            <ListView x:Name="materialListView" 
+                      ItemsSource="{Binding MaterialList}"
                       SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal"
                                          Margin="10">
-                                <Label Text="{Binding SubmissionID}"
-                                       FontSize="20"
+
+                                <Label Text="{Binding MaterialName}"
+                                       FontSize="15"
+                                       HorizontalOptions="CenterAndExpand"
+                                      HorizontalTextAlignment="Start"/>
+
+                                <Label Text="{Binding Description}"
+                                       FontSize="15"
                                        HorizontalOptions="CenterAndExpand"
                                        HorizontalTextAlignment="Start"/>
 
-                                <Label Text="{Binding MaterialName}"
-                                       FontSize="20"
+                                <Label Text="{Binding PointsPK}"
+                                       FontSize="15"
                                        HorizontalOptions="CenterAndExpand"
                                        HorizontalTextAlignment="Start"/>
-                                
-                                <Label Text="{Binding Point}"
-                                       FontSize="20"
-                                       HorizontalOptions="CenterAndExpand"
-                                       HorizontalTextAlignment="Start"/>
-                                
-                                <Label Text="{Binding Status}"
-                                       FontSize="20"
-                                       HorizontalOptions="CenterAndExpand"
-                                       HorizontalTextAlignment="Start"/>
-                                
+
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

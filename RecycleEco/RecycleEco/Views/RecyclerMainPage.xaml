@@ -11,13 +11,18 @@
             <local:RecyclerVM x:Key="RVM"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem BindingContext="{StaticResource Key=RVM}"
+                     Text="Sign Out"
+                     Command="{Binding SignOut}"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <StackLayout Margin="20"
                      BackgroundColor="Wheat"
                      Padding="10"
                      BindingContext="{StaticResource Key=RVM}">
-
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.25*"/>
@@ -48,8 +53,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Profile"
                         FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Green"
+                        TextColor="Black"
+                        BackgroundColor="Coral"
                         Command="{Binding OpenRecyclerProfilePage}"/>
 
                 <Button Grid.Row="3"
@@ -57,10 +62,10 @@
                         Margin="30,0"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
-                        Text="View Submissions"
+                        Text="View Appointments"
                         FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Firebrick"
+                        TextColor="Black"
+                        BackgroundColor="Coral"
                         Command="{Binding OpenMaterialSubmissionView}"/>
 
                 <Button Grid.Row="5"
@@ -70,8 +75,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Make Appointment"
                         FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Chocolate"
+                        TextColor="Black"
+                        BackgroundColor="Coral"
                         Command="{Binding OpenMakeSubmissionView}"/>
             </Grid>
         </StackLayout>
