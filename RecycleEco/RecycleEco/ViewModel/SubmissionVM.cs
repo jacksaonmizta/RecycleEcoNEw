@@ -186,7 +186,7 @@ namespace RecycleEco.ViewModel
         //to execute update submissions
         private async void UpdateSubmissionExecute()  
         {
-           // await SubmissionAuth.UpdateSubmission(Submit); 
+            await SubmissionAuth.UpdateSubmission(Submit); 
         }
 
 

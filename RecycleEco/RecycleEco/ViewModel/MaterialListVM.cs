@@ -44,6 +44,9 @@ namespace RecycleEco.ViewModel
 			GetAllMaterials();
 		}
 
+
+
+
 		private async void ViewMaterialDetailExecute(object obj)
 		{
 			CollectorListVM.material = (Material)selectedItem;

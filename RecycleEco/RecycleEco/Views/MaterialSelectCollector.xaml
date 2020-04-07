@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:RecycleEco.ViewModel"
+             mc:Ignorable="d"
+             x:Class="RecycleEco.Views.MaterialSelectCollector">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:CollectorMaterialVM x:Key="CMVM" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Margin="20"
+                     Padding="10"
+                     BindingContext="{StaticResource Key=CMVM}">
+            <Label HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="30"
+                   Text="Select Material"
+                   TextColor="Black"/>
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="Material Type"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="15"
+                       TextColor="Black"/>
+
+                <Label Text="Description"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="15"
+                       TextColor="Black"/>
+
+                <Label Text="Points/kg"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="15"
+                       TextColor="Black"/>
+
+            </StackLayout>
+            <ListView x:Name="materialListView" 
+                      ItemsSource="{Binding MaterialList}"
+                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="10">
+
+                                <Label Text="{Binding MaterialName}"
+                                       FontSize="15"
+                                       HorizontalOptions="CenterAndExpand"
+                                      HorizontalTextAlignment="Start"/>
+
+                                <Label Text="{Binding Description}"
+                                       FontSize="15"
+                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Start"/>
+
+                                <Label Text="{Binding PointsPK}"
+                                       FontSize="15"
+                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Start"/>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

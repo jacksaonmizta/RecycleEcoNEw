@@ -143,6 +143,8 @@ namespace RecycleEco.ViewModel
 
         public ICommand OpenSubmissionListView{ get; set; }
 
+        public ICommand OpenMaterialSelectView { get; set; }
+
         public CollectorVM()
         {
             if (Collector == default(Collector))
@@ -167,6 +169,10 @@ namespace RecycleEco.ViewModel
 
             //to view submission list
             OpenSubmissionListView = new Command(OpenSubmissionListExecute);
+
+            //to open material selection view
+
+            OpenMaterialSelectView = new Command(OpenMaterialSelectExecute);
 
             
             
@@ -204,7 +210,12 @@ namespace RecycleEco.ViewModel
             Application.Current.MainPage.Navigation.PushAsync(new Views.RecyclerViewSubmissions());
         }
 
-        
+        //to select materials for collector
+
+        private void OpenMaterialSelectExecute(object obj)
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new Views.MaterialSelectCollector());
+        }
 
 
 
