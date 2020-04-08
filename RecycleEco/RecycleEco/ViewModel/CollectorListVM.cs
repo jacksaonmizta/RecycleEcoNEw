@@ -2,18 +2,21 @@
 using RecycleEco.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace RecycleEco.ViewModel
 {
-    class CollectorListVM : INotifyPropertyChanged
+	class CollectorListVM : INotifyPropertyChanged
 	{
-		private object selectedItem;
+		public static Material material {get;set;}
 
+		private object selectedItem;
 		public object SelectedItem
 		{
 			get
@@ -33,13 +36,13 @@ namespace RecycleEco.ViewModel
 			}
 		}
 
-		public List<Collector> CollectorList { get; set; }
+		public ObservableCollection<Collector> CollectorList { get; set; }
 		public ICommand ViewCollectorDetail { get; set; }
 
 		public CollectorListVM()
 		{
 			ViewCollectorDetail = new Command(ViewCollectorDetailExecute);
-			CollectorList = new List<Collector>();
+			CollectorList = new ObservableCollection<Collector>();
 			GetAllCollectors();
 		}
 
@@ -52,10 +55,22 @@ namespace RecycleEco.ViewModel
 
 		private async void GetAllCollectors()
 		{
-			CollectorList = await CollectorAuth.GetCollectors();
+			List<Collector> collectorListFB = await CollectorAuth.GetAllCollectors();
+
+			foreach (Collector collector in collectorListFB)
+			{
+				if (collector.MaterialCollection != null)
+				{
+					if (collector.MaterialCollection.Contains(material.MaterialName))
+					{
+						CollectorList.Add(collector);
+					}
+				}
+			}
+
 		}
 
-		private void OnPropertyChanged([CallerMemberName] string propertyName = "")
+			private void OnPropertyChanged([CallerMemberName] string propertyName = "")
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}

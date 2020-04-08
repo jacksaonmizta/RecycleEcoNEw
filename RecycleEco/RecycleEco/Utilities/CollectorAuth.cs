@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System;
 using Xamarin.Forms;
 using RecycleEco.Model;
+using RecycleEco.ViewModel;
 
 namespace RecycleEco.Utilities
 {
@@ -15,24 +16,31 @@ namespace RecycleEco.Utilities
     {
         static readonly FirebaseClient Firebase = new FirebaseClient("https://ecorecycle-65d2d.firebaseio.com/");
 
-        public static async Task<List<Collector>> GetCollectors()
+        public static Material material { get; set; }
+        
+        public static async Task<List<Collector>> FilterCollectors() //filter collectors based on selected material type
         {
-            try
+            List<Collector> collectorListFB = await GetAllCollectors();
+            List<Collector> filCollector = null;
+
+            foreach(Collector collector in collectorListFB)
             {
-                return (await Firebase
-                    .Child("Users/Collectors")
-                    .OrderByKey()
-                    .OnceAsync<Collector>()).Select(item => new Collector
+                if (collector.MaterialCollection != null)
+                {
+                    if (collector.MaterialCollection.Contains(material.MaterialName))
                     {
-                        Username = item.Object.Username,
-                        Address = item.Object.Address,
-                    }).ToList();
+                        filCollector.Add(collector);
+                    }
+                }
             }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA1", ex.Message, "OK");
-                return null;
-            }
+
+            return filCollector;
+            //var allCollectors = await GetAllCollectors();
+            //await Firebase
+            //    .Child("Users/Collectors")
+            //    .OnceAsync<Collector>();
+            //collector.MaterialCollection.Contains(material.MaterialName)
+            //return allCollectors.Where(a.MaterialCollection.Contains(material.MaterialName));
         }
 
         public static async Task<List<Collector>> GetAllCollectors()

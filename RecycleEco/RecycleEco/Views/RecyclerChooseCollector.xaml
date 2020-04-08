@@ -50,11 +50,11 @@
                                        FontSize="15"
                                        HorizontalOptions="CenterAndExpand"
                                       HorizontalTextAlignment="Start"/>
-
                                 <Label Text="{Binding Address}"
                                        FontSize="15"
                                        HorizontalOptions="CenterAndExpand"
-                                       HorizontalTextAlignment="Start"/>
+                                      HorizontalTextAlignment="Start"/>
+
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
