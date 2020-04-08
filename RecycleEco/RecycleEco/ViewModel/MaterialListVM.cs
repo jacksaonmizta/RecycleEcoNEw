@@ -47,7 +47,7 @@ namespace RecycleEco.ViewModel
 
 		private  void ViewMaterialDetailExecute(Material m)
 		{
-			CollectorListVM.material = m;
+			SubmissionVM.material = m;
 			Application.Current.MainPage.Navigation.PushAsync(
 				new Views.RecyclerChooseCollector());
 		}

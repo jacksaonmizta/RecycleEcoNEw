@@ -7,11 +7,21 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using RecycleEco.Model;
 using RecycleEco.Utilities;
+using System.Collections.ObjectModel;
 
 namespace RecycleEco.ViewModel
 {
     class AddSubmissionVM : INotifyPropertyChanged
     {
+
+        public const string StatusProposed = "Proposed";
+        public const string StatusSubmitted = "Submitted";
+
+        public static Submission Submission { get; set; }
+        public static Material Material { get; set; }
+        public Recycler Recycler { get; set; }
+        public Collector Collector { get; set; }
+        public ObservableCollection<Collector> CollectorList { get; set; }
 
         public static Submission Submit { get; set; }
         public string SubmissionID
@@ -23,7 +33,7 @@ namespace RecycleEco.ViewModel
                 OnPropertyChanged();
             }
         }
-        public string Weight
+        public int Weight
         {
             get { return Submit.Weight; }
             set
@@ -33,12 +43,12 @@ namespace RecycleEco.ViewModel
             }
         }
 
-        public DatePicker Date
+        public DateTime Date
         {
-            get { return Submit.Date; }
+            get { return Submit.SubmittedDate; }
             set
             {
-                Submit.Date = value;
+                Submit.SubmittedDate = value;
                 OnPropertyChanged();
             }
         }

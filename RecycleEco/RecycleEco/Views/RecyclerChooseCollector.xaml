@@ -10,14 +10,14 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:SubmissionVM x:Key="SVM" />
+            <local:AddSubmissionVM x:Key="ASVM" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
         <StackLayout Margin="20"
                      Padding="10"
-                     BindingContext="{StaticResource Key=SVM}">
+                     BindingContext="{StaticResource Key=ASVM}">
 
             <Label HorizontalOptions="Center"
                    VerticalOptions="Center"

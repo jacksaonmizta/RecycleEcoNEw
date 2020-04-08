@@ -13,14 +13,7 @@ namespace RecycleEco.ViewModel
 {
     class SubmissionVM : INotifyPropertyChanged
     {
-        public const string StatusProposed = "Proposed";
-        public const string StatusSubmitted = "Submitted";
-
-        public static Submission Submission { get; set; }
-        public static Material Material { get; set; }
-        public Recycler Recycler { get; set; }
-        public Collector Collector { get; set; }
-        public ObservableCollection<Collector> CollectorList { get; set; }
+       
 
         private bool canAddSub;
         public bool CanAddsub
@@ -280,7 +273,6 @@ namespace RecycleEco.ViewModel
                     UpdateSubmissionExecute();
                     await Application.Current.MainPage.DisplayAlert("Record Material Submission", "You have successfully recorded the submission.", "OK");
                     await Application.Current.MainPage.Navigation.PopAsync();
-
                 }
                 else
                 {
