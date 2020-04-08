@@ -34,29 +34,27 @@ namespace RecycleEco.ViewModel
 			}
 		}
 
-		public List<Material> MaterialList { get; set; }
+		public ObservableCollection<Material> MaterialList { get; set; }
 		public ICommand ViewMaterialDetail { get; set; }
 
 		public MaterialListVM()
 		{
-			ViewMaterialDetail = new Command(ViewMaterialDetailExecute);
-			MaterialList = new List<Material>();
+			
+			MaterialList = new ObservableCollection<Material>();
 			GetAllMaterials();
+			ViewMaterialDetail = new Command<Material>(ViewMaterialDetailExecute);
 		}
 
-
-
-
-		private async void ViewMaterialDetailExecute(object obj)
+		private  void ViewMaterialDetailExecute(Material m)
 		{
-			CollectorListVM.material = (Material)selectedItem;
-			await Application.Current.MainPage.Navigation.PushAsync(
+			CollectorListVM.material = m;
+			Application.Current.MainPage.Navigation.PushAsync(
 				new Views.RecyclerChooseCollector());
 		}
 
 		private async void GetAllMaterials()
 		{
-			MaterialList = await MaterialAuth.GetMaterials();
+			MaterialList = await MaterialAuth.GetAllMaterials();
 		}
 
 		private void OnPropertyChanged([CallerMemberName] string propertyName = "")

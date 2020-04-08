@@ -28,8 +28,8 @@ namespace RecycleEco.Utilities
                        Date = item.Object.Date,
                        Status = item.Object.Status,
                        Points = item.Object.Points,
-                       Username = item.Object.Username,
-                       RecyclerList = item.Object.RecyclerList
+                       Username = item.Object.Username
+                       //RecyclerList = item.Object.RecyclerList
                    }).ToList();
                 ObservableCollection<Submission> materialsList = new ObservableCollection<Submission>();
                 foreach (Submission submission in submissions)

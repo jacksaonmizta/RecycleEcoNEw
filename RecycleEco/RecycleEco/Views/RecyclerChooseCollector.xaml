@@ -10,21 +10,34 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:CollectorListVM x:Key="CLVM" />
+            <local:SubmissionVM x:Key="SVM" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
         <StackLayout Margin="20"
                      Padding="10"
-                     BindingContext="{StaticResource Key=CLVM}">
+                     BindingContext="{StaticResource Key=SVM}">
 
             <Label HorizontalOptions="Center"
                    VerticalOptions="Center"
                    FontSize="30"
-                   Text="Select Collector"
+                   Text="Select Collector and Date"
+                   HorizontalTextAlignment="Center"
                    TextColor="Black"/>
-            <StackLayout Orientation="Horizontal">
+
+            <DatePicker Grid.Row="4"
+                            Grid.ColumnSpan="1"
+                            Grid.Column="1"
+                            MinimumDate="01/01/2020"
+                            MaximumDate="12/31/2100"
+                            Date="06/21/2018" 
+                            VerticalOptions="Center"
+                            BackgroundColor="Wheat"
+                            FontSize="20"/>
+
+            <StackLayout Orientation="Horizontal"
+                         Padding="10">
 
                 <Label Text="Collectore Name"
                        HorizontalOptions="CenterAndExpand"
@@ -54,12 +67,17 @@
                                        FontSize="15"
                                        HorizontalOptions="CenterAndExpand"
                                       HorizontalTextAlignment="Start"/>
-
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button Text="Submit"
+                    BackgroundColor="Wheat"
+                    FontSize="20"
+                    CornerRadius="20"
+                    Margin="0, 0"
+                    Command="{Binding AddComman}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
