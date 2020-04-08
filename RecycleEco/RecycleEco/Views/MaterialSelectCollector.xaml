@@ -16,7 +16,6 @@
     <ContentPage.Content>
         <StackLayout Margin="20"
                      Padding="10"
-                     BackgroundColor="LightGreen"
                      BindingContext="{StaticResource Key=CMVM}">
             <Label HorizontalOptions="Center"
                    VerticalOptions="Center"
@@ -42,8 +41,8 @@
 
             </StackLayout>
             <ListView x:Name="materialListView" 
-                      ItemsSource="{Binding CollectorMaterialList}"
-                      SelectedItem="{Binding ChooseMaterial, Mode=OneWayToSource}">
+                      ItemsSource="{Binding MaterialList}"
+                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

@@ -22,9 +22,8 @@
     <ContentPage.Content>
 
         <StackLayout Margin="20"
-                     
+                     BackgroundColor="Wheat"
                      Padding="10"
-                     BackgroundColor="LightGreen"
                      BindingContext="{StaticResource Key=CVM}">
 
             <Grid>
@@ -59,10 +58,10 @@
                         Text="Profile"
                         FontSize="20"
                         TextColor="black"
-                        BackgroundColor="ForestGreen"
+                        BackgroundColor="orange"
                         Command="{Binding OpenCollectorProfileView}"/>
 
-                <Button Grid.Row="2"
+                <Button Grid.Row="3"
                         Grid.ColumnSpan="2"
                         Margin="30,0"
                         VerticalOptions="FillAndExpand"
@@ -70,10 +69,10 @@
                         Text="Record Submission"
                         FontSize="20"
                         TextColor="Black"
-                        BackgroundColor="ForestGreen"
+                        BackgroundColor="orange"
                         Command="{Binding OpenRecordSubmissionView}"/>
 
-                <Button Grid.Row="3"
+                <Button Grid.Row="5"
                         Grid.ColumnSpan="2"
                         Margin="30,0"
                         VerticalOptions="FillAndExpand"
@@ -81,10 +80,10 @@
                         Text="View Submissions"
                         FontSize="20"
                         TextColor="Black"
-                        BackgroundColor="ForestGreen"
+                        BackgroundColor="orange"
                         Command="{Binding OpenSubmissionListView}"/>
 
-                <Button Grid.Row="4"
+                <Button Grid.Row="5"
                         Grid.ColumnSpan="2"
                         Margin="30,0"
                         VerticalOptions="FillAndExpand"
@@ -92,7 +91,7 @@
                         Text="Select material"
                         FontSize="20"
                         TextColor="Black"
-                        BackgroundColor="ForestGreen"
+                        BackgroundColor="orange"
                         Command="{Binding OpenMaterialSelectView}"/>
 
 
