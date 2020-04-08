@@ -2,6 +2,7 @@
 using RecycleEco.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -123,6 +124,7 @@ namespace RecycleEco.ViewModel
             return result;
         }
 
+
         public ICommand SignUp { get; set; }
         public ICommand OpenUpdateCollectorView { get; set; }
         public ICommand UpdateCollector { get; set; }
@@ -145,6 +147,15 @@ namespace RecycleEco.ViewModel
 
         public ICommand OpenMaterialSelectView { get; set; }
 
+        public ICommand OpenMaterialSelect { get; set; }
+
+
+
+
+
+
+
+        //----- start of constructor---------------------------
         public CollectorVM()
         {
             if (Collector == default(Collector))
@@ -171,12 +182,12 @@ namespace RecycleEco.ViewModel
             OpenSubmissionListView = new Command(OpenSubmissionListExecute);
 
             //to open material selection view
-
             OpenMaterialSelectView = new Command(OpenMaterialSelectExecute);
 
             
-            
+
         }
+        //-------- end  of constructor---------------------------------------------------
 
         //collector profile
         private void OpenCollectorProfileExecute(object obj)
@@ -210,16 +221,7 @@ namespace RecycleEco.ViewModel
             Application.Current.MainPage.Navigation.PushAsync(new Views.RecyclerViewSubmissions());
         }
 
-        //to select materials for collector
-
-        private void OpenMaterialSelectExecute(object obj)
-        {
-            Application.Current.MainPage.Navigation.PushAsync(new Views.MaterialSelectCollector());
-        }
-
-
-
-
+       
         private async void SignUpExecute(object obj)
         {
             SignUpStatus = string.Empty;
@@ -276,9 +278,12 @@ namespace RecycleEco.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        //open collector material execute
+        private void OpenMaterialSelectExecute(object obj)
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new Views.MaterialSelectCollector());
+        }
 
-        //-----Profile
-       
 
     }
 }
