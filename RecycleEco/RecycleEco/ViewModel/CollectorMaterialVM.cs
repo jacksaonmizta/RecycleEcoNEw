@@ -46,9 +46,6 @@ namespace RecycleEco.ViewModel
 			OpenCollectorMaterialView = new Command(OpenCollectorMaterialExecute);
 			CollectorMaterialList = new List<Material>();
 			GetAllMaterials();
-
-			
-
 		}
 
 		private async void GetAllMaterials()
