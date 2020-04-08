@@ -54,6 +54,21 @@ namespace RecycleEco.ViewModel
 				new Views.RecyclerChooseCollector());
 		}
 
+		private ObservableCollection<Material> availableMaterialList;
+
+		public ObservableCollection<Material> AvailableMaterialList
+		{
+			get { return availableMaterialList; }
+			set
+			{
+				availableMaterialList = value;
+				OnPropertyChanged();
+			}
+		}
+
+
+
+
 		private async void GetAllMaterials()
 		{
 			MaterialList = await MaterialAuth.GetMaterials();
