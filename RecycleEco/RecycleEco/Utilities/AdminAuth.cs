@@ -18,7 +18,7 @@ namespace RecycleEco.Utilities
             try
             {
                 return (await Firebase
-                    .Child("Admins")
+                    .Child("Admin")
                     .OnceAsync<User>()).Select(item => new User
                     {
                         Username = item.Object.Username,
@@ -27,7 +27,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception ADA1", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Register Admin Firebase Error", ex.Message, "OK");
                 return null;
             }
         }
@@ -44,7 +44,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception ADA2", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("GetAdmin Firebase Error", ex.Message, "OK");
                 return null;
             }
         }

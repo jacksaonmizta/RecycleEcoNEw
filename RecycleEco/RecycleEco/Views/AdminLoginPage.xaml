@@ -105,7 +105,7 @@
                        VerticalOptions="Center"
                        Text="{Binding LoginStatus}"
                        FontSize="15"
-                       TextColor="Red"/>
+                       TextColor="Black"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

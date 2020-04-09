@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.MaterialUpdatePage">
+             x:Class="RecycleEco.Views.MaterialUpdatePage"
+             BackgroundColor="Coral">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -17,7 +18,7 @@
         <StackLayout BindingContext="{StaticResource MVM}"
                      Margin="10"
                      Padding="10"
-                     BackgroundColor="Orange">
+                     BackgroundColor="AntiqueWhite">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.1*"/>
@@ -84,6 +85,7 @@
                         Grid.ColumnSpan="2"
                         CornerRadius="10"
                         Text="Update"
+                        BackgroundColor="GreenYellow"
                         FontSize="20"
                         Command="{Binding UpdateMaterial}"
                         CommandParameter="{Binding CanAdd}"/>
@@ -91,6 +93,7 @@
                 <Button Grid.Row="9"
                         Grid.ColumnSpan="2"
                         CornerRadius="10"
+                        BackgroundColor="Red"
                         Text="Delete"
                         FontSize="20"
                         Command="{Binding DeleteMaterial}" />
