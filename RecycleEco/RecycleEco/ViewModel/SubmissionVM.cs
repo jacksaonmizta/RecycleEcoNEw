@@ -211,21 +211,7 @@ namespace RecycleEco.ViewModel
             return CanAdd;
         }
         
-        private void UpdateRecyclerEcoLevel()
-        {
-            if (Recycler.TotalPoints >= 1000)
-            {
-                Recycler.EcoLevel = RecyclerVM.EcoLevelFour;
-            }
-            else if (Recycler.TotalPoints >= 500)
-            {
-                Recycler.EcoLevel = RecyclerVM.EcoLevelThree;
-            }
-            else if (Recycler.TotalPoints >= 100)
-            {
-                Recycler.EcoLevel = RecyclerVM.EcoLevelTwo;
-            }
-        }
+        
 
         private async void InitializeFromSubmission()
         {
