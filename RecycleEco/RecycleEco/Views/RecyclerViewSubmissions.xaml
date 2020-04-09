@@ -5,29 +5,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.RecyclerViewSubmissions">
+             x:Class="RecycleEco.Views.RecyclerViewSubmissions"
+             BackgroundColor="SkyBlue">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:SubmissionVM x:Key="SVM"/>
+            <local:SubmissionListVM x:Key="SLVM"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                    BackgroundColor="Wheat"
+                    BackgroundColor="White"
                     Padding="10">
-            <Label Grid.ColumnSpan="2"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       FontSize="30"
-                       Text="Submissions"
-                       TextColor="Black"/>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="ID"
-                       HorizontalOptions="CenterAndExpand"
-                       FontSize="15"
-                       TextColor="Black"/>
+            <Label Text="Submission History"
+                    HorizontalOptions="CenterAndExpand"
+                    FontSize="30"
+                    TextColor="Black"/>
+            <StackLayout Orientation="Horizontal"
+                         Margin="20">
                 <Label Text="Material Name"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="15"
@@ -42,33 +38,22 @@
                        TextColor="Black"/>
             </StackLayout>
             <ListView x:Name="submissionListView" 
-                      ItemsSource="{Binding SubmissionsList}"
+                      ItemsSource="{Binding SubmissionList}"
                       SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal"
                                          Margin="10">
-                                <Label Text="{Binding SubmissionID}"
+                                <Label Text="{Binding Material}"
                                        FontSize="20"
-                                       HorizontalOptions="CenterAndExpand"
-                                       HorizontalTextAlignment="Start"/>
-
-                                <Label Text="{Binding MaterialName}"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Points}"
                                        FontSize="20"
-                                       HorizontalOptions="CenterAndExpand"
-                                       HorizontalTextAlignment="Start"/>
-                                
-                                <Label Text="{Binding Point}"
-                                       FontSize="20"
-                                       HorizontalOptions="CenterAndExpand"
-                                       HorizontalTextAlignment="Start"/>
-                                
+                                       HorizontalOptions="CenterAndExpand"/>
                                 <Label Text="{Binding Status}"
                                        FontSize="20"
-                                       HorizontalOptions="CenterAndExpand"
-                                       HorizontalTextAlignment="Start"/>
-                                
+                                       HorizontalOptions="CenterAndExpand"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

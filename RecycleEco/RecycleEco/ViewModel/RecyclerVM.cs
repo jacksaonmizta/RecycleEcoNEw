@@ -248,7 +248,7 @@ namespace RecycleEco.ViewModel
             Application.Current.MainPage = new NavigationPage(new Views.MainStartView());
         }
 
-        private void UpdateRecyclerEcoLevel()
+        private void UpdateRecyclerLevel()
         {
             if (Recycler.TotalPoints >= 1000)
             {

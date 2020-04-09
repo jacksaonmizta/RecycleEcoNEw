@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.RecyclerEditProfilePage">
+             x:Class="RecycleEco.Views.RecyclerEditProfilePage"
+             BackgroundColor="SkyBlue">
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,57 +16,60 @@
     
     <ContentPage.Content>
         <StackLayout Margin="20"
-                    BackgroundColor="Wheat"
+                    BackgroundColor="White"
                     Padding="10"
                     BindingContext="{StaticResource Key=RVM}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.05*"/>
+                </Grid.RowDefinitions>
 
-            <Label Grid.ColumnSpan="2"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.ColumnSpan="2"
+                       Grid.Row="1"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontSize="30"
                        Text="Edit Profile"
                        TextColor="Black"/>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.25*"/>
-                    <ColumnDefinition Width="0.25*"/>
-                </Grid.ColumnDefinitions>
-
-                <Label Grid.Row="1"
+                <Label Grid.Row="3"
                        Grid.Column="0"
                        Text="Fullname:"
                        FontSize="20"
                        TextColor="Black" 
                        HorizontalOptions="Start"/>
 
-                <Label Grid.Row="2"
+                <Label Grid.Row="4"
                        Grid.Column="0"
                        Text="Password:"
                        FontSize="20"
                        TextColor="Black" 
                        HorizontalOptions="Start"/>
 
-                <Entry Grid.Row="1"
+                <Entry Grid.Row="3"
                        Grid.Column="1"
                        Text="{Binding FullName, Mode=TwoWay}"/>
 
-                <Entry Grid.Row="2"
+                <Entry Grid.Row="4"
                        Grid.Column="1"
                        Text="{Binding Password, Mode=TwoWay}" />
 
-                <Button Grid.Row="8"
+                <Button Grid.Row="9"
                         Grid.ColumnSpan="2"
                         Margin="30,0"
                         VerticalOptions="FillAndExpand"
@@ -73,7 +77,7 @@
                         Text="Update"
                         FontSize="20"
                         TextColor="White"
-                        BackgroundColor="Goldenrod"
+                        BackgroundColor="DarkBlue"
                         Command="{Binding Update}"/>
             </Grid>
         </StackLayout>

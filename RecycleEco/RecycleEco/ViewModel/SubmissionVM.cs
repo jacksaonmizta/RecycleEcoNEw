@@ -210,8 +210,7 @@ namespace RecycleEco.ViewModel
         {
             return CanAdd;
         }
-        
-        
+   
 
         private async void InitializeFromSubmission()
         {

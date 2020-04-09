@@ -6,7 +6,8 @@
              xmlns:sys="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.RecyclerChooseCollector">
+             x:Class="RecycleEco.Views.RecyclerChooseCollector"
+             BackgroundColor="SkyBlue">
 
 
     <ContentPage.Resources>
@@ -17,43 +18,49 @@
 
     <ContentPage.Content>
         <StackLayout BindingContext="{StaticResource SVM}"
-                     Margin="10"
-                     Padding="10">
-            <Label  HorizontalOptions="Center"
-                   VerticalOptions="Center"
-                   FontSize="30"
-                   Text="Add Submission"
-                   TextColor="Black"/>
-
+                     Margin="20"
+                    BackgroundColor="White"
+                    Padding="10">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.05*"/>
                     <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.0*"/>
-                    <RowDefinition Height="0.12*"/>
                     <RowDefinition Height="0.1*"/>
                     <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1"/>
+                    <RowDefinition Height="0.01"/>
                     <RowDefinition Height="0.1*"/>
                     <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.2*"/>
                     <RowDefinition Height="0.1*"/>
                     <RowDefinition Height="0.1*"/>
                     <RowDefinition Height="0.1*"/>
                     <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.05*"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
                 </Grid.ColumnDefinitions>
-                
-                <Label FontSize="15"
-                       Text="Choose date"
-                       TextColor="Black"
+
+                <Label Grid.ColumnSpan="2"
                        Grid.Row="1"
-                       TextDecorations="Underline"/>
-                
-                <DatePicker Grid.Row="3"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="30"
+                       Text="Add Submission"
+                       TextColor="Black"/>
+
+                <Label Grid.Row="3"
+                       Grid.Column="0"
+                       Text="Select Date"
+                       FontSize="15"
+                       TextColor="Black" 
+                       HorizontalOptions="Start"/>
+
+                <DatePicker Grid.Row="5"
+                            Grid.RowSpan="2"
                             Grid.ColumnSpan="2"
                             MinimumDate="{x:Static sys:DateTime.Today}"
                             Date="{Binding ProposedDate,Mode=OneWayToSource}"/>
@@ -61,28 +68,14 @@
                 <Label FontSize="15"
                        Text="Choose collector"
                        TextColor="Black"
-                       Grid.Row="5"
+                       Grid.Row="7"
                        TextDecorations="Underline"/>
 
-                <StackLayout Orientation="Horizontal"
-                             Grid.Row="6" >
-                    <Label Text="Collector"
-                           HorizontalOptions="FillAndExpand"
-                           FontSize="15"
-                           TextColor="Black"
-                           Grid.Column="0"/>
-
-                    <Label Text="Address"
-                           HorizontalOptions="End"
-                           FontSize="15"
-                           TextColor="Black"
-                           Grid.Column="1"/>
-                </StackLayout>
 
                 <ListView x:Name="collectorListView"
                           ItemsSource="{Binding CollectorList}"
                           SelectedItem="{Binding SelectedCollector,Mode=OneWayToSource}"
-                          Grid.Row="7"
+                          Grid.Row="9"
                           Grid.ColumnSpan="2"
                           CachingStrategy="RecycleElement">
                     <ListView.ItemTemplate>
@@ -92,7 +85,6 @@
                                             Margin="10">
                                     <Label HorizontalOptions="FillAndExpand"
                                         Text="{Binding Username}"/>
-
                                     <Label HorizontalOptions="FillAndExpand"
                                         Text="{Binding Address}"/>
                                 </StackLayout>
@@ -102,12 +94,13 @@
                 </ListView>
                 <Button Grid.Row="12"
                         Grid.ColumnSpan="2"
+                        Margin="30,0"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
                         Text="Submit"
                         FontSize="20"
-                        TextColor="Black"
-                        BackgroundColor="Wheat"
+                        TextColor="White"
+                        BackgroundColor="DarkBlue"
                         Command="{Binding AddSubmission}"
                         CommandParameter="{Binding CanAdd}"/>
             </Grid>

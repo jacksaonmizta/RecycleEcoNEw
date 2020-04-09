@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RecycleEco.Utilities;
+using RecycleEco.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,13 @@ namespace RecycleEco.Views
         public RecyclerViewSubmissions()
         {
             InitializeComponent();
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            submissionListView.ItemsSource = await SubmissionAuth.GetAllSubmissions();
+            
         }
     }
 }

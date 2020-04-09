@@ -5,7 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.RecyclerMainPage">
+             x:Class="RecycleEco.Views.RecyclerMainPage"
+             BackgroundColor="SkyBlue">
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:RecyclerVM x:Key="RVM"/>
@@ -20,7 +22,7 @@
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                     BackgroundColor="Wheat"
+                     BackgroundColor="White"
                      Padding="10"
                      BindingContext="{StaticResource Key=RVM}">
             <Grid>
@@ -53,8 +55,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Profile"
                         FontSize="20"
-                        TextColor="Black"
-                        BackgroundColor="Coral"
+                        TextColor="White"
+                        BackgroundColor="DarkBlue"
                         Command="{Binding OpenRecyclerProfilePage}"/>
 
                 <Button Grid.Row="3"
@@ -64,8 +66,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="View Appointments"
                         FontSize="20"
-                        TextColor="Black"
-                        BackgroundColor="Coral"
+                        TextColor="White"
+                        BackgroundColor="DarkBlue"
                         Command="{Binding OpenMaterialSubmissionView}"/>
 
                 <Button Grid.Row="5"
@@ -75,8 +77,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Make Appointment"
                         FontSize="20"
-                        TextColor="Black"
-                        BackgroundColor="Coral"
+                        TextColor="White"
+                        BackgroundColor="DarkBlue"
                         Command="{Binding OpenMakeSubmissionView}"/>
             </Grid>
         </StackLayout>
