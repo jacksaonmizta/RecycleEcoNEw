@@ -17,6 +17,7 @@ namespace RecycleEco.Model
         public string Collector { get; set; }
         public string Recycler { get; set; }
         public string Material { get; set; }
-       
+        public string MaterialName { get; set; }
+
     }
 }

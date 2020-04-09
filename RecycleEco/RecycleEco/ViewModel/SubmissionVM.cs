@@ -12,7 +12,7 @@ namespace RecycleEco.ViewModel
     class SubmissionVM : INotifyPropertyChanged
     {
         public const string StatusInitial = "Pending";
-        public const string StatusSubmitted = "Submitted";
+        public const string StatusApproved = "Approved";
 
         private bool canAdd;
         public bool CanAdd
@@ -160,20 +160,22 @@ namespace RecycleEco.ViewModel
         }
 
 
+
         private bool CheckFields()
         {
             return SelectedCollector != null && SubmittedDate != default(DateTime) && DateTime.Compare(SubmittedDate, DateTime.Today) >= 0;
         }
 
         public ICommand AddSubmission { get; set; }
-        
+        public ICommand UpdateSubmission { get; set; }
 
         public SubmissionVM()
         {
             CollectorList = new ObservableCollection<Collector>();
             Recycler = new Recycler();
             Collector = new Collector();
-            AddSubmission = new Command(AddSubmissionExecute, CanSubmitM);
+            AddSubmission = new Command(AddSubmissionExecute); //CanSubmitM
+            UpdateSubmission = new Command(UpdateSubmissionExecute, CanUpdateM);
             if (Material == default(Material))
             {
                 Material = new Material();
@@ -200,16 +202,18 @@ namespace RecycleEco.ViewModel
             Submission.Recycler = RecyclerVM.Recycler.Username;
             Submission.Status = StatusInitial;
             Submission.Material = Material.MaterialID;
+            Submission.MaterialName = Material.MaterialName;
+            Submission.SubmittedDate = SubmittedDate;
             await SubmissionAuth.AddSubmission(Submission);
             await Application.Current.MainPage.DisplayAlert("Success", 
                 "You have successfully made an appointment with " + Submission.Collector, "OK");
             await Application.Current.MainPage.Navigation.PopAsync();
         }
 
-        private bool CanSubmitM(object arg)
-        {
-            return CanAdd;
-        }
+        //private bool CanSubmitM(object arg)
+        //{
+        //    return CanAdd;
+        //}
    
 
         private async void InitializeFromSubmission()
@@ -221,6 +225,70 @@ namespace RecycleEco.ViewModel
             Material = await MaterialAuth.GetMaterialById(Submission.Material);
             if (Material != null)
                 MaterialName = Material.MaterialName;
+        }
+
+        private async void UpdateSubmissionExecute(object obj)
+        {
+            UpdateStatus = string.Empty;
+            Material material = new Material();
+            if (MaterialName.ToLower() != Material.MaterialName.ToLower())
+            {
+                material = await MaterialAuth.GetMaterialByName(MaterialName);
+            }
+            if (material != null)
+            {
+                if (CollectorVM.Collector.MaterialCollection.Contains(material.MaterialID))
+                {
+                    Material = material;
+                    UpdateSubmissionForAll();
+                    await Application.Current.MainPage.DisplayAlert("Update Successful", "You have successfully updated the submission", "OK");
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                }
+                else
+                {
+                    UpdateStatus = "You do not collect this type of material!";
+                }
+            }
+            else
+            {
+                UpdateStatus = "Recycled Material Type not found!";
+            }
+        }
+
+        private async void UpdateSubmissionForAll()
+        {
+            Submission.Material = Material.MaterialID;
+            Submission.MaterialName = Material.MaterialName;
+            Submission.Status = StatusApproved;
+            Submission.Points = Weight * Material.PointsPK;
+            Submission.ApprovedDate = DateTime.Today;
+            Recycler.TotalPoints += Submission.Points;
+            UpdateRecyclerLevel();
+            await RecyclerAuth.UpdateRecycler(Recycler);
+            Collector.TotalPoints += Submission.Points;
+            await CollectorAuth.UpdateCollector(Collector);
+            await SubmissionAuth.UpdateSubmission(Submission);
+        }
+
+        private bool CanUpdateM(object arg)
+        {
+            return CanUpdate;
+        }
+
+        private void UpdateRecyclerLevel()
+        {
+            if (Recycler.TotalPoints >= 1000)
+            {
+                Recycler.EcoLevel = RecyclerVM.EcoLevelFour;
+            }
+            else if (Recycler.TotalPoints >= 500)
+            {
+                Recycler.EcoLevel = RecyclerVM.EcoLevelThree;
+            }
+            else if (Recycler.TotalPoints >= 100)
+            {
+                Recycler.EcoLevel = RecyclerVM.EcoLevelTwo;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

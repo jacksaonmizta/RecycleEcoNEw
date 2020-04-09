@@ -63,7 +63,7 @@
                             Grid.RowSpan="2"
                             Grid.ColumnSpan="2"
                             MinimumDate="{x:Static sys:DateTime.Today}"
-                            Date="{Binding ProposedDate,Mode=OneWayToSource}"/>
+                            Date="{Binding SubmittedDate,Mode=OneWayToSource}"/>
 
                 <Label FontSize="15"
                        Text="Choose collector"
@@ -76,6 +76,7 @@
                           ItemsSource="{Binding CollectorList}"
                           SelectedItem="{Binding SelectedCollector,Mode=OneWayToSource}"
                           Grid.Row="8"
+                          Grid.RowSpan="4"
                           Grid.ColumnSpan="2"
                           CachingStrategy="RecycleElement">
                     <ListView.ItemTemplate>
@@ -102,7 +103,8 @@
                         TextColor="White"
                         BackgroundColor="DarkBlue"
                         Command="{Binding AddSubmission}"
-                        CommandParameter="{Binding CanAdd}"/>
+                        />
+                <!--CommandParameter="{Binding CanAdd}"-->
             </Grid>
         </StackLayout>
     </ContentPage.Content>

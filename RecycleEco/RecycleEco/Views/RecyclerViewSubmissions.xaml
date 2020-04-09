@@ -26,15 +26,19 @@
                          Margin="20">
                 <Label Text="Material Name"
                        HorizontalOptions="CenterAndExpand"
-                       FontSize="15"
+                       FontSize="10"
+                       TextColor="Black"/>
+                <Label Text="Date Submitted"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
                        TextColor="Black"/>
                 <Label Text="Points"
                        HorizontalOptions="CenterAndExpand"
-                       FontSize="15"
+                       FontSize="10"
                        TextColor="Black"/>
                 <Label Text="Status"
                        HorizontalOptions="CenterAndExpand"
-                       FontSize="15"
+                       FontSize="10"
                        TextColor="Black"/>
             </StackLayout>
             <ListView x:Name="submissionListView" 
@@ -45,14 +49,17 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal"
                                          Margin="10">
-                                <Label Text="{Binding Material}"
-                                       FontSize="20"
+                                <Label Text="{Binding MaterialName}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding SubmittedDate}"
+                                       FontSize="10"
                                        HorizontalOptions="CenterAndExpand"/>
                                 <Label Text="{Binding Points}"
-                                       FontSize="20"
+                                       FontSize="10"
                                        HorizontalOptions="CenterAndExpand"/>
                                 <Label Text="{Binding Status}"
-                                       FontSize="20"
+                                       FontSize="10"
                                        HorizontalOptions="CenterAndExpand"/>
                             </StackLayout>
                         </ViewCell>
