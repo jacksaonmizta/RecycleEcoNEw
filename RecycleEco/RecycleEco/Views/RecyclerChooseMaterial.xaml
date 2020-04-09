@@ -14,35 +14,48 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout Margin="20"
+        <StackLayout BindingContext="{StaticResource MLVM}"
+                     Margin="10"
                      Padding="10"
-                     BindingContext="{StaticResource Key=MLVM}">
+                     BackgroundColor="wheat">
+
             <Label HorizontalOptions="Center"
                    VerticalOptions="Center"
                    FontSize="30"
-                   Text="Select Material"
+                   Text="Add Submission"
                    TextColor="Black"/>
+            
+            <Label FontSize="15"
+                       Text="Select Material"
+                       TextColor="Black"
+                       Grid.Row="1"
+                       TextDecorations="Underline"/>
+
+
             <StackLayout Orientation="Horizontal">
-                
                 <Label Text="Material Type"
-                       HorizontalOptions="CenterAndExpand"
+                       HorizontalOptions="Start"
                        FontSize="15"
                        TextColor="Black"/>
-                
+
                 <Label Text="Description"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="15"
                        TextColor="Black"/>
-                
+
                 <Label Text="Points/kg"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="15"
                        TextColor="Black"/>
-
             </StackLayout>
-            <ListView x:Name="materialListView" 
-                      ItemsSource="{Binding MaterialList}"
-                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+
+            <ListView x:Name="materialListView"
+                          ItemsSource="{Binding MaterialList}"
+                          SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"
+                          Grid.Row="1"
+                          Grid.ColumnSpan="4"
+                          CachingStrategy="RecycleElement">
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -51,7 +64,7 @@
 
                                 <Label Text="{Binding MaterialName}"
                                        FontSize="15"
-                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalOptions="Start"
                                       HorizontalTextAlignment="Start"/>
 
                                 <Label Text="{Binding Description}"

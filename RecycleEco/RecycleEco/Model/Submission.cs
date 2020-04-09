@@ -9,17 +9,14 @@ namespace RecycleEco.Model
     {
         public string SubmissionID { get; set; }
         public int Weight { get; set; }
-        public DatePicker Date { get; set; }
-
-        public DateTime SubmittedDate { get; set; }
-
+        public DateTime ApprovedDate { get; set; } //collector
+        public DateTime SubmittedDate { get; set; } //recycler
         public string Status { get; set; }
         public int Points { get; set; }
-        public string Username { get; set; }
-
+      
         public string Collector { get; set; }
         public string Recycler { get; set; }
         public string Material { get; set; }
-        //public List<string> RecyclerList { get; set; }
+       
     }
 }

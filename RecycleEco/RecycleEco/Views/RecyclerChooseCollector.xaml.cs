@@ -1,9 +1,5 @@
 ﻿using RecycleEco.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RecycleEco.ViewModel;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,7 +17,7 @@ namespace RecycleEco.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            collectorListView.ItemsSource = await CollectorAuth.FilterCollectors();
+            collectorListView.ItemsSource = await CollectorAuth.GetCollectorsByUsername(SubmissionVM.Material.CollectorList);
         }
     }
 }

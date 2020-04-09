@@ -13,55 +13,55 @@ namespace RecycleEco.ViewModel
 {
     class MaterialListVM : INotifyPropertyChanged
 	{
-		private object selectedItem;
+        private Material selectedItem;
 
-		public object SelectedItem
-		{
-			get
-			{
-				return selectedItem;
-			}
-			set
-			{
-				selectedItem = value;
-				if (selectedItem == null)
-				{
-					OnPropertyChanged();
-				}
-				ViewMaterialDetail.Execute(selectedItem);
-				selectedItem = null;
-				OnPropertyChanged();
-			}
-		}
+        public Material SelectedItem
+        {
+            get
+            {
+                return selectedItem;
+            }
+            set
+            {
+                selectedItem = value;
+                if (selectedItem != null)
+                    SubMaterial.Execute(selectedItem);
+                selectedItem = null;
+                OnPropertyChanged();
+            }
+        }
 
-		public ObservableCollection<Material> MaterialList { get; set; }
-		public ICommand ViewMaterialDetail { get; set; }
+        public ObservableCollection<Material> MaterialList { get; set; }
+        public ICommand SubMaterial { get; set; }
+        public MaterialListVM()
+        {
+            MaterialList = new ObservableCollection<Material>();
+            GetAllMaterials();
+            SubMaterial = new Command<Material>(RecycleMaterialExecute);
+        }
 
-		public MaterialListVM()
-		{
-			
-			MaterialList = new ObservableCollection<Material>();
-			GetAllMaterials();
-			ViewMaterialDetail = new Command<Material>(ViewMaterialDetailExecute);
-		}
+        private async void GetAllMaterials()
+        {
+            MaterialList = await MaterialAuth.GetAllMaterials();
+        }
+        private void RecycleMaterialExecute(Material material)
+        {
+            if (material.CollectorList == null)
+            {
+                Application.Current.MainPage.DisplayAlert("No Collectors found", 
+                    "Unfortunatly, there are no collectors for the selected material", "OK");
+            }
+            else
+            {
+                SubmissionVM.Material = material;
+                Application.Current.MainPage.Navigation.PushAsync(new Views.RecyclerChooseCollector());
+            }         
+        }
 
-		private  void ViewMaterialDetailExecute(Material m)
-		{
-			SubmissionVM.material = m;
-			Application.Current.MainPage.Navigation.PushAsync(
-				new Views.RecyclerChooseCollector());
-		}
-
-		private async void GetAllMaterials()
-		{
-			MaterialList = await MaterialAuth.GetAllMaterials();
-		}
-
-		private void OnPropertyChanged([CallerMemberName] string propertyName = "")
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-	}
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
 }

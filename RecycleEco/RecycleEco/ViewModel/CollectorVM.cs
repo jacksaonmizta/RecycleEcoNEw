@@ -2,6 +2,7 @@
 using RecycleEco.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -10,7 +11,7 @@ using Xamarin.Forms;
 
 namespace RecycleEco.ViewModel
 {
-    class CollectorVM :INotifyPropertyChanged
+    class CollectorVM : INotifyPropertyChanged
     {
         public static Collector Collector { get; set; }
 
@@ -123,6 +124,7 @@ namespace RecycleEco.ViewModel
             return result;
         }
 
+
         public ICommand SignUp { get; set; }
         public ICommand OpenUpdateCollectorView { get; set; }
         public ICommand UpdateCollector { get; set; }
@@ -131,7 +133,7 @@ namespace RecycleEco.ViewModel
         public ICommand OpenMaterialSubmissionView { get; set; }
         public ICommand SignOut { get; set; }
 
-       
+
 
         public ICommand OpenRecordSubmissionView { get; set; }
 
@@ -141,10 +143,19 @@ namespace RecycleEco.ViewModel
 
         public ICommand UpdateProfile { get; set; }
 
-        public ICommand OpenSubmissionListView{ get; set; }
+        public ICommand OpenSubmissionListView { get; set; }
 
         public ICommand OpenMaterialSelectView { get; set; }
 
+        public ICommand OpenMaterialSelect { get; set; }
+
+
+
+
+
+
+
+        //----- start of constructor---------------------------
         public CollectorVM()
         {
             if (Collector == default(Collector))
@@ -152,7 +163,7 @@ namespace RecycleEco.ViewModel
                 Collector = new Collector();
             }
             SignUp = new Command(SignUpExecute, CanSignUpM);
-            
+
             SignOut = new Command(SignOutExecute);
 
             //to open Collector profile page
@@ -171,12 +182,12 @@ namespace RecycleEco.ViewModel
             OpenSubmissionListView = new Command(OpenSubmissionListExecute);
 
             //to open material selection view
-
             OpenMaterialSelectView = new Command(OpenMaterialSelectExecute);
 
-            
-            
+
+
         }
+        //-------- end  of constructor---------------------------------------------------
 
         //collector profile
         private void OpenCollectorProfileExecute(object obj)
@@ -209,15 +220,6 @@ namespace RecycleEco.ViewModel
         {
             Application.Current.MainPage.Navigation.PushAsync(new Views.RecyclerViewSubmissions());
         }
-
-        //to select materials for collector
-
-        private void OpenMaterialSelectExecute(object obj)
-        {
-            Application.Current.MainPage.Navigation.PushAsync(new Views.MaterialSelectCollector());
-        }
-
-
 
 
         private async void SignUpExecute(object obj)
@@ -262,7 +264,7 @@ namespace RecycleEco.ViewModel
         {
             return CanSignUp;
         }
-        
+
         private void SignOutExecute(object obj)
         {
             Application.Current.Properties["loggedIn"] = 0;
@@ -276,9 +278,12 @@ namespace RecycleEco.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        //open collector material execute
+        private void OpenMaterialSelectExecute(object obj)
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new Views.MaterialSelectCollector());
+        }
 
-        //-----Profile
-       
 
     }
 }
