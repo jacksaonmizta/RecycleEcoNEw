@@ -1,27 +1,38 @@
-﻿using System;
-using RecycleEco.Model;
+﻿using RecycleEco.Model;
 using RecycleEco.Utilities;
-using System.Collections.Generic;
+using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-using System.Collections.ObjectModel;
 
 namespace RecycleEco.ViewModel
 {
     class SubmissionVM : INotifyPropertyChanged
     {
-       
+        public const string StatusInitial = "Pending";
+        public const string StatusSubmitted = "Submitted";
 
-        private bool canAddSub;
-        public bool CanAddsub
+        private bool canAdd;
+        public bool CanAdd
         {
-            get { return canAddSub; }
+            get { return canAdd; }
             set
             {
-                canAddSub = value;
+                canAdd = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool canUpdate;
+
+        public bool CanUpdate
+        {
+            get { return canUpdate; }
+            set
+            {
+                canUpdate = value;
                 OnPropertyChanged();
             }
         }
@@ -38,36 +49,16 @@ namespace RecycleEco.ViewModel
             }
         }
 
-        private string materialName;
-
-        public string MaterialName
+        private string updateStatus;
+        public string UpdateStatus
         {
             get
             {
-                return materialName;
+                return updateStatus;
             }
             set
             {
-                materialName = value;
-                updateSubmit = Weight > 0 && !string.IsNullOrWhiteSpace(MaterialName);
-                CanCreate = updateSubmit && !string.IsNullOrWhiteSpace(RecyclerUsername);
-                OnPropertyChanged();
-            }
-        }
-
-        private string recyclerUsername;
-
-        public string RecyclerUsername
-        {
-            get
-            {
-                return recyclerUsername;
-            }
-            set
-            {
-                recyclerUsername = value;
-                updateSubmit = Weight > 0 && !string.IsNullOrWhiteSpace(MaterialName);
-                CanCreate = updateSubmit && !string.IsNullOrWhiteSpace(RecyclerUsername);
+                updateStatus = value;
                 OnPropertyChanged();
             }
         }
@@ -86,8 +77,14 @@ namespace RecycleEco.ViewModel
             }
         }
 
+        public static Material Material { get; set; }
+        public static Submission Submission { get; set; }
+        public Recycler Recycler { get; set; }
+        public Collector Collector { get; set; }
+        public ObservableCollection<Collector> CollectorList { get; set; }
 
         private Collector selectedCollector;
+
         public Collector SelectedCollector
         {
             get
@@ -99,239 +96,138 @@ namespace RecycleEco.ViewModel
                 selectedCollector = value;
                 if (selectedCollector != null)
                     Submission.Collector = selectedCollector.Username;
-                CanAddsub = CheckFields();
+                CanAdd = CheckFields();
                 selectedCollector = null;
                 OnPropertyChanged();
             }
         }
-
-        private object selectedItem;
-        public object SelectedItem
+        public DateTime SubmittedDate
         {
             get
             {
-                return selectedItem;
+                return Submission.SubmittedDate;
             }
             set
             {
-                selectedItem = value;
-                if (selectedItem == null)
-                {
-                    OnPropertyChanged();
-                }
-                ViewSubmissionDetail.Execute(selectedItem);
-                selectedItem = null;
+                Submission.SubmittedDate = value;
+                CanAdd = CheckFields();
                 OnPropertyChanged();
             }
         }
 
-        public static Submission Submit { get; set; } //jun's
-        public static Material material { get; set; }//jun's
-
-        public ObservableCollection<Submission> SubmissionsList { get; set; } //jun's
-
-        //check if record was succesffuly created
-        private bool updateSubmit;
-        public bool UpdateSubmit
-        {
-            get
-            {
-                return updateSubmit;
-            }
-            set
-            {
-                updateSubmit = value;
-                OnPropertyChanged();
-            }
-        }
-
-        // check if record was successfully submitted
-        private string recordSubmitStatus;
-        public string RecordSubmitStatus
-        {
-            get
-            {
-                return recordSubmitStatus;
-            }
-            set
-            {
-                recordSubmitStatus = value;
-                OnPropertyChanged();
-            }
-        }
-
-// ------- Variables ----------------------------------------------------------------------------------------
-        public string SubmissionID
-        {
-            get { return Submit.SubmissionID; }
-            set
-            {
-                Submit.SubmissionID = value;
-                //CreateSubmit = CheckFields();
-                OnPropertyChanged();
-            }
-        }
         public int Weight
         {
-            get { return Submit.Weight; }
+            get
+            {
+                return Submission.Weight;
+            }
             set
             {
-                Submit.Weight = value;
-               // CreateSubmit = CheckFields();
+                Submission.Weight = value;
                 OnPropertyChanged();
             }
         }
 
-        public DateTime Date
+        private string materialName;
+
+        public string MaterialName
         {
-            get { return Submit.SubmittedDate; }
-            set
+            get
             {
-                Submit.SubmittedDate = value;
-               // CreateSubmit = CheckFields();
-                OnPropertyChanged();
+                return materialName;
             }
-        }
-        public int Points
-        {
-            get { return Submit.Points; }
             set
             {
-                Submit.Points = value;
+                materialName = value;
                 OnPropertyChanged();
             }
         }
 
-        public string Status
+        private string recyclerUsername;
+        public string RecyclerUsername
         {
-            get { return Submit.Status; }
+            get
+            {
+                return recyclerUsername;
+            }
             set
             {
-                Submit.Status = value;
-              //  CreateSubmit = CheckFields();
+                recyclerUsername = value;
+                CanUpdate = Weight > 0 && !string.IsNullOrWhiteSpace(MaterialName);
+                CanCreate = CanUpdate && !string.IsNullOrWhiteSpace(RecyclerUsername);
                 OnPropertyChanged();
             }
         }
-// ------- End of Variables ----------------------------------------------------------------------------------------
-
 
 
         private bool CheckFields()
         {
-            return SelectedCollector != null &&
-                Date != default(DateTime) && 
-                DateTime.Compare(Date, DateTime.Today) >= 0;
+            return SelectedCollector != null && SubmittedDate != default(DateTime) && DateTime.Compare(SubmittedDate, DateTime.Today) >= 0;
         }
 
-        public ICommand AddSubmission { get; set; } //jun's
-        public ICommand ViewSubmissionDetail { get; set; } //jun's
-        public ICommand AddComman { get; private set; } //jun's
-
-        public ICommand ToUpdateSubmission { get; set; }
+        public ICommand AddSubmission { get; set; }
+        
 
         public SubmissionVM()
         {
-            Submit = new Submission();
-            AddSubmission = new Command(AddNewSubmissionExecute, CanAddSub); //go to submission page //jun's
-            ViewSubmissionDetail = new Command(ViewSubmissionExecute); //display the submissions //jun's
-            SubmissionsList = new ObservableCollection<Submission>(); //jun's
-            CollectorList = new ObservableCollection<Collector>(); // display list of collectors in RecyclerChooseCollector
-            GetAllCollectors();
-            GetAllSubmissions();
-
-            //serena
-            // to update submission and edit it with weight
-            ToUpdateSubmission = new Command(UpdateSubmissionExecute);
-        }
-
-        private bool CanAddSub(object arg)
-        {
-            return CanAddsub;
-        }
-
-        private async void AddNewSubmissionExecute(object obj) //jun's
-        {
-            CreateStatus = string.Empty;
-            Recycler = await RecyclerAuth.GetRecyclerByUsername(RecyclerUsername);
-            Material = await MaterialAuth.GetMaterialByName(MaterialName);
-            Collector = CollectorVM.Collector;
-            if (Recycler == null)
+            CollectorList = new ObservableCollection<Collector>();
+            Recycler = new Recycler();
+            Collector = new Collector();
+            AddSubmission = new Command(AddSubmissionExecute, CanSubmitM);
+            if (Material == default(Material))
             {
-                CreateStatus = "Recycler not found!";
+                Material = new Material();
+            }
+            if (Submission == default(Submission))
+            {
+                Submission = new Submission();
             }
             else
             {
-                if (Collector.MaterialCollection.Contains(Material.MaterialID))
-                {
-                    Submission.Recycler = Recycler.Username;
-                    Submission.SubmittedDate = DateTime.Today;
-                    Submission.Collector = Collector.Username;
-                    Submission.SubmissionID = Guid.NewGuid().ToString();
-                    Submission.Status = StatusProposed;
-                    Submission.Material = Material.MaterialID;
-                    await SubmissionAuth.AddSubmissions(Submission);
-                    UpdateSubmissionExecute();
-                    await Application.Current.MainPage.DisplayAlert("Record Material Submission", "You have successfully recorded the submission.", "OK");
-                    await Application.Current.MainPage.Navigation.PopAsync();
-                }
-                else
-                {
-                    CreateStatus = "You do not collect this type of material!";
-                }
-
-            }            
-        }
-
-        private async void ViewSubmissionExecute(object obj) //jun's
-        {
-            Submit = (Submission)obj;
-            await Application.Current.MainPage.Navigation.PushAsync(
-                new Views.RecyclerViewSubmissions());
-        }
-
-        private async void GetAllSubmissions() //jun's
-        {
-            SubmissionsList = await SubmissionAuth.GetAllSubmissions();
-        }
-
-        private async void GetAllCollectors() //Recycler's add submission
-        {
-            List<Collector> collectorListFB = await CollectorAuth.GetAllCollectors();
-
-            foreach (Collector collector in collectorListFB)
-            {
-                if (collector.MaterialCollection != null)
-                {
-                    if (collector.MaterialCollection.Contains(material.MaterialName))
-                    {
-                        CollectorList.Add(collector);
-                    }
-                }
+                InitializeFromSubmission();
             }
-
+            if (RecyclerVM.Recycler != null && Material != null)
+                GetCollectorList();
         }
 
-        //this method is important to save data and later can be used to update if necessary
-        public event PropertyChangedEventHandler PropertyChanged;
+        private async void GetCollectorList()
+        {
+            CollectorList = await CollectorAuth.GetCollectorsByUsername(Material.CollectorList);
+        }
+        private async void AddSubmissionExecute(object obj)
+        {
+            Submission.SubmissionID = Guid.NewGuid().ToString();
+            Submission.Recycler = RecyclerVM.Recycler.Username;
+            Submission.Status = StatusInitial;
+            Submission.Material = Material.MaterialID;
+            await SubmissionAuth.AddSubmission(Submission);
+            await Application.Current.MainPage.DisplayAlert("Success", 
+                "You have successfully made an appointment with " + Submission.Collector, "OK");
+            await Application.Current.MainPage.Navigation.PopAsync();
+        }
 
+        private bool CanSubmitM(object arg)
+        {
+            return CanAdd;
+        }
+        
+        
+
+        private async void InitializeFromSubmission()
+        {
+            Recycler = await RecyclerAuth.GetRecyclerByUsername(Submission.Recycler);
+            if (Recycler != null)
+                RecyclerUsername = Recycler.Username;
+            Collector = await CollectorAuth.GetCollectorByUsername(Submission.Collector);
+            Material = await MaterialAuth.GetMaterialById(Submission.Material);
+            if (Material != null)
+                MaterialName = Material.MaterialName;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        // Serena
-
-        //to execute update submissions
-        private async void UpdateSubmissionExecute()  
-        {
-            await SubmissionAuth.UpdateSubmission(Submit); 
-        }
-
-
-
     }
-
-
-
-
 }

@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using System;
 using Xamarin.Forms;
 using RecycleEco.Model;
-
+using RecycleEco.ViewModel;
 
 namespace RecycleEco.Utilities
 {
@@ -20,60 +20,34 @@ namespace RecycleEco.Utilities
             try
             {
                 List<Submission> submissions = (await Firebase
-                   .Child("Submission")
-                   .OnceAsync<Submission>()).Select(item => new Submission
-                   {
-                       SubmissionID = item.Object.SubmissionID,
-                       Weight = item.Object.Weight,
-                       Date = item.Object.Date,
-                       Status = item.Object.Status,
-                       Points = item.Object.Points,
-                       Username = item.Object.Username
-                       //RecyclerList = item.Object.RecyclerList
-                   }).ToList();
-                ObservableCollection<Submission> materialsList = new ObservableCollection<Submission>();
-                foreach (Submission submission in submissions)
-                {
-                    if (submission.Username == App.Username)
+                    .Child("Submissions")
+                    .OnceAsync<Submission>()).Select(item => new Submission
                     {
-                        materialsList.Add(submission);
-                    }
-                }
-                return materialsList;
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDA1", ex.Message, "OK");
-                return null;
-            }
-        }
-
-        public static async Task<ObservableCollection<Submission>> GetSubmissionsById(List<string> submissionCollection)
-        {
-            try
-            {
-                var submissions = await GetAllSubmissions();
+                        SubmissionID = item.Object.SubmissionID,
+                        SubmittedDate = Convert.ToDateTime(item.Object.SubmittedDate),
+                        ApprovedDate = Convert.ToDateTime(item.Object.ApprovedDate),
+                        Weight = item.Object.Weight,
+                        Points = item.Object.Points,
+                        Status = item.Object.Status,
+                        Collector = item.Object.Collector,
+                        Recycler = item.Object.Recycler,
+                        Material = item.Object.Material
+                    }).ToList();
 
                 ObservableCollection<Submission> submissionsList = new ObservableCollection<Submission>();
-                if (submissions != null)
+                foreach (Submission submission in submissions)
                 {
-                    foreach (Submission submission in submissions)
-                    {
-                        if (submissionCollection == null || !submissionCollection.Contains(submission.SubmissionID))
-                            submissionsList.Add(submission);
-                    }
-                    return submissionsList;
+                    submissionsList.Add(submission);
                 }
-                return null;
+                return submissionsList;
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception MDA2", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception SDA1", ex.Message, "OK");
                 return null;
             }
         }
-
-        public static async Task AddSubmissions(Submission submission)
+        public static async Task AddSubmission(Submission submission)
         {
             try
             {
@@ -84,28 +58,9 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception MDA3", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception SDA2", ex.Message, "OK");
             }
         }
-
-        public static async Task<Submission> GetSubmissionByID(string id)
-        {
-            try
-            {
-                var allSubmissions = await GetAllSubmissions();
-                if (allSubmissions != null)
-                {
-                    return allSubmissions.Where(a => a.SubmissionID == id).FirstOrDefault();
-                }
-                return null;
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception MDA6", ex.Message, "OK");
-                return null;
-            }
-        }
-
         public static async Task UpdateSubmission(Submission submission)
         {
             try
@@ -113,13 +68,113 @@ namespace RecycleEco.Utilities
                 if (submission != null)
                 {
                     var toUpdateSubmission = (await Firebase.Child("Submissions")
-                        .OnceAsync<Collector>()).Where(a => a.Object.Username == submission.SubmissionID).FirstOrDefault();
+                        .OnceAsync<Submission>()).Where(a => a.Object.SubmissionID == submission.SubmissionID).FirstOrDefault();
                     await Firebase.Child("Submissions").Child(toUpdateSubmission.Key).PutAsync(submission);
                 }
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA5", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception SDA3", ex.Message, "OK");
+            }
+        }
+
+        public static async Task<ObservableCollection<Submission>> GetProposedSubmissionsByCollector(Collector collector)
+        {
+            try
+            {
+                var submissions = await GetAllSubmissions();
+
+                ObservableCollection<Submission> submissionsList = new ObservableCollection<Submission>();
+                if (submissions != null)
+                {
+                    foreach (Submission submission in submissions)
+                    {
+                        if (submission.Collector == collector.Username && submission.Status == SubmissionVM.StatusInitial)
+                            submissionsList.Add(submission);
+                    }
+                    return submissionsList;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception SDA4", ex.Message, "OK");
+                return null;
+            }
+        }
+
+        public static async Task<ObservableCollection<Submission>> GetSubmissionsByMaterial(Material material)
+        {
+            try
+            {
+                var submissions = await GetAllSubmissions();
+
+                ObservableCollection<Submission> submissionsList = new ObservableCollection<Submission>();
+                if (submissions != null)
+                {
+                    foreach (Submission submission in submissions)
+                    {
+                        if (submission.Material == material.MaterialID)
+                            submissionsList.Add(submission);
+                    }
+                    return submissionsList;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception SDA5", ex.Message, "OK");
+                return null;
+            }
+        }
+
+        public static async Task<ObservableCollection<Submission>> GetSubmissionsForRecycler(Material material, Recycler recycler)
+        {
+            try
+            {
+                var submissions = await GetSubmissionsByMaterial(material);
+
+                ObservableCollection<Submission> submissionsList = new ObservableCollection<Submission>();
+                if (submissions != null)
+                {
+                    foreach (Submission submission in submissions)
+                    {
+                        if (submission.Recycler == recycler.Username)
+                            submissionsList.Add(submission);
+                    }
+                    return submissionsList;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception SDA6", ex.Message, "OK");
+                return null;
+            }
+        }
+
+        public static async Task<ObservableCollection<Submission>> GetSubmissionsForCollector(Material material, Collector collector)
+        {
+            try
+            {
+                var submissions = await GetSubmissionsByMaterial(material);
+
+                ObservableCollection<Submission> submissionsList = new ObservableCollection<Submission>();
+                if (submissions != null)
+                {
+                    foreach (Submission submission in submissions)
+                    {
+                        if (submission.Collector == collector.Username)
+                            submissionsList.Add(submission);
+                    }
+                    return submissionsList;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Firebase Exception SDA6", ex.Message, "OK");
+                return null;
             }
         }
     }

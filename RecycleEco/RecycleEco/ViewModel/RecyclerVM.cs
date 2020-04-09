@@ -248,6 +248,22 @@ namespace RecycleEco.ViewModel
             Application.Current.MainPage = new NavigationPage(new Views.MainStartView());
         }
 
+        private void UpdateRecyclerEcoLevel()
+        {
+            if (Recycler.TotalPoints >= 1000)
+            {
+                Recycler.EcoLevel = RecyclerVM.EcoLevelFour;
+            }
+            else if (Recycler.TotalPoints >= 500)
+            {
+                Recycler.EcoLevel = RecyclerVM.EcoLevelThree;
+            }
+            else if (Recycler.TotalPoints >= 100)
+            {
+                Recycler.EcoLevel = RecyclerVM.EcoLevelTwo;
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {

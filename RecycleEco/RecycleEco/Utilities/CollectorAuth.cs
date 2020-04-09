@@ -15,34 +15,6 @@ namespace RecycleEco.Utilities
     class CollectorAuth
     {
         static readonly FirebaseClient Firebase = new FirebaseClient("https://ecorecycle-65d2d.firebaseio.com/");
-
-        public static Material material { get; set; }
-        
-        public static async Task<List<Collector>> FilterCollectors() //filter collectors based on selected material type
-        {
-            List<Collector> collectorListFB = await GetAllCollectors();
-            List<Collector> filCollector = null;
-
-            foreach(Collector collector in collectorListFB)
-            {
-                if (collector.MaterialCollection != null)
-                {
-                    if (collector.MaterialCollection.Contains(material.MaterialName))
-                    {
-                        filCollector.Add(collector);
-                    }
-                }
-            }
-
-            return filCollector;
-            //var allCollectors = await GetAllCollectors();
-            //await Firebase
-            //    .Child("Users/Collectors")
-            //    .OnceAsync<Collector>();
-            //collector.MaterialCollection.Contains(material.MaterialName)
-            //return allCollectors.Where(a.MaterialCollection.Contains(material.MaterialName));
-        }
-
         public static async Task<List<Collector>> GetAllCollectors()
         {
             try
