@@ -75,7 +75,7 @@
                 <ListView x:Name="collectorListView"
                           ItemsSource="{Binding CollectorList}"
                           SelectedItem="{Binding SelectedCollector,Mode=OneWayToSource}"
-                          Grid.Row="9"
+                          Grid.Row="8"
                           Grid.ColumnSpan="2"
                           CachingStrategy="RecycleElement">
                     <ListView.ItemTemplate>

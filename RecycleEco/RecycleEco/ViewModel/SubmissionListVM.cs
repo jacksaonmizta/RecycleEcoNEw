@@ -15,7 +15,6 @@ namespace RecycleEco.ViewModel
     class SubmissionListVM : INotifyPropertyChanged
 	{
 		private object selectedItem;
-
 		public object SelectedItem
 		{
 			get
@@ -29,15 +28,12 @@ namespace RecycleEco.ViewModel
 				{
 					OnPropertyChanged();
 				}
-				ViewBookDetail.Execute(selectedItem);
 				selectedItem = null;
 				OnPropertyChanged();
 			}
 		}
 
 		public ObservableCollection<Submission> SubmissionList { get; set; }
-
-		public ICommand ViewBookDetail { get; set; }
 
 		public SubmissionListVM()
 		{
