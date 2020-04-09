@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
              mc:Ignorable="d"
-             x:Class="RecycleEco.Views.RecyclerUserSignUpView">
+             x:Class="RecycleEco.Views.RecyclerUserSignUpView"
+             BackgroundColor="SkyBlue">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,7 +16,7 @@
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                     BackgroundColor="Wheat"
+                     BackgroundColor="white"
                      Padding="10"
                      BindingContext="{StaticResource Key=RVM}">
             <Grid>
@@ -105,8 +106,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Create Account"
                         FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Goldenrod"
+                        TextColor="White"
+                        BackgroundColor="DarkBlue"
                         Command="{Binding SignUp}"
                         CommandParameter="{Binding CanSignUp}"/>
 

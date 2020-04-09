@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.RecyclerChooseMaterial">
+             x:Class="RecycleEco.Views.RecyclerChooseMaterial"
+             BackgroundColor="SkyBlue">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,24 +16,19 @@
 
     <ContentPage.Content>
         <StackLayout BindingContext="{StaticResource MLVM}"
-                     Margin="10"
+                     Margin="20"
                      Padding="10"
-                     BackgroundColor="wheat">
+                     BackgroundColor="White">
 
             <Label HorizontalOptions="Center"
                    VerticalOptions="Center"
                    FontSize="30"
                    Text="Add Submission"
                    TextColor="Black"/>
-            
-            <Label FontSize="15"
-                       Text="Select Material"
-                       TextColor="Black"
-                       Grid.Row="1"
-                       TextDecorations="Underline"/>
 
 
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal"
+                         Margin="20">
                 <Label Text="Material Type"
                        HorizontalOptions="Start"
                        FontSize="15"
