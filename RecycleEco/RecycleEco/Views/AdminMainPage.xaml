@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.AdminMainPage">
+             x:Class="RecycleEco.Views.AdminMainPage"
+             BackgroundColor="Coral">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:MainNavVM x:Key="MNVM"/>
@@ -20,7 +21,7 @@
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                     BackgroundColor="Wheat"
+                     BackgroundColor="AntiqueWhite"
                      Padding="10"
                      BindingContext="{StaticResource Key=MNVM}">
 
@@ -47,6 +48,14 @@
                        Text="Admin MainPage"
                        TextColor="Black"/>
 
+                <Label Grid.Column="1"
+                       VerticalOptions="Center"
+                       FontSize="30"
+                       Text="{Binding Username}"
+                       Margin="15,0"
+                       FontAttributes="Bold"
+                       TextColor="Black"/>
+
                 <Button Grid.Row="1"
                         Grid.ColumnSpan="2"
                         Margin="30,0"
@@ -55,8 +64,8 @@
                         Text="Manage Material"
                         FontSize="20"
                         TextColor="Black"
-                        BackgroundColor="orange"
-                        Command="{Binding OpenManageMaterialView}"/>
+                        BackgroundColor="Coral"
+                        Command="{Binding OpenMaterialView}"/>
 
                 <Button Grid.Row="3"
                         Grid.ColumnSpan="2"
@@ -66,8 +75,8 @@
                         Text="View Submission History"
                         FontSize="20"
                         TextColor="black"
-                        BackgroundColor="orange" 
-                        Command="{Binding OpenMaterialSubmissionView}"/>
+                        BackgroundColor="Coral" 
+                        Command="{Binding OpenAdminMaterialSubmissionView}"/>
 
             </Grid>
         </StackLayout>

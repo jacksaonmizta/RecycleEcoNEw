@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.AdminLoginPage">
+             x:Class="RecycleEco.Views.AdminLoginPage"
+             BackgroundColor="Coral">
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,7 +16,7 @@
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                     BackgroundColor="Wheat"
+                     BackgroundColor="AntiqueWhite"
                      Padding="10"
                      BindingContext="{StaticResource Key=LVM}">
 
@@ -31,7 +32,7 @@
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.15*"/>
                     <ColumnDefinition Width="0.25*"/>
                 </Grid.ColumnDefinitions>
 
@@ -93,7 +94,7 @@
                         Text="Login"
                         FontSize="20"
                         TextColor="PowderBlue"
-                        BackgroundColor="Goldenrod"
+                        BackgroundColor="Coral"
                         Command="{Binding SignIn}"
                         CommandParameter="{Binding CanSign}"/>
 
@@ -104,7 +105,7 @@
                        VerticalOptions="Center"
                        Text="{Binding LoginStatus}"
                        FontSize="15"
-                       TextColor="Red"/>
+                       TextColor="Black"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

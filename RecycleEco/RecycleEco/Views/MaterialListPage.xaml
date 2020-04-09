@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.MaterialListPage">
+             x:Class="RecycleEco.Views.MaterialListPage"
+             BackgroundColor="Coral">
 
     <ContentPage.Resources>
         <ResourceDictionary>

@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.AddNewMaterialPage">
+             x:Class="RecycleEco.Views.AddNewMaterialPage"
+             BackgroundColor="Coral">
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,7 +16,7 @@
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                     BackgroundColor="Wheat"
+                     BackgroundColor="AntiqueWhite"
                      Padding="10"
                      BindingContext="{StaticResource Key=MVM}">
 
