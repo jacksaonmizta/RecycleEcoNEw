@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:RecycleEco.ViewModel"
+             mc:Ignorable="d"
+             x:Class="RecycleEco.Views.CollectorUpdateSubmission">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:SubmissionListVM x:Key="SLVM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+       
+            <StackLayout Margin="20"
+                    BackgroundColor="LightGreen"
+                    Padding="10">
+                <Label Text="Submission History"
+                    HorizontalOptions="CenterAndExpand"
+                    FontSize="30"
+                    TextColor="Black"/>
+                <StackLayout Orientation="Horizontal"
+                         Margin="20">
+                    <Label Text="Material Name"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
+                       TextColor="Black"/>
+                    <Label Text="Date Submitted"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
+                       TextColor="Black"/>
+                    <Label Text="Points"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
+                       TextColor="Black"/>
+                    <Label Text="Status"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
+                       TextColor="Black"/>
+                </StackLayout>
+                <ListView x:Name="submissionListView" 
+                      ItemsSource="{Binding SubmissionList}"
+                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal"
+                                         Margin="10">
+                                    <Label Text="{Binding MaterialName}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                    <Label Text="{Binding SubmittedDate}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                    <Label Text="{Binding Points}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                    <Label Text="{Binding Status}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+</ContentPage.Content>
+</ContentPage>

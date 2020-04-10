@@ -218,7 +218,7 @@ namespace RecycleEco.ViewModel
         //to view submission list
         private void OpenSubmissionListExecute()
         {
-            Application.Current.MainPage.Navigation.PushAsync(new Views.RecyclerViewSubmissions());
+            Application.Current.MainPage.Navigation.PushAsync(new Views.CollectorUpdateSubmission());
         }
 
 
