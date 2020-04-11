@@ -250,11 +250,9 @@ namespace RecycleEco.ViewModel
 
         private async void UpdateSubmissionExecute(object obj)
         {
-
-
             UpdateStatus = string.Empty;
             Material material = new Material();
-            if (MaterialName.ToLower() != Material.MaterialName.ToLower())
+            if (MaterialName.ToLower() == Material.MaterialName.ToLower())
             {
                 material = await MaterialAuth.GetMaterialByName(MaterialName);
             }
