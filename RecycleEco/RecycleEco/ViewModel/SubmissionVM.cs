@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 
+
 namespace RecycleEco.ViewModel
 {
     class SubmissionVM : INotifyPropertyChanged
@@ -25,6 +26,8 @@ namespace RecycleEco.ViewModel
             }
         }
 
+
+        //--- update submission 
         private bool canUpdate;
 
         public bool CanUpdate
@@ -101,6 +104,8 @@ namespace RecycleEco.ViewModel
                 OnPropertyChanged();
             }
         }
+
+        //Variables-----------------------------------------------------------
         public DateTime SubmittedDate
         {
             get
@@ -167,15 +172,27 @@ namespace RecycleEco.ViewModel
         }
 
         public ICommand AddSubmission { get; set; }
+
+
+        //to update submission of material 
         public ICommand UpdateSubmission { get; set; }
+
+
 
         public SubmissionVM()
         {
             CollectorList = new ObservableCollection<Collector>();
             Recycler = new Recycler();
             Collector = new Collector();
+
+            //to open update submission
+            UpdateSubmission = new Command(UpdateSubmissionExecute);
+
+
             AddSubmission = new Command(AddSubmissionExecute); //CanSubmitM
-            UpdateSubmission = new Command(UpdateSubmissionExecute, CanUpdateM);
+
+            
+          
             if (Material == default(Material))
             {
                 Material = new Material();
@@ -190,6 +207,10 @@ namespace RecycleEco.ViewModel
             }
             if (RecyclerVM.Recycler != null && Material != null)
                 GetCollectorList();
+
+
+
+           
         }
 
         private async void GetCollectorList()
@@ -229,6 +250,8 @@ namespace RecycleEco.ViewModel
 
         private async void UpdateSubmissionExecute(object obj)
         {
+
+
             UpdateStatus = string.Empty;
             Material material = new Material();
             if (MaterialName.ToLower() != Material.MaterialName.ToLower())
@@ -241,7 +264,7 @@ namespace RecycleEco.ViewModel
                 {
                     Material = material;
                     UpdateSubmissionForAll();
-                    await Application.Current.MainPage.DisplayAlert("Update Successful", "You have successfully updated the submission", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Record Material Submission", "You have successfully updated the submission.", "OK");
                     await Application.Current.MainPage.Navigation.PopAsync();
                 }
                 else
@@ -269,6 +292,9 @@ namespace RecycleEco.ViewModel
             await CollectorAuth.UpdateCollector(Collector);
             await SubmissionAuth.UpdateSubmission(Submission);
         }
+
+
+
 
         private bool CanUpdateM(object arg)
         {

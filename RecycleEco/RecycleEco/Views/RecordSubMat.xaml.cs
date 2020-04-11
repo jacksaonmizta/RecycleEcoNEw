@@ -16,10 +16,5 @@ namespace RecycleEco.Views
         {
             InitializeComponent();
         }
-
-        private void MainDatePicker_DateSelected(object sender, DateChangedEventArgs e)
-        {
-            MainLabel.Text = e.NewDate.ToLongDateString();
-        }
     }
 }

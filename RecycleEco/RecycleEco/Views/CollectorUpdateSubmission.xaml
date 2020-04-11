@@ -9,13 +9,14 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:SubmissionListVM x:Key="SLVM"/>
+            <local:SubmissionUpdateVM x:Key="SUVM"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     
     <ContentPage.Content>
-       
-            <StackLayout Margin="20"
+
+        <StackLayout BindingContext="{StaticResource SUVM}"
+                Margin="20"
                     BackgroundColor="LightGreen"
                     Padding="10">
                 <Label Text="Submission History"
