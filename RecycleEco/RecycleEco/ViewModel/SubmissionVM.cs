@@ -173,11 +173,8 @@ namespace RecycleEco.ViewModel
 
         public ICommand AddSubmission { get; set; }
 
-
         //to update submission of material 
         public ICommand UpdateSubmission { get; set; }
-
-
 
         public SubmissionVM()
         {
@@ -188,11 +185,7 @@ namespace RecycleEco.ViewModel
             //to open update submission
             UpdateSubmission = new Command(UpdateSubmissionExecute);
 
-
-            AddSubmission = new Command(AddSubmissionExecute); //CanSubmitM
-
-            
-          
+            AddSubmission = new Command(AddSubmissionExecute);             
             if (Material == default(Material))
             {
                 Material = new Material();
@@ -207,16 +200,13 @@ namespace RecycleEco.ViewModel
             }
             if (RecyclerVM.Recycler != null && Material != null)
                 GetCollectorList();
-
-
-
-           
         }
 
         private async void GetCollectorList()
         {
             CollectorList = await CollectorAuth.GetCollectorsByUsername(Material.CollectorList);
         }
+
         private async void AddSubmissionExecute(object obj)
         {
             Submission.SubmissionID = Guid.NewGuid().ToString();
@@ -231,12 +221,6 @@ namespace RecycleEco.ViewModel
             await Application.Current.MainPage.Navigation.PopAsync();
         }
 
-        //private bool CanSubmitM(object arg)
-        //{
-        //    return CanAdd;
-        //}
-   
-
         private async void InitializeFromSubmission()
         {
             Recycler = await RecyclerAuth.GetRecyclerByUsername(Submission.Recycler);
@@ -250,8 +234,6 @@ namespace RecycleEco.ViewModel
 
         private async void UpdateSubmissionExecute(object obj)
         {
-
-
             UpdateStatus = string.Empty;
             Material material = new Material();
             if (MaterialName.ToLower() != Material.MaterialName.ToLower())
@@ -291,14 +273,6 @@ namespace RecycleEco.ViewModel
             Collector.TotalPoints += Submission.Points;
             await CollectorAuth.UpdateCollector(Collector);
             await SubmissionAuth.UpdateSubmission(Submission);
-        }
-
-
-
-
-        private bool CanUpdateM(object arg)
-        {
-            return CanUpdate;
         }
 
         private void UpdateRecyclerLevel()
