@@ -31,7 +31,8 @@ namespace RecycleEco.Utilities
                         Status = item.Object.Status,
                         Collector = item.Object.Collector,
                         Recycler = item.Object.Recycler,
-                        Material = item.Object.Material
+                        Material = item.Object.Material,
+                        MaterialName = item.Object.MaterialName
                     }).ToList();
 
                 ObservableCollection<Submission> submissionsList = new ObservableCollection<Submission>();
@@ -47,6 +48,7 @@ namespace RecycleEco.Utilities
                 return null;
             }
         }
+
         public static async Task AddSubmission(Submission submission)
         {
             try

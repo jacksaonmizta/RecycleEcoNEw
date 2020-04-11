@@ -18,7 +18,7 @@ namespace RecycleEco.Utilities
             try
             {
                 return (await Firebase
-                    .Child("Admin")
+                    .Child("Admins")
                     .OnceAsync<User>()).Select(item => new User
                     {
                         Username = item.Object.Username,

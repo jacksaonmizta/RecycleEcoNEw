@@ -28,6 +28,10 @@
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
                        TextColor="Black"/>
+                <Label Text="Collector"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
+                       TextColor="Black"/>
                 <Label Text="Date Submitted"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
@@ -50,6 +54,9 @@
                             <StackLayout Orientation="Horizontal"
                                          Margin="10">
                                 <Label Text="{Binding MaterialName}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Collector}"
                                        FontSize="10"
                                        HorizontalOptions="CenterAndExpand"/>
                                 <Label Text="{Binding SubmittedDate}"

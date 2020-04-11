@@ -37,12 +37,11 @@ namespace RecycleEco.ViewModel
 
 		public SubmissionListVM()
 		{
-		
 			SubmissionList = new ObservableCollection<Submission>();
-			GetAllBooks();
+			GetAllSubmissions();
 		}
 
-		private async void GetAllBooks()
+		private async void GetAllSubmissions()
 		{
 			SubmissionList = await SubmissionAuth.GetAllSubmissions();
 		}
