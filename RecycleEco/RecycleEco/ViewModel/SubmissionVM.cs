@@ -174,7 +174,7 @@ namespace RecycleEco.ViewModel
         public ICommand AddSubmission { get; set; }
 
         //to update submission of material 
-        public ICommand UpdateSubmission { get; set; }
+        public ICommand OpenUpdateSubmissionView { get; set; }
 
         public SubmissionVM()
         {
@@ -183,7 +183,7 @@ namespace RecycleEco.ViewModel
             Collector = new Collector();
 
             //to open update submission
-            UpdateSubmission = new Command(UpdateSubmissionExecute);
+            OpenUpdateSubmissionView = new Command(OpenUpdateSubmissionExecute);
 
             AddSubmission = new Command(AddSubmissionExecute);             
             if (Material == default(Material))
@@ -232,7 +232,9 @@ namespace RecycleEco.ViewModel
                 MaterialName = Material.MaterialName;
         }
 
-        private async void UpdateSubmissionExecute(object obj)
+
+        //method to update submission of material
+        private async void OpenUpdateSubmissionExecute(object obj)
         {
             UpdateStatus = string.Empty;
             Material material = new Material();
@@ -245,22 +247,22 @@ namespace RecycleEco.ViewModel
                 if (CollectorVM.Collector.MaterialCollection.Contains(material.MaterialID))
                 {
                     Material = material;
-                    UpdateSubmissionForAll();
-                    await Application.Current.MainPage.DisplayAlert("Record Material Submission", "You have successfully updated the submission.", "OK");
+                    UpdateAllSub();
+                    await Application.Current.MainPage.DisplayAlert("Record Submitted Material", "Submission Approved!.", "OK");
                     await Application.Current.MainPage.Navigation.PopAsync();
                 }
                 else
                 {
-                    UpdateStatus = "You do not collect this type of material!";
+                    UpdateStatus = "This material does not belong in your collection";
                 }
             }
             else
             {
-                UpdateStatus = "Recycled Material Type not found!";
+                UpdateStatus = "Material for recycling not found!";
             }
         }
 
-        private async void UpdateSubmissionForAll()
+        private async void UpdateAllSub()
         {
             Submission.Material = Material.MaterialID;
             Submission.MaterialName = Material.MaterialName;

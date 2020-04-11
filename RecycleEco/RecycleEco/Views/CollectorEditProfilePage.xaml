@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
              mc:Ignorable="d"
-             x:Class="RecycleEco.Views.CollectorEditProfilePage">
+             x:Class="RecycleEco.Views.CollectorEditProfilePage"
+             BackgroundColor="ForestGreen">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:CollectorVM x:Key="CVM"/>
@@ -14,16 +15,10 @@
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                    BackgroundColor="LightGreen"
+                    BackgroundColor="white"
                     Padding="10"
                     BindingContext="{StaticResource Key=CVM}">
 
-            <Label Grid.ColumnSpan="2"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       FontSize="30"
-                       Text="Edit Profile"
-                       TextColor="Black"/>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.1*"/>
@@ -42,25 +37,35 @@
                     <ColumnDefinition Width="0.25*"/>
                 </Grid.ColumnDefinitions>
 
+               <!--headtitle--> 
                 <Label Grid.Row="1"
+                       Grid.ColumnSpan="2" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="30"
+                       Text="Edit Profile"
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
+
+                <Label Grid.Row="3"
                        Grid.Column="0"
-                       Text="Fullname:"
+                       Text="Username:"
                        FontSize="20"
                        TextColor="Black" 
                        HorizontalOptions="Start"/>
 
-                <Label Grid.Row="2"
+                <Label Grid.Row="5"
                        Grid.Column="0"
                        Text="Password:"
                        FontSize="20"
                        TextColor="Black" 
                        HorizontalOptions="Start"/>
 
-                <Entry Grid.Row="1"
+                <Entry Grid.Row="3"
                        Grid.Column="1"
-                       Text="{Binding FullName, Mode=TwoWay}"/>
+                       Text="{Binding Username, Mode=TwoWay}"/>
 
-                <Entry Grid.Row="2"
+                <Entry Grid.Row="5"
                        Grid.Column="1"
                        Text="{Binding Password, Mode=TwoWay}" />
 
@@ -72,7 +77,7 @@
                         Text="Update"
                         FontSize="20"
                         TextColor="White"
-                        BackgroundColor="Goldenrod"
+                        BackgroundColor="ForestGreen"
                         Command="{Binding UpdateProfile}"/>
             </Grid>
         </StackLayout>

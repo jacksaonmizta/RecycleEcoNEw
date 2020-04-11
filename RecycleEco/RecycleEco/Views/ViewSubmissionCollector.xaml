@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
              mc:Ignorable="d"
-             x:Class="RecycleEco.Views.CollectorUpdateSubmission"
+             x:Class="RecycleEco.Views.ViewSubmissionCollector"
              BackgroundColor="ForestGreen">
 
     <ContentPage.Resources>
@@ -13,81 +13,76 @@
             <local:SubmissionUpdateVM x:Key="SUVM"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
-    <ContentPage.Content>
 
-        <StackLayout BindingContext="{StaticResource SUVM}"
+
+    <ContentPage.Content>
+        <StackLayout 
                 Margin="20"
                     BackgroundColor="White"
                     Padding="10">
-            
-                <Label Text="Record Submission"
+
+            <Label Text="Submission History"
                     HorizontalOptions="CenterAndExpand"
                     FontSize="30"
                     TextColor="ForestGreen"
                     FontAttributes="Bold"/>
 
-                <Label 
-                    Text="Click on the record to update submission details"
-                    HorizontalOptions="CenterAndExpand"
-                    FontSize="10"
-                    TextColor="Black"
-                    FontAttributes="Bold"/>
+            
 
             <StackLayout Orientation="Horizontal"
                          Margin="20">
-                    <Label Text="Material Name"
+                <Label Text="Material Name"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
                        TextColor="ForestGreen"
                        FontAttributes="Bold"/>
-                    
-                    <Label Text="Date Submitted"
-                       HorizontalOptions="CenterAndExpand"
-                       FontSize="10"
-                       TextColor="ForestGreen"
-                       FontAttributes="Bold"/>
-                
-                    <Label Text="Points"
-                       HorizontalOptions="CenterAndExpand"
-                       FontSize="10"
-                       TextColor="ForestGreen"
-                       FontAttributes="Bold"/>
-                
-                    <Label Text="Status"
-                       HorizontalOptions="CenterAndExpand"
-                       FontSize="10"
-                       TextColor="ForestGreen"
-                       FontAttributes="Bold"/>
-                
-                </StackLayout>
-                <ListView x:Name="submissionListView" 
-                      ItemsSource="{Binding SubmissionList}"
-                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                          BackgroundColor="LightGreen">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal"
-                                         Margin="10">
-                                    <Label Text="{Binding MaterialName}"
-                                       FontSize="10"
-                                       HorizontalOptions="CenterAndExpand"/>
-                                    <Label Text="{Binding SubmittedDate}"
-                                       FontSize="10"
-                                       HorizontalOptions="CenterAndExpand"/>
-                                    <Label Text="{Binding Points}"
-                                       FontSize="10"
-                                       HorizontalOptions="CenterAndExpand"/>
-                                    <Label Text="{Binding Status}"
-                                       FontSize="10"
-                                       HorizontalOptions="CenterAndExpand"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
 
-</ContentPage.Content>
+                <Label Text="Date Submitted"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
+
+                <Label Text="Points"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
+
+                <Label Text="Status"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
+
+            </StackLayout>
+            <ListView x:Name="submissionListView" 
+                      ItemsSource="{Binding SubmissionList}"
+                      
+                          BackgroundColor="LightGreen">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="10">
+                                <Label Text="{Binding MaterialName}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding SubmittedDate}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Points}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Status}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+    </ContentPage.Content>
 </ContentPage>

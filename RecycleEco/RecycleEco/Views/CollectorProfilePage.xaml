@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
              mc:Ignorable="d"
              
-             x:Class="RecycleEco.Views.CollectorProfilePage">
+             x:Class="RecycleEco.Views.CollectorProfilePage"
+             BackgroundColor="ForestGreen">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -16,18 +17,14 @@
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                    BackgroundColor="LightGreen"
+                    BackgroundColor="White"
                     Padding="10"
                     BindingContext="{StaticResource Key=CVM}">
 
-            <Label Grid.ColumnSpan="2"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       FontSize="30"
-                       Text="Profile Page"
-                       TextColor="Black"/>
+            
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
                     <RowDefinition Height="0.1*"/>
                     <RowDefinition Height="0.1*"/>
                     <RowDefinition Height="0.1*"/>
@@ -44,15 +41,26 @@
                     <ColumnDefinition Width="0.25*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="2"
+                <!-- headtitle-->
+                <Label Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="30"
+                       Text="Profile Page"
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
+                <!-- fullname-->
+                <Label Grid.Row="3"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="Center"
                        Grid.Column="0"
                        Text="Fullname: "
                        FontSize="20"
-                       TextColor="Black"/>
-
-                <Label Grid.Row="2"
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
+               
+                <Label Grid.Row="3"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="Center"
                        Grid.Column="1"
@@ -60,47 +68,52 @@
                        FontSize="20"
                        TextColor="Black"/>
 
-                <Label Grid.Row="3"
+                <!-- username-->
+                <Label Grid.Row="5"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="Center"
                        Grid.Column="0"
-                       Text="Points: "
+                       Text="Username : "
                        FontSize="20"
-                       TextColor="Black"/>
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
 
-                <Label Grid.Row="3"
+                <Label Grid.Row="5"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="Center"
                        Grid.Column="1"
-                       Text="{Binding TotalPoints, Mode=TwoWay}"
+                       Text="{Binding Username, Mode=TwoWay}"
                        FontSize="20"
                        TextColor="Black"/>
 
-                <Label Grid.Row="4"
+                <!-- address-->
+                <Label Grid.Row="7"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="Center"
                        Grid.Column="0"
-                       Text="Level: "
+                       Text="Address: "
                        FontSize="20"
-                       TextColor="Black"/>
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
 
-                <Label Grid.Row="4"
+                
+                <Label Grid.Row="7"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="Center"
                        Grid.Column="1"
-                       Text="{Binding EcoLevel, Mode=TwoWay}"
+                       Text="{Binding Address, Mode=TwoWay}"
                        FontSize="20"
                        TextColor="Black"/>
 
-                <Button Grid.Row="8"
+                <Button Grid.Row="9"
                         Grid.ColumnSpan="2"
                         Margin="30,0"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
                         Text="Edit Profile"
                         FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Goldenrod"
+                        TextColor="white"
+                        BackgroundColor="ForestGreen"
                         Command="{Binding OpenCollectorEditView}"/>
             </Grid>
         </StackLayout>

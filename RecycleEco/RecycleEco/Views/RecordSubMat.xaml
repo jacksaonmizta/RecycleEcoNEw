@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.RecordSubMat">
+             x:Class="RecycleEco.Views.RecordSubMat"
+             BackgroundColor="ForestGreen">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,7 +16,7 @@
     
     <ContentPage.Content>
         <StackLayout Margin="20"
-                     BackgroundColor="LightGreen"
+                     BackgroundColor="white"
                      Padding="10"
                      BindingContext="{StaticResource Key=SVM}">
             <!--Ok-->
@@ -32,99 +33,98 @@
                     <RowDefinition Height="0.1*"/>
                     <RowDefinition Height="0.1*"/>
                     <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.25*"/>
                     <ColumnDefinition Width="0.25*"/>
-
                 </Grid.ColumnDefinitions>
-            </Grid>
-            
 
-            <!--ok-->
-            
-            <!--Head title-->
-            <Label Grid.ColumnSpan="2"
+                <!--Head title-->
+                
+                <Label Grid.Row="0"
+                       Grid.ColumnSpan="2"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontSize="30"
-                       Text="Material Submission"
-                       TextColor="Black"
+                       Text="Record Submission"
+                       TextColor="ForestGreen"
                        FontAttributes="Bold"/>
-            <!--To insert recyclerName-->
-            <Label Grid.Row="1"
+                
+                <!--recyclerName-->
+                <Label Grid.Row="2"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        Grid.Column="0"
                        Text="Recycler: "
                        FontSize="20"
-                       TextColor="Black"/>
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
 
-            <Label Grid.Row="1"
+                <Label Grid.Row="2"
                        Grid.Column="1"
-                       
-                       FontSize="30"
+                       FontSize="20"
                        TextColor="Black"
                        Text="{Binding RecyclerUsername}"/>
-            
-            <!--display material Name-->
-            <Label Grid.Row="2"
+
+                <!--display material Name-->
+                <Label Grid.Row="4"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        Grid.Column="0"
                        Text="Material Name:"
                        FontSize="20"
-                       TextColor="Black"/>
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
 
-            <Label Grid.Row="2"
-                       Grid.Column="0"
-                      
-                       FontSize="30"
+                <Label Grid.Row="4"
+                       Grid.Column="1"
+                       FontSize="20"
                        TextColor="Black"
-                       
                        Text="{Binding MaterialName, Mode=TwoWay}"
                        />
-            <!--To insert weight-->
-            <Label Grid.Row="3"
+                <!--To insert weight-->
+                <Label Grid.Row="6"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        Grid.Column="0"
                        Text="Weight:"
                        FontSize="20"
-                       TextColor="Black"/>
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
 
-
-
-            <Entry Grid.Row="3"
+                <Entry Grid.Row="6"
                        Grid.Column="1"
                        Placeholder="Enter Weight"
-                       FontSize="30"
+                       FontSize="20"
                        TextColor="Black"
                        Keyboard="Numeric"
                        Text="{Binding Weight, Mode=TwoWay}"
                        />
-            
-            <Button Grid.Row="5"
+
+                <Button Grid.Row="8"
                         Grid.ColumnSpan="2"
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="FillAndExpand"
-                        Text="Submitted"
+                        Text="Submit"
                         FontSize="20"
-                        TextColor="Black"
+                        TextColor="White"
                         BackgroundColor="ForestGreen"
-                        Command="{Binding UpdateSubmission}"
+                        Command="{Binding OpenUpdateSubmissionView}"
                         />
 
 
-            <Label Grid.Row="6"
+                <Label Grid.Row="9"
                        Grid.ColumnSpan="2"
-                       HorizontalOptions="Start"
+                       HorizontalOptions="CenterAndExpand"
                        VerticalOptions="Center"
                        Text="{Binding UpdateStatus}"
                        TextColor="Red"
                        FontSize="15"/>
 
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

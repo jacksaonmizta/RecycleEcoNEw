@@ -149,6 +149,8 @@ namespace RecycleEco.ViewModel
 
         public ICommand OpenMaterialSelect { get; set; }
 
+        public ICommand OpenSubmissionHistoryView { get; set; }
+
 
 
 
@@ -178,11 +180,14 @@ namespace RecycleEco.ViewModel
             //to update collector profile
             UpdateProfile = new Command(UpdateCollectorExecute);
 
-            //to view submission list
+            //to view submission list - record submission
             OpenSubmissionListView = new Command(OpenSubmissionListExecute);
 
             //to open material selection view
             OpenMaterialSelectView = new Command(OpenMaterialSelectExecute);
+
+            //to view submission history
+            OpenSubmissionHistoryView = new Command(OpenSubmissionHistoryExecute);
 
 
 
@@ -215,11 +220,18 @@ namespace RecycleEco.ViewModel
             await Application.Current.MainPage.Navigation.PopAsync();
         }
 
-        //to view submission list
+        //to view submission list - record submission
         private void OpenSubmissionListExecute()
         {
             Application.Current.MainPage.Navigation.PushAsync(new Views.CollectorUpdateSubmission());
         }
+
+        //to view submission history
+        private void OpenSubmissionHistoryExecute()
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new Views.ViewSubmissionCollector());
+        }
+
 
 
         private async void SignUpExecute(object obj)

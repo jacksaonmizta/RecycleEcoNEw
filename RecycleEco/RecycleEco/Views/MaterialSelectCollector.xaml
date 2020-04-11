@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
              mc:Ignorable="d"
-             x:Class="RecycleEco.Views.MaterialSelectCollector">
+             x:Class="RecycleEco.Views.MaterialSelectCollector"
+             BackgroundColor="ForestGreen">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -16,29 +17,36 @@
     <ContentPage.Content>
         <StackLayout Margin="20"
                      Padding="10"
-                     BackgroundColor="LightGreen"
+                     BackgroundColor="White"
                      BindingContext="{StaticResource Key=CMVM}">
+            
             <Label HorizontalOptions="Center"
                    VerticalOptions="Center"
                    FontSize="30"
-                   Text="Select Material"
-                   TextColor="Black"/>
-            <StackLayout Orientation="Horizontal">
+                   Text="Add Material"
+                   TextColor="ForestGreen"
+                   FontAttributes="Bold"/>
+            
+            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="LightGreen">
 
                 <Label Text="Material Type"
                        HorizontalOptions="CenterAndExpand"
-                       FontSize="15"
-                       TextColor="Black"/>
+                       FontSize="10"
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
 
                 <Label Text="Description"
                        HorizontalOptions="CenterAndExpand"
-                       FontSize="15"
-                       TextColor="Black"/>
+                       FontSize="10"
+                       TextColor="ForestGreen"
+                        FontAttributes="Bold"/>
 
                 <Label Text="Points/kg"
                        HorizontalOptions="CenterAndExpand"
-                       FontSize="15"
-                       TextColor="Black"/>
+                       FontSize="10"
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
 
             </StackLayout>
             <ListView x:Name="materialListView" 
