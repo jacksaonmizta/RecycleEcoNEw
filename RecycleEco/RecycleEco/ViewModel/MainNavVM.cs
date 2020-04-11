@@ -11,20 +11,13 @@ using Xamarin.Forms;
 
 namespace RecycleEco.ViewModel
 {
-    class MainNavVM :INotifyPropertyChanged
+    class MainNavVM 
 
     {
 
-        public static User Admin { get; set; }
+        
 
-        public string Username
-        {
-            get { return Admin.Username; }
-
-            set { Admin.Username = value;
-                    OnPropertyChanged();
-                }
-        }
+       
         public ICommand OpenMaterialView { get; set; }
         public ICommand OpenAdminMaterialSubmissionView { get; set; }
         public ICommand SignOut { get; set; }
@@ -42,11 +35,7 @@ namespace RecycleEco.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
+       
         private void OpenAdminMaterialSubmissionViewExecute(object obj)
         {
             Application.Current.MainPage.Navigation.PushAsync(new Views.AdminMaterialSubmissionView());
