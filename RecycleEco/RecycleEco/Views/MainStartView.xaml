@@ -49,8 +49,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Eco Admin"
                         FontSize="20"
-                        TextColor="Black"
-                        BackgroundColor="Coral" 
+                        TextColor="White"
+                        BackgroundColor="Firebrick" 
                         Command="{Binding UserAdmin}"/>
 
                 <Button Grid.Row="3"
