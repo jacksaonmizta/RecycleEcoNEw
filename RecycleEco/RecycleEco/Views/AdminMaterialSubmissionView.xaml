@@ -4,12 +4,84 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:RecycleEco.ViewModel"
              x:Class="RecycleEco.Views.AdminMaterialSubmissionView">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:SubmissionUpdateVM x:Key="SUVM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout 
+                Margin="20"
+                    BackgroundColor="White"
+                    Padding="10">
+
+            <Label Text="Submission History"
+                    HorizontalOptions="CenterAndExpand"
+                    FontSize="30"
+                    TextColor="Coral"
+                    FontAttributes="Bold"/>
+
+
+
+            <StackLayout Orientation="Horizontal"
+                         Margin="20">
+                <Label Text="Material Name"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
+                       TextColor="Coral"
+                       FontAttributes="Bold"/>
+
+                <Label Text="Date Submitted"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
+                       TextColor="Coral"
+                       FontAttributes="Bold"/>
+
+                <Label Text="Points"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
+                       TextColor="Coral"
+                       FontAttributes="Bold"/>
+
+                <Label Text="Status"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
+                       TextColor="Coral"
+                       FontAttributes="Bold"/>
+
+            </StackLayout>
+            <ListView x:Name="submissionListView" 
+                      ItemsSource="{Binding SubmissionList}"
+                      
+                          BackgroundColor="Coral">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="10">
+                                <Label Text="{Binding MaterialName}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding SubmittedDate}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Points}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Status}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

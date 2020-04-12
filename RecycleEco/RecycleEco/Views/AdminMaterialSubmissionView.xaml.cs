@@ -16,5 +16,12 @@ namespace RecycleEco.Views
         {
             InitializeComponent();
         }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            submissionListView.ItemsSource = await SubmissionAuth.GetAllSubmissions();
+
+        }
     }
 }
