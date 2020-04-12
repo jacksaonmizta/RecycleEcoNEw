@@ -17,87 +17,136 @@
     <ContentPage.Content>
 
         <StackLayout BindingContext="{StaticResource SUVM}"
-                Margin="20"
+                Margin="10"
                     BackgroundColor="White"
                     Padding="10">
-            
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.9*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+
                 <Label Text="View Appointments"
                     HorizontalOptions="CenterAndExpand"
                     FontSize="30"
                     TextColor="ForestGreen"
-                    FontAttributes="Bold"/>
+                    FontAttributes="Bold"
+                    Grid.ColumnSpan="5"/>
 
                 <Label 
                     Text="Click on the appointment record to update submission details"
                     HorizontalOptions="CenterAndExpand"
                     FontSize="10"
                     TextColor="Black"
-                    FontAttributes="Bold"/>
+                    FontAttributes="Bold"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="5"/>
 
-            <StackLayout Orientation="Horizontal"
-                         Margin="20">
+            
 
-                <Label Text="Recycler"
+                <Label Text="ID"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
                        TextColor="ForestGreen"
-                       FontAttributes="Bold"/> 
+                       FontAttributes="Bold"
+                        Grid.Row="2"
+                       /> 
                 
                 <Label Text="Material Name"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
                        TextColor="ForestGreen"
-                       FontAttributes="Bold"/>
+                       FontAttributes="Bold"
+                       Grid.Column="1"
+                       Grid.Row="2"/>
                     
                     <Label Text="Date Submitted"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
                        TextColor="ForestGreen"
-                       FontAttributes="Bold"/>
+                       FontAttributes="Bold"
+                       Grid.Column="2"
+                       Grid.Row="2"/>
                 
                     <Label Text="Points"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
                        TextColor="ForestGreen"
-                       FontAttributes="Bold"/>
+                       FontAttributes="Bold"
+                       Grid.Column="3"
+                        Grid.Row="2"/>
                 
                     <Label Text="Status"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
                        TextColor="ForestGreen"
-                       FontAttributes="Bold"/>
+                       FontAttributes="Bold"
+                       Grid.Column="4" 
+                       Grid.Row="2"/>
                 
-                </StackLayout>
+               
                 <ListView x:Name="submissionListView" 
                       ItemsSource="{Binding SubmissionList}"
                       SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                          BackgroundColor="LightGreen">
+                          BackgroundColor="LightGreen"
+                          Grid.Row="3"
+                          Grid.ColumnSpan="5">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Horizontal"
-                                         Margin="10">
-                                <Label Text="{Binding Recycler}"
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.5*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    </Grid.ColumnDefinitions>
+                                <Label Text="{Binding SubmissionID}"
+                                       Grid.Row="0"
                                        FontSize="10"
                                        HorizontalOptions="CenterAndExpand"/>
                                 <Label Text="{Binding MaterialName}"
                                        FontSize="10"
+                                       Grid.Row="0"
+                                       Grid.Column="1"
                                        HorizontalOptions="CenterAndExpand"/>
                                     <Label Text="{Binding SubmittedDate}"
                                        FontSize="10"
+                                       Grid.Row="0"
+                                       Grid.Column="2"
                                        HorizontalOptions="CenterAndExpand"/>
                                     <Label Text="{Binding Points}"
                                        FontSize="10"
+                                        Grid.Row="0"
+                                       Grid.Column="3"
                                        HorizontalOptions="CenterAndExpand"/>
                                     <Label Text="{Binding Status}"
                                        FontSize="10"
+                                        Grid.Row="0"
+                                       Grid.Column="4"
                                        HorizontalOptions="CenterAndExpand"/>
-                                </StackLayout>
-                            </ViewCell>
+                            </Grid>
+                        </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </StackLayout>
+            </Grid>
+        </StackLayout>
 
 </ContentPage.Content>
 </ContentPage>
