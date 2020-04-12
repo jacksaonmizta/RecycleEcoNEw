@@ -7,6 +7,9 @@
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
              x:Class="RecycleEco.Views.AdminMaterialSubmissionView">
     
+    
+
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:SubmissionUpdateVM x:Key="SUVM"/>
@@ -30,6 +33,13 @@
 
             <StackLayout Orientation="Horizontal"
                          Margin="20">
+
+                <Label Text="Recycler"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
+                       TextColor="Coral"
+                       FontAttributes="Bold"/>
+
                 <Label Text="Material Name"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
@@ -64,6 +74,9 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal"
                                          Margin="10">
+                                <Label Text="{Binding Recycler}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
                                 <Label Text="{Binding MaterialName}"
                                        FontSize="10"
                                        HorizontalOptions="CenterAndExpand"/>
