@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
              x:Class="RecycleEco.Views.MaterialListPage"
-             BackgroundColor="AntiqueWhite">
+             BackgroundColor="PaleVioletRed">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -17,13 +17,13 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" 
                      BindingContext="{StaticResource Key=MMVM}"
-                     Command="{Binding AddNewMaterial}"
-                     />
+                     Command="{Binding AddNewMaterial}"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <StackLayout BindingContext="{StaticResource MMVM}"
-                     Margin="10"
+                     Margin="20"
+                     BackgroundColor="White"
                      Padding="10">
 
             <Grid>
@@ -39,11 +39,12 @@
                     <ColumnDefinition Width="0.5*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Material ID"/>
+                <Label Text="ID"/>
                 <Label Text="Material Name"
                        Grid.Column="1"/>
                 <Label Text="Description" Grid.Column="2"/>
-                <Label Text="PointperKG" Grid.Column="3"/>
+                <Label Text="Point/KG" Grid.Column="3"/>
+                
                 <ListView x:Name="MyListView"
                           ItemsSource="{Binding MaterialList}"
                           SelectedItem="{Binding SelectedMaterial,Mode=OneWayToSource}"

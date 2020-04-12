@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
              x:Class="RecycleEco.Views.AdminLoginPage"
-             BackgroundColor="Coral">
+             BackgroundColor="PaleVioletRed">
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -16,7 +16,7 @@
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                     BackgroundColor="AntiqueWhite"
+                     BackgroundColor="White"
                      Padding="10"
                      BindingContext="{StaticResource Key=LVM}">
 
@@ -93,8 +93,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Login"
                         FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Coral"
+                        TextColor="White"
+                        BackgroundColor="Firebrick"
                         Command="{Binding SignIn}"
                         CommandParameter="{Binding CanSign}"/>
 

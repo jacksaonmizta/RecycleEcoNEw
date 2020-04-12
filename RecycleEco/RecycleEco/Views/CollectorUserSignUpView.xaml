@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.CollectorUserSignUpView">
+             x:Class="RecycleEco.Views.CollectorUserSignUpView"
+             BackgroundColor="ForestGreen">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,26 +16,26 @@
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                     BackgroundColor="Wheat"
+                     BackgroundColor="White"
                      Padding="10"
                      BindingContext="{StaticResource Key=CVM}">
 
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.25*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition Height="0.15*"/>
                     <RowDefinition Height="0.1*"/>
                     <RowDefinition Height="0.1*"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.16*"/>
                     <ColumnDefinition Width="0.25*"/>
 
                 </Grid.ColumnDefinitions>
@@ -122,8 +123,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Create Account"
                         FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Goldenrod"
+                        TextColor="White"
+                        BackgroundColor="DarkGreen"
                         Command="{Binding SignUp}"
                         CommandParameter="{Binding CanSignUp}"/>
 

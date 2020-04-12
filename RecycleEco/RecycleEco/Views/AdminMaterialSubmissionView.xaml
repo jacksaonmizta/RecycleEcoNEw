@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.AdminMaterialSubmissionView">
+             x:Class="RecycleEco.Views.AdminMaterialSubmissionView"
+             BackgroundColor="PaleVioletRed">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -22,7 +23,7 @@
             <Label Text="Submission History"
                     HorizontalOptions="CenterAndExpand"
                     FontSize="30"
-                    TextColor="Coral"
+                    TextColor="Black"
                     FontAttributes="Bold"/>
 
             <StackLayout Orientation="Horizontal"
@@ -31,38 +32,36 @@
                 <Label Text="Recycler"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
-                       TextColor="Coral"
+                       TextColor="Black"
                        FontAttributes="Bold"/>
 
                 <Label Text="Material Name"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
-                       TextColor="Coral"
+                       TextColor="Black"
                        FontAttributes="Bold"/>
 
                 <Label Text="Date Submitted"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
-                       TextColor="Coral"
+                       TextColor="Black"
                        FontAttributes="Bold"/>
 
                 <Label Text="Points"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
-                       TextColor="Coral"
+                       TextColor="Black"
                        FontAttributes="Bold"/>
 
                 <Label Text="Status"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
-                       TextColor="Coral"
+                       TextColor="Black"
                        FontAttributes="Bold"/>
 
             </StackLayout>
             <ListView x:Name="submissionListView" 
-                      ItemsSource="{Binding SubmissionList}"
-                      
-                          BackgroundColor="Coral">
+                      ItemsSource="{Binding SubmissionList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

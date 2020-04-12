@@ -19,47 +19,39 @@
     <ContentPage.Content>
         <StackLayout BindingContext="{StaticResource SVM}"
                      Margin="20"
-                    BackgroundColor="White"
-                    Padding="10">
+                     Padding="10"
+                     BackgroundColor="White">
+
+            <Label HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="30"
+                   Text="Add Submission"
+                   TextColor="Black"/>
+
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.05*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1"/>
-                    <RowDefinition Height="0.01"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.2*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="0.13*"/>
-                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="0.5*"/>
                 </Grid.ColumnDefinitions>
-
-                <Label Grid.ColumnSpan="2"
-                       Grid.Row="1"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       FontSize="30"
-                       Text="Add Submission"
-                       TextColor="Black"/>
-
-                <Label Grid.Row="3"
+                
+                <Label Grid.Row="1"
                        Grid.Column="0"
                        Text="Select Date"
                        FontSize="15"
                        TextColor="Black" 
                        HorizontalOptions="Start"/>
 
-                <DatePicker Grid.Row="5"
+                <DatePicker Grid.Row="2"
                             Grid.RowSpan="2"
                             Grid.ColumnSpan="2"
                             MinimumDate="{x:Static sys:DateTime.Today}"
@@ -68,27 +60,33 @@
                 <Label FontSize="15"
                        Text="Choose collector"
                        TextColor="Black"
-                       Grid.Row="7"
-                       TextDecorations="Underline"/>
-
+                       Grid.Row="5"/>
 
                 <ListView x:Name="collectorListView"
                           ItemsSource="{Binding CollectorList}"
                           SelectedItem="{Binding SelectedCollector,Mode=OneWayToSource}"
-                          Grid.Row="8"
-                          Grid.RowSpan="4"
-                          Grid.ColumnSpan="2"
+                          Grid.Row="6"
+                          Grid.ColumnSpan="4"
                           CachingStrategy="RecycleElement">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Horizontal"
-                                            Margin="10">
-                                    <Label HorizontalOptions="FillAndExpand"
-                                        Text="{Binding Username}"/>
-                                    <Label HorizontalOptions="FillAndExpand"
-                                        Text="{Binding Address}"/>
-                                </StackLayout>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.5*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="{Binding Username}"
+                                           Grid.Row="0"
+                                           Grid.Column="0"/>
+                                    <Label Text="{Binding Address}"
+                                           Grid.Row="0"
+                                           Grid.Column="1"/>
+                                </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

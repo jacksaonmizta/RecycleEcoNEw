@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.LoginPage">
+             x:Class="RecycleEco.Views.LoginPage"
+             BackgroundColor="LightGray">
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,7 +16,7 @@
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                     BackgroundColor="Wheat"
+                     BackgroundColor="White"
                      Padding="10"
                      BindingContext="{StaticResource Key=LVM}">
 
@@ -53,7 +54,7 @@
                 <Entry Grid.Row="1"
                        Grid.Column="1"
                        Placeholder="Enter Username"
-                       FontSize="20"
+                       FontSize="17"
                        TextColor="Blue"
                        Text="{Binding Username, Mode=TwoWay}"/>
 
@@ -68,7 +69,7 @@
                 <Entry Grid.Row="2"
                        Grid.Column="1"
                        Placeholder="Enter Password"
-                       FontSize="20"
+                       FontSize="17"
                        TextColor="Blue"
                        Text="{Binding Password}"
                        IsPassword="{Binding ShowPassword}"/>
@@ -90,8 +91,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Sign Up"
                         FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Goldenrod"
+                        TextColor="White"
+                        BackgroundColor="Gray"
                         Command="{Binding OpenSignUpView}"/>
 
                 <Button Grid.Row="5"
@@ -100,8 +101,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Login"
                         FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Goldenrod"
+                        TextColor="White"
+                        BackgroundColor="Gray"
                         Command="{Binding SignIn}"
                         CommandParameter="{Binding CanSign}"/>
 

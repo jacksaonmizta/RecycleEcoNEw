@@ -19,65 +19,75 @@
                      Margin="20"
                      Padding="10"
                      BackgroundColor="White">
-
+            
             <Label HorizontalOptions="Center"
                    VerticalOptions="Center"
                    FontSize="30"
                    Text="Add Submission"
                    TextColor="Black"/>
 
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.9*"/>
+                </Grid.RowDefinitions>
 
-            <StackLayout Orientation="Horizontal"
-                         Margin="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3.5*"/>
+                    <ColumnDefinition Width="3.8*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                </Grid.ColumnDefinitions>
+
                 <Label Text="Material Type"
-                       HorizontalOptions="Start"
-                       FontSize="15"
+                       Grid.Column="0"
                        TextColor="Black"/>
-
+                
                 <Label Text="Description"
-                       HorizontalOptions="CenterAndExpand"
-                       FontSize="15"
+                       Grid.Column="1"
                        TextColor="Black"/>
-
+                
                 <Label Text="Points/kg"
-                       HorizontalOptions="CenterAndExpand"
-                       FontSize="15"
+                       Grid.Column="2"
                        TextColor="Black"/>
-            </StackLayout>
-
-            <ListView x:Name="materialListView"
+                
+                <ListView x:Name="materialListView"
                           ItemsSource="{Binding MaterialList}"
                           SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"
                           Grid.Row="1"
                           Grid.ColumnSpan="4"
                           CachingStrategy="RecycleElement">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.5*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                    </Grid.ColumnDefinitions>
 
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal"
-                                         Margin="10">
+                                    <Label Text="{Binding MaterialName}"
+                                            FontSize="15"
+                                            Grid.Row="0"/>
 
-                                <Label Text="{Binding MaterialName}"
-                                       FontSize="15"
-                                       HorizontalOptions="Start"
-                                      HorizontalTextAlignment="Start"/>
+                                    <Label Text="{Binding Description}"
+                                           FontSize="15"
+                                           Grid.Row="0"
+                                           Grid.Column="1"/>
 
-                                <Label Text="{Binding Description}"
-                                       FontSize="15"
-                                       HorizontalOptions="CenterAndExpand"
-                                       HorizontalTextAlignment="Start"/>
-
-                                <Label Text="{Binding PointsPK}"
-                                       FontSize="15"
-                                       HorizontalOptions="CenterAndExpand"
-                                       HorizontalTextAlignment="Start"/>
-
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                    <Label Text="{Binding PointsPK}"
+                                           FontSize="15"
+                                           Grid.Row="0"
+                                           Grid.Column="2"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

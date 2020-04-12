@@ -72,7 +72,7 @@
                         Text="Collector"
                         FontSize="20"
                         TextColor="White"
-                        BackgroundColor="ForestGreen"
+                        BackgroundColor="DarkGreen"
                         Command="{Binding UserCollector}"/>
 
 

@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
              x:Class="RecycleEco.Views.AdminMainPage"
-             BackgroundColor="Coral">
+             BackgroundColor="PaleVioletRed">
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:MainNavVM x:Key="MNVM"/>
@@ -21,7 +22,7 @@
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                     BackgroundColor="AntiqueWhite"
+                     BackgroundColor="White"
                      Padding="10"
                      BindingContext="{StaticResource Key=MNVM}">
 
@@ -63,8 +64,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Manage Material"
                         FontSize="20"
-                        TextColor="Black"
-                        BackgroundColor="Coral"
+                        TextColor="White"
+                        BackgroundColor="Firebrick"
                         Command="{Binding OpenMaterialView}"/>
 
                 <Button Grid.Row="3"
@@ -74,8 +75,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="View Submission History"
                         FontSize="20"
-                        TextColor="black"
-                        BackgroundColor="Coral" 
+                        TextColor="White"
+                        BackgroundColor="Firebrick" 
                         Command="{Binding OpenAdminMaterialSubmissionView}"/>
 
             </Grid>
