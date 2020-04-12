@@ -52,10 +52,16 @@ namespace RecycleEco.ViewModel
 
 			SubmissionList = new ObservableCollection<Submission>();
 			ViewSubmittedAppointments();
+			ViewAllSubmissions();
 
 			
 			OpenMaterialSubmissionView = new Command<Submission>(OpenSubmissionMaterialExecute);
 		}
+
+
+		//fetch recycler
+	
+
 
 		private async void ViewSubmittedAppointments()
 		{
