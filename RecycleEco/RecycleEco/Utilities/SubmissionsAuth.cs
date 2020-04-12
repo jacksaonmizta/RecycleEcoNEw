@@ -44,7 +44,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception SDA1", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Save submission Firebase Error", ex.Message, "OK");
                 return null;
             }
         }
@@ -60,7 +60,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception SDA2", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Add Submission Firebase error", ex.Message, "OK");
             }
         }
         public static async Task UpdateSubmission(Submission submission)
@@ -76,7 +76,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception SDA3", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Update Submission Firebase Error", ex.Message, "OK");
             }
         }
 
@@ -100,7 +100,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception SDA4", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Get Proposed submission by Collector  error", ex.Message, "OK");
                 return null;
             }
         }
@@ -125,7 +125,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception SDA5", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Get submission by Material Error", ex.Message, "OK");
                 return null;
             }
         }
@@ -150,7 +150,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception SDA6", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Get submission for Recycyler error ", ex.Message, "OK");
                 return null;
             }
         }
@@ -175,7 +175,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception SDA6", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Get submission for collector error", ex.Message, "OK");
                 return null;
             }
         }

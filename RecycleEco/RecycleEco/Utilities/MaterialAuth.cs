@@ -38,7 +38,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception MDA1", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Material Firebase error", ex.Message, "OK");
                 return null;
             }
         }
@@ -62,7 +62,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception MDA2", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Get Material ID error", ex.Message, "OK");
                 return null;
             }
         }
@@ -77,7 +77,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception MDA3", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Add Material Error", ex.Message, "OK");
             }
         }
         public static async Task UpdateMaterial(Material material)
@@ -93,7 +93,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception MDA4", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Update Material Error", ex.Message, "OK");
             }
         }
         public static async Task DeleteMaterial(Material material)
@@ -109,7 +109,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception MDA5", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Delete Material Error", ex.Message, "OK");
             }
         }
 
@@ -126,7 +126,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception MDA6", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Get Material BY ID error", ex.Message, "OK");
                 return null;
             }
         }
@@ -144,7 +144,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception MDA7", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Get MAterial By name error", ex.Message, "OK");
                 return null;
             }
         }
