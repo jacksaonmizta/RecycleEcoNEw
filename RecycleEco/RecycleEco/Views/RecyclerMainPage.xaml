@@ -64,7 +64,7 @@
                         Margin="30,0"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
-                        Text="View Appointments"
+                        Text="Submission History"
                         FontSize="20"
                         TextColor="White"
                         BackgroundColor="DarkBlue"
