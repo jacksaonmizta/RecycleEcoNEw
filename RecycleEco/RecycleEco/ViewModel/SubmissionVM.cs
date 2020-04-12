@@ -12,8 +12,8 @@ namespace RecycleEco.ViewModel
 {
     class SubmissionVM : INotifyPropertyChanged
     {
-        public const string StatusInitial = "Submitted";
-        public const string StatusApproved = "Approved";
+        public const string StatusInitial = "Proposed";
+        public const string StatusApproved = "Submitted";
 
         private bool canAdd;
         public bool CanAdd
