@@ -29,7 +29,7 @@
                    TextColor="Black"
                    Padding="5"/>
 
-            <StackLayout Padding="10" BindingContext="{StaticResource SVM}">
+            <StackLayout Padding="10">
                 <Label Text="Select Date"
                    FontSize="15"
                    TextColor="Black" 
@@ -39,9 +39,7 @@
                             Grid.ColumnSpan="4"
                             MinimumDate="{x:Static sys:DateTime.Today}"
                             Date="{Binding SubmittedDate,Mode=OneWayToSource}"/>
-            </StackLayout>
-
-            <StackLayout Padding="10" BindingContext="{StaticResource SVM}">
+                
                 <Label FontSize="15"
                        Text="Choose collector"
                        TextColor="Black"/>
