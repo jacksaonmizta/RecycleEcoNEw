@@ -6,16 +6,12 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
              x:Class="RecycleEco.Views.AdminMaterialSubmissionView">
-    
-    
-
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:SubmissionUpdateVM x:Key="SUVM"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-
 
     <ContentPage.Content>
         <StackLayout 
@@ -28,8 +24,6 @@
                     FontSize="30"
                     TextColor="Coral"
                     FontAttributes="Bold"/>
-
-
 
             <StackLayout Orientation="Horizontal"
                          Margin="20">

@@ -214,6 +214,7 @@ namespace RecycleEco.ViewModel
                     Password = string.Empty;
                     FullName = string.Empty;
                     ConfirmPassword = string.Empty;
+                    await Application.Current.MainPage.DisplayAlert("Sign up","Sign up successful! ", "OK");
                     await Application.Current.MainPage.Navigation.PopAsync();
                 }
                 else
