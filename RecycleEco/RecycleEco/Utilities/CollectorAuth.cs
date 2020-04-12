@@ -33,7 +33,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA1", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Regsiter Collector Firebase error", ex.Message, "OK");
                 return null;
             }
         }
@@ -50,7 +50,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA2", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Get collector Firebase error", ex.Message, "OK");
                 return null;
             }
         }
@@ -75,7 +75,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA3", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Get Collector by username Firebase error", ex.Message, "OK");
                 return null;
             }
         }
@@ -90,7 +90,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA4", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("AddCollector Firebase error", ex.Message, "OK");
             }
         }
         public static async Task UpdateCollector(Collector collector)
@@ -106,7 +106,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA5", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Update Collector Firebase error", ex.Message, "OK");
             }
         }
         public static async Task<Collector> GetCollectorByUsername(string username)
@@ -122,7 +122,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception CDA6", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Get Collector by username error", ex.Message, "OK");
                 return null;
             }
         }

@@ -31,7 +31,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDA1", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Registered Recycler Firebase error", ex.Message, "OK");
                 return null;
             }
         }
@@ -48,7 +48,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDA2", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("GEt Recycler error", ex.Message, "OK");
                 return null;
             }
         }
@@ -63,7 +63,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDA3", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Add Recycler Error", ex.Message, "OK");
             }
         }
         public static async Task UpdateRecycler(Recycler recycler)
@@ -79,7 +79,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDA4", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Update Recycler FIrebase Error", ex.Message, "OK");
             }
         }
         public static async Task<Recycler> GetRecyclerByUsername(string username)
@@ -95,7 +95,7 @@ namespace RecycleEco.Utilities
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Firebase Exception RDA5", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Get Recycler by username Firebase error", ex.Message, "OK");
                 return null;
             }
         }
