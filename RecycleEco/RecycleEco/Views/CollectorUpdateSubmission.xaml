@@ -21,14 +21,14 @@
                     BackgroundColor="White"
                     Padding="10">
             
-                <Label Text="Record Submission"
+                <Label Text="View Appointments"
                     HorizontalOptions="CenterAndExpand"
                     FontSize="30"
                     TextColor="ForestGreen"
                     FontAttributes="Bold"/>
 
                 <Label 
-                    Text="Click on the record to update submission details"
+                    Text="Click on the appointment record to update submission details"
                     HorizontalOptions="CenterAndExpand"
                     FontSize="10"
                     TextColor="Black"
@@ -36,7 +36,14 @@
 
             <StackLayout Orientation="Horizontal"
                          Margin="20">
-                    <Label Text="Material Name"
+
+                <Label Text="Recycler"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="10"
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/> 
+                
+                <Label Text="Material Name"
                        HorizontalOptions="CenterAndExpand"
                        FontSize="10"
                        TextColor="ForestGreen"
@@ -70,7 +77,10 @@
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal"
                                          Margin="10">
-                                    <Label Text="{Binding MaterialName}"
+                                <Label Text="{Binding Recycler}"
+                                       FontSize="10"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding MaterialName}"
                                        FontSize="10"
                                        HorizontalOptions="CenterAndExpand"/>
                                     <Label Text="{Binding SubmittedDate}"

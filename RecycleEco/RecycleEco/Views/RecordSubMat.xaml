@@ -98,7 +98,7 @@
                 <Entry Grid.Row="6"
                        Grid.Column="1"
                        Placeholder="Enter Weight"
-                       FontSize="20"
+                       FontSize="15"
                        TextColor="Black"
                        Keyboard="Numeric"
                        Text="{Binding Weight, Mode=TwoWay}"
@@ -109,10 +109,11 @@
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="FillAndExpand"
                         Text="Submit"
-                        FontSize="20"
+                        FontSize="15"
                         TextColor="White"
                         BackgroundColor="ForestGreen"
                         Command="{Binding OpenUpdateSubmissionView}"
+                            
                         />
 
 
