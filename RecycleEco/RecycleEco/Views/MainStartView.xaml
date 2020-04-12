@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
              x:Class="RecycleEco.Views.MainStartView"
-             BackgroundColor="Coral">
+             BackgroundColor="LightGray">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:UserTypeVM x:Key="UTVM"/>
@@ -15,7 +15,7 @@
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                     BackgroundColor="Wheat"
+                     BackgroundColor="white"
                      Padding="10"
                      BindingContext="{StaticResource Key=UTVM}">
 
@@ -49,8 +49,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Eco Admin"
                         FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Chocolate" 
+                        TextColor="Black"
+                        BackgroundColor="Coral" 
                         Command="{Binding UserAdmin}"/>
 
                 <Button Grid.Row="3"
@@ -60,8 +60,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Recycler"
                         FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Green"
+                        TextColor="White"
+                        BackgroundColor="DarkBlue"
                         Command="{Binding UserRecycler}"/>
 
                 <Button Grid.Row="5"
@@ -71,8 +71,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Collector"
                         FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Firebrick"
+                        TextColor="White"
+                        BackgroundColor="ForestGreen"
                         Command="{Binding UserCollector}"/>
 
 
