@@ -217,6 +217,8 @@ namespace RecycleEco.ViewModel
         private async void UpdateCollectorExecute()
         {
             await CollectorAuth.UpdateCollector(Collector);
+            await Application.Current.MainPage.DisplayAlert("Profile update",
+                "Profile successfully updated " , "OK");
             await Application.Current.MainPage.Navigation.PopAsync();
         }
 
@@ -249,6 +251,8 @@ namespace RecycleEco.ViewModel
                     FullName = string.Empty;
                     Address = string.Empty;
                     ConfirmPassword = string.Empty;
+                    await Application.Current.MainPage.DisplayAlert("Sign up",
+                "Sign up successful! ", "OK");
                     await Application.Current.MainPage.Navigation.PopAsync();
                 }
                 else

@@ -52,21 +52,12 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontSize="40"
-                       Text="Welcome "
-                       TextColor="ForestGreen"
-                       FontAttributes="Bold"/>
-                <Label 
-                       Grid.Row="0"
-                       Grid.ColumnSpan="2"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       FontSize="40"
-                       Text="{Binding Username,Mode=TwoWay}"
+                       Text="Collector Menu"
                        TextColor="ForestGreen"
                        FontAttributes="Bold"/>
 
                 <!--profille-->
-                <Button Grid.Row="2"
+                <Button Grid.Row="1"
                         Grid.ColumnSpan="2"
                         Margin="30,0"
                         VerticalOptions="FillAndExpand"
