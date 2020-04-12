@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:RecycleEco.ViewModel"
-             x:Class="RecycleEco.Views.CollectorUserSignUpView">
+             x:Class="RecycleEco.Views.CollectorUserSignUpView"
+             BackgroundColor="ForestGreen">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,7 +16,7 @@
 
     <ContentPage.Content>
         <StackLayout Margin="20"
-                     BackgroundColor="Wheat"
+                     BackgroundColor="White"
                      Padding="10"
                      BindingContext="{StaticResource Key=CVM}">
 
@@ -44,7 +45,8 @@
                        VerticalOptions="Center"
                        FontSize="30"
                        Text="Collector"
-                       TextColor="Black"/>
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
 
                 <Label Grid.Row="1"
                        HorizontalOptions="Start"
@@ -52,7 +54,8 @@
                        Grid.Column="0"
                        Text="Username:"
                        FontSize="20"
-                       TextColor="Black"/>
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
 
                 <Entry Grid.Row="1"
                        Grid.Column="1"
@@ -67,7 +70,8 @@
                        Grid.Column="0"
                        Text="Password:"
                        FontSize="20"
-                       TextColor="Black"/>
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
 
                 <Entry Grid.Row="2"
                        Grid.Column="1"
@@ -91,7 +95,8 @@
                        Grid.Column="0"
                        Text="Full Name:"
                        FontSize="20"
-                       TextColor="Black"/>
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
 
                 <Entry Grid.Row="4"
                        Grid.Column="1"
@@ -106,7 +111,8 @@
                        Grid.Column="0"
                        Text="Address:"
                        FontSize="20"
-                       TextColor="Black"/>
+                       TextColor="ForestGreen"
+                       FontAttributes="Bold"/>
 
                 <Entry Grid.Row="5"
                        Grid.Column="1"
@@ -122,8 +128,8 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Create Account"
                         FontSize="20"
-                        TextColor="PowderBlue"
-                        BackgroundColor="Goldenrod"
+                        TextColor="White"
+                        BackgroundColor="ForestGreen"
                         Command="{Binding SignUp}"
                         CommandParameter="{Binding CanSignUp}"/>
 
