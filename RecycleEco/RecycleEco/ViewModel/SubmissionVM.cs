@@ -211,7 +211,7 @@ namespace RecycleEco.ViewModel
         {
             Submission.SubmissionID = Guid.NewGuid().ToString();
             Submission.Recycler = RecyclerVM.Recycler.Username;
-            Submission.Collector = Collector.Username;
+            //Submission.Collector = Collector.Username;
             Submission.Status = StatusInitial;
             Submission.Material = Material.MaterialID;
             Submission.MaterialName = Material.MaterialName;
