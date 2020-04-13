@@ -89,8 +89,7 @@
 
                 <Button Grid.Row="5"
                         Grid.ColumnSpan="2"
-                        VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="CenterAndExpand"
+                        Margin="30,0"
                         Text="Add"
                         FontSize="20"
                         TextColor="White"

@@ -185,7 +185,7 @@ namespace RecycleEco.ViewModel
             //to open update submission
             OpenUpdateSubmissionView = new Command(OpenUpdateSubmissionExecute);
 
-            AddSubmission = new Command(AddSubmissionExecute);             
+            AddSubmission = new Command(AddSubmissionExecute);
             if (Material == default(Material))
             {
                 Material = new Material();
@@ -211,12 +211,13 @@ namespace RecycleEco.ViewModel
         {
             Submission.SubmissionID = Guid.NewGuid().ToString();
             Submission.Recycler = RecyclerVM.Recycler.Username;
+            Submission.Collector = Collector.Username;
             Submission.Status = StatusInitial;
             Submission.Material = Material.MaterialID;
             Submission.MaterialName = Material.MaterialName;
             Submission.SubmittedDate = SubmittedDate;
             await SubmissionAuth.AddSubmission(Submission);
-            await Application.Current.MainPage.DisplayAlert("Success", 
+            await Application.Current.MainPage.DisplayAlert("Success",
                 "You have successfully made an appointment with " + Submission.Collector, "OK");
             await Application.Current.MainPage.Navigation.PopAsync();
         }

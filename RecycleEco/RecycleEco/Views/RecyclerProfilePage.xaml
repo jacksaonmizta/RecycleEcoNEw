@@ -50,48 +50,36 @@
                        TextColor="Black"/>
                 
                 <Label Grid.Row="3"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="Center"
                        Grid.Column="0"
                        Text="Fullname: "
                        FontSize="20"
-                       TextColor="Black"/>
+                       TextColor="DarkBlue"/>
 
                 <Label Grid.Row="3"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="Center"
                        Grid.Column="1"
                        Text="{Binding FullName, Mode=TwoWay}"
                        FontSize="20"
                        TextColor="Black"/>
 
                 <Label Grid.Row="4"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="Center"
                        Grid.Column="0"
                        Text="Points: "
                        FontSize="20"
-                       TextColor="Black"/>
+                       TextColor="DarkBlue"/>
 
                 <Label Grid.Row="4"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="Center"
                        Grid.Column="1"
                        Text="{Binding TotalPoints, Mode=TwoWay}"
                        FontSize="20"
                        TextColor="Black"/>
 
                 <Label Grid.Row="5"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="Center"
                        Grid.Column="0"
                        Text="Level: "
                        FontSize="20"
-                       TextColor="Black"/>
+                       TextColor="DarkBlue"/>
 
                 <Label Grid.Row="5"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="Center"
                        Grid.Column="1"
                        Text="{Binding EcoLevel, Mode=TwoWay}"
                        FontSize="20"
